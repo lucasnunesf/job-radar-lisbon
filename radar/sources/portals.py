@@ -44,6 +44,21 @@ def _jobposting_from_html(html: str) -> dict | None:
     return None
 
 
+def _main_text(soup) -> str:
+    """Bloco com mais texto corrido e menos links (descarta menu, nuvem de tags, rodapé)."""
+    for tag in soup(["script", "style", "nav", "header", "footer", "aside", "form", "noscript"]):
+        tag.decompose()
+    best, best_score = None, 0
+    for el in soup.find_all(["article", "section", "div", "main"]):
+        text = el.get_text(" ", strip=True)
+        links = sum(len(a.get_text(" ", strip=True)) for a in el.find_all("a"))
+        score = len(text) - 3 * links
+        if score > best_score:
+            best, best_score = el, score
+    el = best or soup.body
+    return el.get_text("\n", strip=True)[:15000] if el else ""
+
+
 def _job_from_detail(source: str, url: str, fallback_title: str) -> Job | None:
     r = get(url)
     if r is None:
@@ -66,9 +81,8 @@ def _job_from_detail(source: str, url: str, fallback_title: str) -> Job | None:
     remote = "Remoto" if jp.get("jobLocationType") == "TELECOMMUTE" else None
 
     description = strip_html(jp.get("description"))
-    if not description:  # sem JSON-LD: usa o texto principal da página
-        main = soup.find("main") or soup.body
-        description = main.get_text(" ", strip=True)[:15000] if main else ""
+    if not description:  # sem JSON-LD: usa o bloco de texto da vaga (sem menus, tags e rodapé)
+        description = _main_text(soup)
 
     title = jp.get("title") or fallback_title
     if not company:
