@@ -2,7 +2,7 @@
 
 Busca vagas de **Data Analyst, BI Analyst e Analytics Engineer** (e Data Engineer júnior como secundário) em Lisboa,
 dá uma nota de 0 a 100 pelo encaixe com o meu perfil e grava tudo na base **Vagas** do Notion, ordenada pela nota.
-Roda sozinho no GitHub Actions duas vezes por dia e abre uma *issue* quando aparece vaga nova com nota alta
+Roda sozinho no GitHub Actions uma vez por dia, à meia-noite de Brasília, e abre uma *issue* quando aparece vaga nova com nota alta
 (o GitHub manda e-mail e notificação no app).
 
 ## Fontes

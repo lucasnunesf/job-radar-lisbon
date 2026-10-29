@@ -2,8 +2,7 @@ name: Job Radar Lisboa
 
 on:
   schedule:
-    - cron: "10 7 * * *"    # 07:10 UTC (Lisboa ≈ 07:10/08:10, Brasil 04:10)
-    - cron: "10 17 * * *"   # 17:10 UTC (Brasil 14:10)
+    - cron: "5 3 * * *"     # 03:05 UTC = 00:05 em Brasília (03:05 em Lisboa) — uma vez por dia, na virada do dia
   workflow_dispatch:
     inputs:
       hours_old:
@@ -49,7 +48,7 @@ jobs:
           ITJOBS_API_KEY: ${{ secrets.ITJOBS_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          HOURS_OLD: ${{ github.event.inputs.hours_old || '72' }}
+          HOURS_OLD: ${{ github.event.inputs.hours_old || '36' }}  # 36h: cobre o dia inteiro mesmo se o GitHub atrasar
         run: |
           ARGS="--sources ${{ github.event.inputs.sources || 'linkedin,indeed,glassdoor,itjobs,landingjobs,builtin,netempregos' }}"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
