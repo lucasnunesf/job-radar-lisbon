@@ -1,8 +1,8 @@
 """Vale a pena se candidatar agora? (fase de teste: nov–jan, início em 01/02/2027)
 
-Testar agora   = vaga fácil (júnior/estágio, ≤1 lacuna) em empresa onde levar um "não" não custa nada
+Testar agora   = vaga acessível (júnior/pleno até 3 anos, lacunas só 'aprendíveis') em empresa onde levar um "não" não custa nada
                  (consultorias e recrutadoras republicam a mesma vaga toda semana).
-Esperar preparo = vaga boa mas difícil (2+ lacunas) ou empresa de topo: guardar para quando
+Esperar preparo = vaga boa mas difícil (lacuna difícil ou 4+ lacunas) ou empresa de topo: guardar para quando
                  projeto, inglês e SQL/Python estiverem prontos (jan/fev), para não "queimar" a chance.
 Não vale       = nota baixa, pede início imediato, exige outro idioma.
 """
@@ -32,6 +32,13 @@ def _needs_other_language(desc: str) -> bool:
     return False
 
 
+def _too_hard(gaps: list[str], rules: dict) -> bool:
+    """Lacunas 'aprendíveis' (outra cloud, outra ferramenta de BI, Snowflake...) não barram.
+    Barra: alguma lacuna difícil (linguagem/área nova) ou muitas lacunas juntas."""
+    hard = {norm(h) for h in rules.get("hard_gaps", [])}
+    return any(norm(g) in hard for g in gaps) or len(gaps) > rules.get("max_learnable_gaps", 3)
+
+
 def decide(job: Job, cfg: dict) -> Job:
     rules = cfg.get("apply_now", {})
     protect = rules.get("protect_companies", [])
@@ -48,11 +55,11 @@ def decide(job: Job, cfg: dict) -> Job:
         job.apply, job.apply_why = "Não vale", "pouco encaixe com o perfil"
     elif _has(job.company, protect):
         job.apply, job.apply_why = "Esperar preparo", "empresa de topo: guardar para quando estiver pronto"
-    elif len(job.gaps) >= 2:
+    elif _too_hard(job.gaps, rules):
         job.apply, job.apply_why = "Esperar preparo", f"difícil agora (faltam {', '.join(job.gaps)})"
     else:
         why = [{"Pleno": "pleno (até 3 anos)"}.get(job.seniority, (job.seniority or "senioridade não informada").lower()),
-               "nenhuma lacuna" if not job.gaps else f"só falta {job.gaps[0]}"]
+               "nenhuma lacuna" if not job.gaps else f"falta {', '.join(job.gaps)} (dá para aprender)"]
         if _has(job.company, safe):
             why.append("consultoria que repete vagas: um 'não' agora não fecha a porta")
         if job.track in ("Data Analyst", "BI"):
@@ -76,7 +83,7 @@ def decide_from_saved(ref: dict, cfg: dict) -> tuple[str, str]:
     if _has(ref.get("company", ""), rules.get("protect_companies", [])):
         return "Esperar preparo", "empresa de topo: guardar para quando estiver pronto"
     gaps = ref.get("gaps") or []
-    if len(gaps) >= 2:
+    if _too_hard(gaps, rules):
         return "Esperar preparo", f"difícil agora (faltam {', '.join(gaps)})"
     job = Job("", ref.get("title", ""), ref.get("company", ""), "", score=ref.get("score") or 0)
     job.seniority, job.gaps, job.track = ref.get("seniority"), gaps, ref.get("track")

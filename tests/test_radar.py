@@ -96,6 +96,10 @@ def test_internship_excluded_and_saved_rules():
     assert decide_from_saved({"title": "Data Analyst", "company": "Siemens", "score": 90}, CFG)[0] == "Esperar preparo"
     assert decide_from_saved({"title": "Data Analyst", "company": "Olisipo", "score": 80,
                               "seniority": "Júnior", "gaps": ["Tableau"], "track": "Data Analyst"}, CFG)[0] == "Testar agora"
+    assert decide_from_saved({"title": "Data Engineer", "company": "Olisipo", "score": 70, "seniority": "Júnior",
+                              "gaps": ["AWS", "Snowflake", "Tableau"], "track": "Data Engineer"}, CFG)[0] == "Testar agora"
+    assert decide_from_saved({"title": "Data Engineer", "company": "Olisipo", "score": 70, "seniority": "Júnior",
+                              "gaps": ["Scala"], "track": "Data Engineer"}, CFG)[0] == "Esperar preparo"
 
 
 def test_pleno_up_to_3_years_is_ok():

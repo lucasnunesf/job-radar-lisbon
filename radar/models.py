@@ -47,6 +47,7 @@ class Job:
     excluded: str | None = None
     apply: str | None = None       # Testar agora / Esperar preparo / Não vale
     apply_why: str = ""
+    years_required: int | None = None  # menor nº de anos de experiência pedido (None = não informa)
 
     @property
     def key(self) -> str:

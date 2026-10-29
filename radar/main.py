@@ -138,7 +138,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Job Radar Lisboa")
     ap.add_argument("--sources", default=",".join(ALL_SOURCES))
     ap.add_argument("--hours-old", type=int, default=int(os.getenv("HOURS_OLD", "72")))
-    ap.add_argument("--max-age-days", type=int, default=45)
+    ap.add_argument("--max-age-days", type=int, default=30)  # depois de ~30 dias a vaga quase sempre já está em fase final
     ap.add_argument("--dry-run", action="store_true", help="não grava no Notion")
     ap.add_argument("--fixtures", help="JSON com vagas de exemplo (teste offline)")
     args = ap.parse_args(argv)

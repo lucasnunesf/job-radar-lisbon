@@ -101,6 +101,14 @@ alert_score: 65
 # "Candidatar agora?" — fase de teste (nov–jan), início em 01/02/2027
 apply_now:
   min_score: 55
+  # Lacunas que dá para aprender rápido (outra cloud, outra ferramenta de BI) não barram.
+  # Estas barram, porque são linguagem/área nova:
+  hard_gaps:
+    - Java
+    - Scala
+    - Kubernetes
+    - Machine Learning
+  max_learnable_gaps: 3
   # Empresas de topo: não gastar a candidatura antes de estar preparado
   # (muitas têm período de espera de 6–12 meses para se candidatar de novo)
   protect_companies:

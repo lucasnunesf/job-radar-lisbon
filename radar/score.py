@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import re
 
-from .classify import languages_of, relocation_of, seniority_of, track_of
+from .classify import languages_of, min_years, relocation_of, seniority_of, track_of
 from .models import Job, norm
 
 # Sinônimos/regex por ferramenta (nome igual ao do profile.yaml)
@@ -83,6 +83,7 @@ def score_job(job: Job, cfg: dict) -> Job:
         return job
 
     job.seniority = seniority_of(job.title, job.description)
+    job.years_required = min_years(job.description)
     if job.seniority == "Sênior":
         job.excluded = "sênior"
         return job

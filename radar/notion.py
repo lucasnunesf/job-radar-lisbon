@@ -92,6 +92,8 @@ class Notion:
             "Lacunas": {"rich_text": _rt(", ".join(job.gaps))},
             "Idioma": {"rich_text": _rt(", ".join(job.languages))},
             "Por quê": {"rich_text": _rt(job.apply_why)},
+            "Experiência pedida": {"rich_text": _rt("não informa" if job.years_required is None
+                                                     else f"{job.years_required}+ anos")},
         }
         if job.apply:
             props["Candidatar agora?"] = {"select": {"name": job.apply}}
