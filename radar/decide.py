@@ -47,6 +47,8 @@ def decide(job: Job, cfg: dict) -> Job:
 
     if re.search(r"\bspeaker\b|\bfluent in (?!english|portuguese)\w+", norm(job.title)):
         job.apply, job.apply_why = "Não vale", "exige outro idioma"
+    elif not job.description.strip() and not _has(job.company, protect):
+        job.apply, job.apply_why = "Avaliar", "o portal não mostra a descrição: abra o link para avaliar"
     elif IMMEDIATE.search(d):
         job.apply, job.apply_why = "Não vale", "pede início imediato (você só chega em fevereiro)"
     elif _needs_other_language(job.description):
@@ -78,6 +80,10 @@ def decide_from_saved(ref: dict, cfg: dict) -> tuple[str, str]:
     if re.search(r"Francês|Alemão|Neerlandês|Italiano|Outro idioma", ref.get("languages") or "") or \
             re.search(r"french|german|dutch|italian|\bspeaker\b", norm(ref.get("title"))):
         return "Não vale", "exige outro idioma"
+    if ref.get("source") == "Teamlyzer" and not ref.get("matched") and not ref.get("gaps"):
+        if _has(ref.get("company", ""), rules.get("protect_companies", [])):
+            return "Esperar preparo", "empresa de topo: guardar para quando estiver pronto"
+        return "Avaliar", "o portal não mostra a descrição: abra o link para avaliar"
     if (ref.get("score") or 0) < rules.get("min_score", 55):
         return "Não vale", "pouco encaixe com o perfil"
     if _has(ref.get("company", ""), rules.get("protect_companies", [])):
@@ -85,6 +91,6 @@ def decide_from_saved(ref: dict, cfg: dict) -> tuple[str, str]:
     gaps = ref.get("gaps") or []
     if _too_hard(gaps, rules):
         return "Esperar preparo", f"difícil agora (faltam {', '.join(gaps)})"
-    job = Job("", ref.get("title", ""), ref.get("company", ""), "", score=ref.get("score") or 0)
+    job = Job("", ref.get("title", ""), ref.get("company", ""), "", description="(já avaliada)", score=ref.get("score") or 0)
     job.seniority, job.gaps, job.track = ref.get("seniority"), gaps, ref.get("track")
     return decide(job, cfg).apply, job.apply_why

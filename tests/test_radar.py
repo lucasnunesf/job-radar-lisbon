@@ -106,3 +106,8 @@ def test_pleno_up_to_3_years_is_ok():
     from radar.decide import decide_from_saved
     assert decide_from_saved({"title": "BI Developer", "company": "Olisipo", "score": 70,
                               "seniority": "Pleno", "gaps": [], "track": "BI"}, CFG)[0] == "Testar agora"
+
+
+def test_no_description_goes_to_avaliar():
+    j = decide(score_job(Job("Teamlyzer", "Data Analyst", "Nimber", "u"), CFG), CFG)
+    assert j.apply == "Avaliar"
