@@ -71,6 +71,10 @@ def _job_from_detail(source: str, url: str, fallback_title: str) -> Job | None:
         description = main.get_text(" ", strip=True)[:15000] if main else ""
 
     title = jp.get("title") or fallback_title
+    if not company:
+        m = re.search(r"teamlyzer\.com/companies/([^/]+)/job/", url)
+        if m:
+            company = m.group(1).replace("-", " ").title()
     return Job(source=source, title=strip_html(title), company=strip_html(company), url=url,
                location="; ".join(p for p in places if p), description=description,
                posted=(jp.get("datePosted") or "")[:10] or None, remote=remote)
@@ -203,11 +207,47 @@ def builtin(cfg, stats) -> list[Job]:
     return _html_portal("Built In", urls, r"^/job/[^/]+/\d+", "https://builtin.com", 50, stats)
 
 
-# ---------------------------------------------------------------- Net-Empregos
+# ---------------------------------------------------------------- Net-Empregos (RSS: ~250 últimas vagas de todas as áreas)
 def netempregos(cfg, stats) -> list[Job]:
-    urls = [f"https://www.net-empregos.com/pesquisa-empregos.asp?chaves={t.replace(' ', '+')}&cidade=&categoria=0&zona=0&tipo=0"
-            for t in cfg["search_terms"]]
-    return _html_portal("Net-Empregos", urls, r"^/?\d{5,}/[^/]+/?$", "https://www.net-empregos.com", 40, stats)
+    import html as _html
+    r = get("https://www.net-empregos.com/rssfeed.asp")
+    if r is None:
+        stats["Net-Empregos"] = {"brutas": 0, "erros": ["RSS sem resposta"]}
+        return []
+    jobs = []
+    for item in re.findall(r"<item>(.*?)</item>", r.text, re.S):
+        def tag(t):
+            m = re.search(rf"<{t}>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</{t}>", item, re.S)
+            return m.group(1).strip() if m else ""
+        title = tag("title")
+        if not title_is_relevant(title):
+            continue
+        desc = _html.unescape(tag("description"))
+        zona = re.search(r"Zona:\s*</b>\s*([^<]+)", desc)
+        data = re.search(r"Data:\s*</b>\s*(\d{2})-(\d{2})-(\d{4})", desc)
+        loc = zona.group(1).strip() if zona else ""
+        if not is_lisbon_area(loc):
+            continue
+        jobs.append(Job("Net-Empregos", title, tag("dc:creator"), tag("link"), loc, strip_html(desc),
+                        f"{data.group(3)}-{data.group(2)}-{data.group(1)}" if data else None))
+    stats["Net-Empregos"] = {"brutas": len(jobs), "erros": []}
+    return jobs
+
+
+# ---------------------------------------------------------------- Teamlyzer (vagas tech em PT)
+def teamlyzer(cfg, stats) -> list[Job]:
+    tags = ["data", "sql", "power-bi", "business-intelligence", "analytics", "databricks", "etl"]
+    urls = [f"https://pt.teamlyzer.com/companies/jobs?tags={t}" for t in tags]
+    return _html_portal("Teamlyzer", urls, r"^/companies/[^/]+/job/", "https://pt.teamlyzer.com", 50, stats)
+
+
+# ---------------------------------------------------------------- Michael Page
+def michaelpage(cfg, stats) -> list[Job]:
+    urls = ["https://www.michaelpage.pt/jobs/information-technology/lisboa",
+            "https://www.michaelpage.pt/jobs/lisboa?search=data",
+            "https://www.michaelpage.pt/jobs/lisboa?search=business%20intelligence",
+            "https://www.michaelpage.pt/jobs/lisboa?search=analyst"]
+    return _html_portal("Michael Page", urls, r"^/job-detail/", "https://www.michaelpage.pt", 40, stats)
 
 
 # ---------------------------------------------------------------- Jooble (API, precisa de JOOBLE_API_KEY)

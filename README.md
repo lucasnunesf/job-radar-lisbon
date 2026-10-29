@@ -11,14 +11,14 @@ Roda sozinho no GitHub Actions uma vez por dia, à meia-noite de Brasília, e ab
 |---|---|---|
 | LinkedIn | [python-jobspy](https://github.com/speedyapply/JobSpy) (API pública de convidado) | pode bloquear às vezes; o relatório mostra |
 | Indeed (pt.indeed.com) | python-jobspy | idem |
-| Glassdoor | python-jobspy (domínio UK, cidade "Lisbon") | o mais instável |
-| Google Jobs | python-jobspy | agrega Sapo Emprego, Net-Empregos, Expresso Emprego, sites de empresas |
+| Net-Empregos | RSS (~250 últimas vagas/dia) | filtra título e zona Lisboa |
+| Teamlyzer | página de busca por tag + página da vaga | vagas tech em PT |
+| Michael Page | página de busca + JSON-LD da vaga | |
 | Sites de empresas | APIs públicas de Greenhouse, Lever, Ashby, SmartRecruiters e Workable | lista em `ats_companies` no `profile.yaml` |
 | Jooble | API oficial (`JOOBLE_API_KEY`, pedir em jooble.org/api/about) | opcional |
 | ITJobs | API oficial se houver `ITJOBS_API_KEY`, senão página de busca | onde as consultorias Microsoft/Azure publicam |
 | Landing.jobs | API pública | traz flag de relocação/visto |
 | Built In | página de busca + JSON-LD da vaga | |
-| Net-Empregos | página de busca + JSON-LD da vaga | |
 
 Mesma vaga em vários portais vira uma só (fica a descrição mais completa).
 
@@ -66,3 +66,6 @@ python -m pytest -q                            # testes offline
 ```
 
 No Windows, dar dois cliques em `run_windows.bat` (pede o `NOTION_TOKEN` na primeira vez).
+
+Fontes testadas que **bloqueiam o GitHub Actions** (403): Glassdoor, Google Jobs, Landing.jobs, Indeed RSS, Jooble (HTML).
+Para testar portais de novo: Actions → **Testar portais** → Run workflow (resultado em `data/probe.md`).

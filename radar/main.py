@@ -27,8 +27,8 @@ from .score import score_job
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 DEFAULT_NOTION_DB = "96144502e4594f3ba11efd90b2f66980"  # base "Vagas" do Lucas
-ALL_SOURCES = ["linkedin", "indeed", "glassdoor", "google", "itjobs", "landingjobs", "builtin", "netempregos",
-               "jooble", "ats"]
+ALL_SOURCES = ["linkedin", "indeed", "itjobs", "builtin", "netempregos", "teamlyzer", "michaelpage", "jooble", "ats"]
+# Bloqueiam os servidores do GitHub (403), por isso ficam fora do padrão: glassdoor, google, landingjobs
 
 log = logging.getLogger("radar")
 
@@ -42,6 +42,7 @@ def collect(cfg: dict, sources: list[str], hours_old: int, stats: dict) -> list[
         jobs += jobspy_boards.collect(cfg, sites=boards, hours_old=hours_old, stats=stats)
     for name, fn in (("itjobs", portals.itjobs), ("landingjobs", portals.landingjobs),
                      ("builtin", portals.builtin), ("netempregos", portals.netempregos),
+                     ("teamlyzer", portals.teamlyzer), ("michaelpage", portals.michaelpage),
                      ("jooble", portals.jooble), ("ats", ats.collect)):
         if name in sources:
             try:
