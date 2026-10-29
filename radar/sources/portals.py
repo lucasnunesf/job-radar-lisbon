@@ -253,6 +253,12 @@ def _same_title(a: str, b: str) -> bool:
     return bool(wa and wb) and len(wa & wb) / min(len(wa), len(wb)) >= 0.6
 
 
+def _same_company(company: str, url: str, found: str) -> bool:
+    words = [w for w in re.findall(r"[a-z]{4,}", norm(company)) if w not in ("portugal", "group", "grupo", "consulting")]
+    hay = norm(url) + " " + norm(found)
+    return bool(words) and any(w in hay for w in words)
+
+
 # ---------------------------------------------------------------- Teamlyzer (agregador de vagas tech em PT)
 def teamlyzer(cfg, stats) -> list[Job]:
     """A página do Teamlyzer não traz a descrição: segue o botão "Concorrer" até a vaga original."""
@@ -278,7 +284,7 @@ def teamlyzer(cfg, stats) -> list[Job]:
             if r.status_code != 200 or "teamlyzer.com" in r.url:
                 continue
             cand = _job_from_detail("Teamlyzer", r.url, title)
-            if cand and _same_title(cand.title, title):
+            if cand and _same_title(cand.title, title) and _same_company(company, r.url, cand.company):
                 job = cand
                 break
         if job is None:  # sem a vaga original: guarda título/empresa e o link do Teamlyzer
