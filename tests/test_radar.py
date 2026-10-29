@@ -96,3 +96,9 @@ def test_internship_excluded_and_saved_rules():
     assert decide_from_saved({"title": "Data Analyst", "company": "Siemens", "score": 90}, CFG)[0] == "Esperar preparo"
     assert decide_from_saved({"title": "Data Analyst", "company": "Olisipo", "score": 80,
                               "seniority": "Júnior", "gaps": ["Tableau"], "track": "Data Analyst"}, CFG)[0] == "Testar agora"
+
+
+def test_pleno_up_to_3_years_is_ok():
+    from radar.decide import decide_from_saved
+    assert decide_from_saved({"title": "BI Developer", "company": "Olisipo", "score": 70,
+                              "seniority": "Pleno", "gaps": [], "track": "BI"}, CFG)[0] == "Testar agora"

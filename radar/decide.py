@@ -2,7 +2,7 @@
 
 Testar agora   = vaga fácil (júnior/estágio, ≤1 lacuna) em empresa onde levar um "não" não custa nada
                  (consultorias e recrutadoras republicam a mesma vaga toda semana).
-Esperar preparo = vaga boa mas difícil (pleno, 2+ lacunas) ou empresa de topo: guardar para quando
+Esperar preparo = vaga boa mas difícil (2+ lacunas) ou empresa de topo: guardar para quando
                  projeto, inglês e SQL/Python estiverem prontos (jan/fev), para não "queimar" a chance.
 Não vale       = nota baixa, pede início imediato, exige outro idioma.
 """
@@ -48,11 +48,10 @@ def decide(job: Job, cfg: dict) -> Job:
         job.apply, job.apply_why = "Não vale", "pouco encaixe com o perfil"
     elif _has(job.company, protect):
         job.apply, job.apply_why = "Esperar preparo", "empresa de topo: guardar para quando estiver pronto"
-    elif job.seniority == "Pleno" or len(job.gaps) >= 2:
-        falta = f"faltam {', '.join(job.gaps)}" if len(job.gaps) >= 2 else "pede ~3 anos"
-        job.apply, job.apply_why = "Esperar preparo", f"difícil agora ({falta})"
+    elif len(job.gaps) >= 2:
+        job.apply, job.apply_why = "Esperar preparo", f"difícil agora (faltam {', '.join(job.gaps)})"
     else:
-        why = [f"{job.seniority.lower()}" if job.seniority else "senioridade não informada",
+        why = [{"Pleno": "pleno (até 3 anos)"}.get(job.seniority, (job.seniority or "senioridade não informada").lower()),
                "nenhuma lacuna" if not job.gaps else f"só falta {job.gaps[0]}"]
         if _has(job.company, safe):
             why.append("consultoria que repete vagas: um 'não' agora não fecha a porta")
@@ -77,8 +76,8 @@ def decide_from_saved(ref: dict, cfg: dict) -> tuple[str, str]:
     if _has(ref.get("company", ""), rules.get("protect_companies", [])):
         return "Esperar preparo", "empresa de topo: guardar para quando estiver pronto"
     gaps = ref.get("gaps") or []
-    if ref.get("seniority") == "Pleno" or len(gaps) >= 2:
-        return "Esperar preparo", f"difícil agora ({'faltam ' + ', '.join(gaps) if len(gaps) >= 2 else 'pede ~3 anos'})"
+    if len(gaps) >= 2:
+        return "Esperar preparo", f"difícil agora (faltam {', '.join(gaps)})"
     job = Job("", ref.get("title", ""), ref.get("company", ""), "", score=ref.get("score") or 0)
     job.seniority, job.gaps, job.track = ref.get("seniority"), gaps, ref.get("track")
     return decide(job, cfg).apply, job.apply_why
