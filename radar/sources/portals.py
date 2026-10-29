@@ -248,6 +248,11 @@ def netempregos(cfg, stats) -> list[Job]:
     return jobs
 
 
+def _same_title(a: str, b: str) -> bool:
+    wa, wb = set(re.findall(r"[a-z]{3,}", norm(a))), set(re.findall(r"[a-z]{3,}", norm(b)))
+    return bool(wa and wb) and len(wa & wb) / min(len(wa), len(wb)) >= 0.6
+
+
 # ---------------------------------------------------------------- Teamlyzer (agregador de vagas tech em PT)
 def teamlyzer(cfg, stats) -> list[Job]:
     """A página do Teamlyzer não traz a descrição: segue o botão "Concorrer" até a vaga original."""
@@ -260,18 +265,23 @@ def teamlyzer(cfg, stats) -> list[Job]:
         page = get(url, tries=1)
         if page is None:
             continue
-        m = re.search(r'href="(/companies/get-job/[^"]+)"', page.text)
         company = re.search(r"/companies/([^/]+)/job/", url).group(1).replace("-", " ").title()
-        final = None
-        if m:
+        job = None
+        # a página lista vários botões "Concorrer" (também de outras vagas): fica o que leva a uma vaga
+        # com o mesmo título
+        for href in list(dict.fromkeys(re.findall(r'href="(/companies/get-job/[^"]+)"', page.text)))[:4]:
             try:
-                r = session.get("https://pt.teamlyzer.com" + m.group(1).replace("&amp;", "&"), timeout=25,
-                                allow_redirects=True)
-                final = r.url if r.status_code == 200 and "teamlyzer.com" not in r.url else None
+                r = session.get("https://pt.teamlyzer.com" + href.replace("&amp;", "&"), timeout=25)
             except Exception as e:  # noqa: BLE001
                 errors.append(type(e).__name__)
-        job = _job_from_detail("Teamlyzer", final, title) if final else None
-        if job is None:  # sem a vaga original: guarda só título/empresa, sem descrição
+                continue
+            if r.status_code != 200 or "teamlyzer.com" in r.url:
+                continue
+            cand = _job_from_detail("Teamlyzer", r.url, title)
+            if cand and _same_title(cand.title, title):
+                job = cand
+                break
+        if job is None:  # sem a vaga original: guarda título/empresa e o link do Teamlyzer
             job = Job("Teamlyzer", title, company, url)
         job.company = job.company or company
         if title_is_relevant(job.title) and is_lisbon_area(job.location + " " + job.description[:3000]):
