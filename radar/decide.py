@@ -60,3 +60,23 @@ def decide(job: Job, cfg: dict) -> Job:
             why.append("bom para desenvolver o stack de engenharia")
         job.apply, job.apply_why = "Testar agora", "; ".join(why)
     return job
+
+
+def decide_from_saved(ref: dict, cfg: dict) -> tuple[str, str]:
+    """Mesma regra de decide(), usando só o que está gravado no Notion (sem a descrição)."""
+    rules = cfg.get("apply_now", {})
+    if ref.get("seniority") == "Estágio" or re.search(r"\b(intern|internship|estagi|trainee)", norm(ref.get("title"))):
+        return "Não vale", "estágio (sem vínculo universitário)"
+    if re.search(r"Francês|Alemão|Neerlandês|Italiano", ref.get("languages") or "") or \
+            re.search(r"french|german|dutch|italian", norm(ref.get("title"))):
+        return "Não vale", "exige outro idioma"
+    if (ref.get("score") or 0) < rules.get("min_score", 55):
+        return "Não vale", "pouco encaixe com o perfil"
+    if _has(ref.get("company", ""), rules.get("protect_companies", [])):
+        return "Esperar preparo", "empresa de topo: guardar para quando estiver pronto"
+    gaps = ref.get("gaps") or []
+    if ref.get("seniority") == "Pleno" or len(gaps) >= 2:
+        return "Esperar preparo", f"difícil agora ({'faltam ' + ', '.join(gaps) if len(gaps) >= 2 else 'pede ~3 anos'})"
+    job = Job("", ref.get("title", ""), ref.get("company", ""), "", score=ref.get("score") or 0)
+    job.seniority, job.gaps, job.track = ref.get("seniority"), gaps, ref.get("track")
+    return decide(job, cfg).apply, job.apply_why

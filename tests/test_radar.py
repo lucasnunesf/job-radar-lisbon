@@ -86,3 +86,13 @@ def test_apply_now():
     assert big.apply == "Esperar preparo"
     asap = decide(score_job(Job("x", "Junior Data Analyst", "Olisipo", "u2", description="SQL, Power BI. Início imediato."), CFG), CFG)
     assert asap.apply == "Não vale"
+
+
+def test_internship_excluded_and_saved_rules():
+    from radar.decide import decide_from_saved
+    sonae = by_url("net-empregos")
+    assert sonae.excluded and "estágio" in sonae.excluded
+    assert decide_from_saved({"title": "Data Analyst Trainee", "company": "X", "score": 90}, CFG)[0] == "Não vale"
+    assert decide_from_saved({"title": "Data Analyst", "company": "Siemens", "score": 90}, CFG)[0] == "Esperar preparo"
+    assert decide_from_saved({"title": "Data Analyst", "company": "Olisipo", "score": 80,
+                              "seniority": "Júnior", "gaps": ["Tableau"], "track": "Data Analyst"}, CFG)[0] == "Testar agora"

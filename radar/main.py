@@ -186,7 +186,7 @@ def main(argv=None) -> int:
         client = from_env(DEFAULT_NOTION_DB)
         if client:
             client.check()
-            created, updated = client.upsert(to_notion)
+            created, updated = client.upsert(to_notion, cfg)
             stats["Notion"] = {"brutas": len(created), "erros": [f"{updated} atualizadas"]}
 
     report = write_outputs(ranked, excluded, stats, new_alerts)

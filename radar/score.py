@@ -63,7 +63,7 @@ SKILL_RX = {
 R_RX = re.compile(r"(?<![\w&/-])R(?![\w&+#/-])(?=\s*(,|/|\bor\b|\bou\b|\band\b|\be\b|\)|\.|\s+programming|\s+language))")
 
 TRACK_POINTS = {"Analytics Engineer": 25, "BI": 25, "Data Analyst": 25, "Data Engineer": 15}
-SENIORITY_POINTS = {"Júnior": 20, "Estágio": 18, None: 12, "Pleno": 6}
+SENIORITY_POINTS = {"Júnior": 20, None: 12, "Pleno": 6}
 
 
 def _mentions(text_norm: str, raw: str, name: str) -> bool:
@@ -85,6 +85,9 @@ def score_job(job: Job, cfg: dict) -> Job:
     job.seniority = seniority_of(job.title, job.description)
     if job.seniority == "Sênior":
         job.excluded = "sênior"
+        return job
+    if job.seniority == "Estágio":
+        job.excluded = "estágio (sem vínculo universitário)"
         return job
 
     # Ferramentas

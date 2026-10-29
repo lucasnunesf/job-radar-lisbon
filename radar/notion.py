@@ -63,7 +63,14 @@ class Notion:
                 link = (p.get("Link") or {}).get("url") or ""
                 title = "".join(t["plain_text"] for t in (p.get("Vaga") or {}).get("title", []))
                 company = "".join(t["plain_text"] for t in (p.get("Empresa") or {}).get("rich_text", []))
-                ref = {"id": page["id"], "link": link}
+                txt = lambda k: "".join(t["plain_text"] for t in (p.get(k) or {}).get("rich_text", []))
+                sel = lambda k: ((p.get(k) or {}).get("select") or {}).get("name")
+                ref = {"id": page["id"], "link": link, "title": title, "company": company,
+                       "score": (p.get("Compatibilidade") or {}).get("number") or 0,
+                       "seniority": sel("Senioridade"), "track": sel("Trilha"),
+                       "gaps": [g.strip() for g in txt("Lacunas").split(",") if g.strip()],
+                       "languages": txt("Idioma"),
+                       "status": ((p.get("Status") or {}).get("status") or {}).get("name")}
                 if link:
                     out[link] = ref
                 out[Job("", title, company, "").key] = ref
@@ -99,12 +106,16 @@ class Notion:
             props["Status"] = {"status": {"name": "Nova"}}
         return props
 
-    def upsert(self, jobs: list[Job]) -> tuple[list[Job], int]:
-        """Devolve (vagas novas, quantidade atualizada)."""
+    def upsert(self, jobs: list[Job], cfg: dict | None = None) -> tuple[list[Job], int]:
+        """Devolve (vagas novas, quantidade atualizada). Com cfg, também recalcula
+        'Candidatar agora?' das vagas antigas que não apareceram nesta coleta."""
         known = self.existing()
         created, updated = [], 0
+        touched = set()
         for job in jobs:
             ref = known.get(job.url) or known.get(job.key)
+            if ref:
+                touched.add(ref["id"])
             try:
                 if ref:
                     self._call("PATCH", f"/pages/{ref['id']}", json={"properties": self._props(job, new=False)})
@@ -121,7 +132,27 @@ class Notion:
             except RuntimeError as e:
                 log.error("Falha ao gravar '%s' (%s): %s", job.title, job.company, e)
             time.sleep(0.35)  # limite da API: ~3 req/s
+        if cfg is not None:
+            updated += self.backfill(known, touched, cfg)
         return created, updated
+
+    def backfill(self, known: dict, touched: set, cfg: dict) -> int:
+        """Vagas da base que não vieram nesta coleta: decide pelo que já está gravado."""
+        from .decide import decide_from_saved
+        done, n = set(touched), 0
+        for ref in known.values():
+            if ref["id"] in done:
+                continue
+            done.add(ref["id"])
+            apply, why = decide_from_saved(ref, cfg)
+            props = {"Candidatar agora?": {"select": {"name": apply}}, "Por quê": {"rich_text": _rt(why)}}
+            try:
+                self._call("PATCH", f"/pages/{ref['id']}", json={"properties": props})
+                n += 1
+            except RuntimeError as e:
+                log.error("Falha no backfill de '%s': %s", ref.get("title"), e)
+            time.sleep(0.35)
+        return n
 
 
 def from_env(default_db: str) -> Notion | None:
