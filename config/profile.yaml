@@ -1,5 +1,7 @@
 # Perfil usado no score de match. Edite aqui sem mexer no código.
 name: Lucas Fernandes Nunes
+# Cidadão da UE: não precisa de visto; vagas que exigem autorização de trabalho UE viram vantagem
+eu_citizen: true
 
 # Termos pesquisados em cada portal
 search_terms:

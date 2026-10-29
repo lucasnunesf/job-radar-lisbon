@@ -49,7 +49,7 @@ def test_scores_order():
     french = by_url("jobs/view/6")
     assert dellent.score >= 75, dellent.reasons
     assert bi4all.score >= 70
-    assert french.score < dellent.score - 25
+    assert french.score < dellent.score - 15
     assert "Power BI" in dellent.matched and "SQL" in dellent.matched
     assert by_url("indeed.com/viewjob?jk=4").excluded == "sênior"
     assert by_url("itjobs.pt/oferta/8").excluded

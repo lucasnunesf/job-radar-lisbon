@@ -5,7 +5,7 @@ Composição (máx. ~100):
   Ferramentas ....... 35  (peso das ferramentas que o Lucas tem ÷ peso de todas as citadas)
   Senioridade ....... 20  (Júnior 20, Estágio 18, não informado 12, Pleno 6; Sênior é excluída)
   Idioma ............. 5  (perde pontos se pede francês/alemão/etc.)
-  Relocação/visto ... ±6
+  Relocação/visto ... ±6 (cidadão UE: +3 se a vaga cita relocação ou exige autorização UE)
   Consultoria MS .... +6  (consultoria Microsoft/Azure da lista que pede stack Microsoft)
   Stack Microsoft ... +3  (Power BI, Azure ou Fabric na vaga)
 """
@@ -112,7 +112,12 @@ def score_job(job: Job, cfg: dict) -> Job:
 
     pts = TRACK_POINTS[job.track] + skill_pts + SENIORITY_POINTS.get(job.seniority, 12)
     pts += 5 - lang_penalty
-    pts += 6 * reloc
+    if cfg.get("eu_citizen"):
+        # Cidadão da UE: "exige autorização de trabalho UE" filtra concorrentes (vantagem);
+        # pacote de relocação ainda ajuda, mas visto não importa.
+        pts += 3 if reloc != 0 else 0
+    else:
+        pts += 6 * reloc
     if is_consultancy:
         pts += 6 if ms_stack else 3
     if ms_stack:
@@ -127,7 +132,7 @@ def score_job(job: Job, cfg: dict) -> Job:
     if reloc == 1:
         job.reasons.append("cita relocação/visto")
     if reloc == -1:
-        job.reasons.append("exige autorização de trabalho na UE")
+        job.reasons.append("exige autorização de trabalho na UE" + (" (você tem)" if cfg.get("eu_citizen") else ""))
     if is_consultancy:
         job.reasons.append("consultoria da lista")
     if lang_penalty:

@@ -27,7 +27,7 @@ Mesma vaga em vários portais vira uma só (fica a descrição mais completa).
 | Ferramentas que tenho ÷ ferramentas citadas (com peso) | 35 |
 | Senioridade (Júnior 20, Estágio 18, não informada 12, Pleno 6) | 20 |
 | Idioma (perde até 15 se exigir francês/alemão/etc.) | 5 |
-| Relocação/visto citados (+6) ou exige autorização de trabalho UE (−6) | ±6 |
+| Relocação citada ou exige autorização de trabalho UE (sou cidadão UE, então é vantagem) | +3 |
 | Consultoria Microsoft/Azure da lista | +6 |
 | Stack Microsoft (Power BI, Azure, Fabric) | +3 |
 
