@@ -5,9 +5,9 @@
 | Sapo Emprego | 200 | 258 | 0 | 19 |
 | Expresso Emprego | 200 | 42 | 0 | 6 |
 | Jooble HTML | 403 | 5 | 0 | 0 |
-| Talent.com | 200 | 622 | 0 | 4 |
+| Talent.com | 200 | 619 | 0 | 4 |
 | Careerjet | 404 | 40 | 0 | 5 |
-| Teamlyzer | 200 | 531 | 0 | 25 |
+| Teamlyzer | 200 | 569 | 0 | 31 |
 | Welcome to the Jungle | 200 | 524 | 0 | 6 |
 | Remotive API | 200 | 127 | 0 | 0 |
 | Himalayas API | 200 | 28 | 0 | 0 |
