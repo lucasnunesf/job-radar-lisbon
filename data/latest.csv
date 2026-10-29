@@ -1,9 +1,11 @@
 score,trilha,senioridade,vaga,empresa,local,fonte,publicada,tenho,lacunas,idiomas,link
+86,BI,,Business intelligence developer,KCS iT,"Lisboa, Lisbon, Portugal",LinkedIn,2026-10-28,"SQL, Power BI, DAX, Git, ETL, Data Modeling",,"Português, Inglês",https://www.linkedin.com/jobs/view/4484931398
 84,Data Analyst,Júnior,Marketing Data Analyst,Mind Source,Lisboa,ITJobs,2026-10-22,"SQL, Power BI, ETL",SAS,,https://www.itjobs.pt/oferta/518465/marketing-data-analyst
 81,Data Analyst,,Data Analyst,Olisipo,Lisboa,ITJobs,2026-10-15,"SQL, Power BI, Excel, Data Modeling",Tableau,,https://www.itjobs.pt/oferta/517423/data-analyst
 80,Data Analyst,,Data Analyst,Neotalent Conclusion,Lisboa,ITJobs,2026-10-12,"Python, Power BI, DAX, Spark, ETL, Fabric, Data Modeling",,,https://www.itjobs.pt/oferta/517034/data-analyst
 77,Data Engineer,Júnior,Data Engineer - Azure,GRiT Solutions,Lisboa,ITJobs,2026-10-08,"SQL, Python, Power BI, Azure, Databricks, Spark, ETL, Data Factory",Terraform,,https://www.itjobs.pt/oferta/517711/data-engineer-azure
 75,Data Analyst,Júnior,Data Analyst — Business Intelligence,ITDS Portugal,Lisboa,ITJobs,2026-10-17,"SQL, Power BI, Data Modeling",Tableau,"Inglês, Francês",https://www.itjobs.pt/oferta/517855/data-analyst-business-intelligence
+70,Analytics Engineer,,Analytics Engineer,Emma – The Sleep Company,"Lisboa, Lisbon, Portugal",LinkedIn,2026-10-28,"SQL, Python, dbt, Airflow, ETL","AWS, Terraform, Redshift",Inglês,https://www.linkedin.com/jobs/view/4483863320
 70,Data Engineer,,Data Engineer - Data Governance & Cloud Data Plataform,Sourcing Trust,Lisboa,ITJobs,2026-10-14,"SQL, Python, Azure, Databricks, Git, ETL, Data Factory, Data Modeling",,,https://www.itjobs.pt/oferta/518130/data-engineer-data-governance-cloud-data-plataform
 65,Data Analyst,Pleno,Data Engineer | Information Systems & Data Analytics,Hipoges,Lisboa,ITJobs,2026-10-14,"SQL, Python, PostgreSQL, Excel, ETL",,"Inglês, Espanhol",https://www.itjobs.pt/oferta/518161/data-engineer-information-systems-data-analytics
 65,Data Engineer,,Data Engineer,Growin - Know to grow,"Porto, Setúbal, Lisboa, Braga",ITJobs,2026-10-11,"SQL, Python, Azure, Spark, ETL, Data Modeling","AWS, Java",Inglês,https://www.itjobs.pt/oferta/518073/data-engineer
@@ -11,4 +13,5 @@ score,trilha,senioridade,vaga,empresa,local,fonte,publicada,tenho,lacunas,idioma
 64,Data Engineer,Pleno,Databricks Data Engineer,Olisipo,Lisboa,ITJobs,2026-10-06,"Azure, Databricks, Synapse",Machine Learning,Inglês,https://www.itjobs.pt/oferta/517366/databricks-data-engineer
 62,Data Engineer,,Data Engineer (AWS),Fyld,"Lisboa, Porto",ITJobs,2026-10-04,"SQL, Python, Airflow, PySpark, Git, ETL","AWS, Redshift","Português, Inglês",https://www.itjobs.pt/oferta/517663/data-engineer-aws
 60,Data Engineer,Pleno,Data Engineer (Snowflake & DBT),SDG Group,,ITJobs,2026-10-07,"SQL, Azure, dbt, ETL",Snowflake,Inglês,https://www.itjobs.pt/oferta/517866/data-engineer-snowflake-dbt
+58,Data Analyst,,GCP/Power BI Data Analyst (French Speaker) | BPCE-SI,Natixis in Portugal,"Lisboa, Lisbon, Portugal",LinkedIn,2026-10-27,"SQL, Python, Power BI, ETL, Data Modeling","GCP, BigQuery","Português, Inglês, Francês",https://www.linkedin.com/jobs/view/4482257293
 51,Data Analyst,Pleno,Scrum Master (Data Analytics),Integer Consulting,,ITJobs,2026-10-21,,,Inglês,https://www.itjobs.pt/oferta/518397/scrum-master-data-analytics
