@@ -1,0 +1,15 @@
+name: Testar portais
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install requests && mkdir -p data && python scripts/probe.py >> $GITHUB_STEP_SUMMARY
+      - run: |
+          git config user.name job-radar-bot && git config user.email job-radar-bot@users.noreply.github.com
+          git add data/probe.md && git commit -m "probe de portais" && git push || true
