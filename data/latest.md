@@ -1,4 +1,4 @@
-# Job Radar Lisboa — 2026-10-29 01:36
+# Job Radar Lisboa — 2026-10-29 02:02
 
 ## Coleta por fonte
 
@@ -9,10 +9,11 @@
 | ITJobs | 20 | ok |
 | Indeed | 61 | ok |
 | Landing.jobs | 0 | página 0: sem resposta |
-| LinkedIn | 145 | junior data engineer: response status code 429 (blocked: use a proxy) |
+| LinkedIn | 150 | ok |
 | Net-Empregos | 0 | nenhum link encontrado |
+| Notion | 35 | 7 atualizadas |
 
-**42 vagas no ranking**, 107 descartadas (sênior, fora da trilha, fora de Lisboa ou antigas).
+**42 vagas no ranking**, 109 descartadas (sênior, fora da trilha, fora de Lisboa ou antigas).
 
 ## Data Analyst (19)
 
@@ -29,9 +30,9 @@
 | 79 | [BI/Data Analyst](https://pt.indeed.com/viewjob?jk=dd4326a614b91984) | SEARADAR | Júnior | BigQuery, Tableau, Looker | Indeed |
 | 75 | [Data Analyst & Data Visualization Specialist](https://www.linkedin.com/jobs/view/4420414227) | Inetum | Pleno | Tableau, Machine Learning | LinkedIn |
 | 75 | [Procurement Data Analytics Specialist (m/f/d) - Carnaxide](https://pt.indeed.com/viewjob?jk=3da9a72b3a27701f) | ALDI | Júnior | Tableau | Indeed |
+| 75 | [Data Analyst — Business Intelligence](https://www.itjobs.pt/oferta/517855/data-analyst-business-intelligence) | ITDS Portugal | Júnior | Tableau | ITJobs |
 | 66 | [Data Analytics Consultant](https://www.linkedin.com/jobs/view/4446367716) | Efficio | Pleno | Tableau, Looker, Qlik | LinkedIn |
 | 66 | [Product Analyst](https://www.linkedin.com/jobs/view/4477067818) | Air Apps | Pleno | Tableau, Looker | LinkedIn |
-| 66 | [Data Analyst — Business Intelligence](https://www.itjobs.pt/oferta/517855/data-analyst-business-intelligence) | ITDS Portugal | Júnior | Tableau | ITJobs |
 | 65 | [Data Analyst](https://www.linkedin.com/jobs/view/4482059044) | Inetum | Pleno | — | LinkedIn |
 | 65 | [Data Engineer / Information Systems & Data Analytics](https://www.itjobs.pt/oferta/518161/data-engineer-information-systems-data-analytics) | Hipoges | Pleno | — | ITJobs |
 | 61 | [CRM Data Analyst](https://www.linkedin.com/jobs/view/4429115116) | Santander Portugal | Pleno | SAS | LinkedIn |
@@ -43,11 +44,11 @@
 | Score | Vaga | Empresa | Senioridade | Lacunas | Fonte |
 |---:|---|---|---|---|---|
 | 84 | [CRM & Reporting Associate - Polish Speaker](https://www.linkedin.com/jobs/view/4463630335) | Convatec | Júnior | — | LinkedIn |
-| 76 | [Técnico de Reporting](https://www.linkedin.com/jobs/view/4481980058) | Banco de Investimento Global | Júnior | — | LinkedIn |
 | 75 | [Business Intelligence (BI) Developer](https://www.linkedin.com/jobs/view/4483671319) | Amadeus | — | AWS, GCP, Qlik | LinkedIn |
 | 69 | [Operational Asset Data & Reporting Analyst](https://www.linkedin.com/jobs/view/4480044837) | Greenvolt Group | Pleno | Tableau, Qlik, R | LinkedIn |
 | 68 | [SAP Business Intelligence Consultant – BW, Datasphere & SAC](https://www.linkedin.com/jobs/view/4483137359) | Volkswagen Group Digital Solutions [Portugal] | Pleno | — | LinkedIn |
 | 63 | [Qlik Sense Consultant](https://www.linkedin.com/jobs/view/4474347821) | Keyrus | Pleno | Tableau, Qlik | LinkedIn |
+| 54 | [Técnico de Reporting](https://www.linkedin.com/jobs/view/4481980058) | Banco de Investimento Global | — | — | LinkedIn |
 
 ## Analytics Engineer (1)
 
