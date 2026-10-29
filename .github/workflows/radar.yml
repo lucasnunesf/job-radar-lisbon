@@ -10,7 +10,7 @@ on:
         default: "72"
       sources:
         description: "Fontes separadas por vírgula"
-        default: "linkedin,indeed,glassdoor,itjobs,landingjobs,builtin,netempregos"
+        default: "linkedin,indeed,glassdoor,google,itjobs,landingjobs,builtin,netempregos,jooble,ats"
       dry_run:
         description: "true = não grava no Notion"
         default: "false"
@@ -46,11 +46,12 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
           ITJOBS_API_KEY: ${{ secrets.ITJOBS_API_KEY }}
+          JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           HOURS_OLD: ${{ github.event.inputs.hours_old || '36' }}  # 36h: cobre o dia inteiro mesmo se o GitHub atrasar
         run: |
-          ARGS="--sources ${{ github.event.inputs.sources || 'linkedin,indeed,glassdoor,itjobs,landingjobs,builtin,netempregos' }}"
+          ARGS="--sources ${{ github.event.inputs.sources || 'linkedin,indeed,glassdoor,google,itjobs,landingjobs,builtin,netempregos,jooble,ats' }}"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
           python -m radar.main $ARGS
 

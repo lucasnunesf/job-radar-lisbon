@@ -165,3 +165,45 @@ apply_now:
     - michael page
     - experis
     - manpower
+
+# Páginas de carreira (ATS) de empresas com escritório em Lisboa.
+# Nome exibido: slug no ATS. Slug sem prefixo = testa Greenhouse, Lever, Ashby, SmartRecruiters e Workable.
+# Para fixar o ATS: "greenhouse:slug". Slugs que não existirem são ignorados.
+ats_companies:
+  Talkdesk: talkdesk
+  Feedzai: feedzai
+  Unbabel: unbabel
+  Sword Health: swordhealth
+  OutSystems: outsystems
+  Remote: remotecom
+  Cloudflare: greenhouse:cloudflare
+  Pipedrive: pipedrive
+  Checkmarx: checkmarx
+  Glovo: glovo
+  Uphold: uphold
+  Hostelworld: hostelworld
+  Dashlane: dashlane
+  Zendesk: greenhouse:zendesk
+  Mercedes-Benz.io: smartrecruiters:MercedesBenzio
+  Bosch: smartrecruiters:BoschGroup
+  Volkswagen Digital Solutions: smartrecruiters:VolkswagenDigitalSolutions
+  Celfocus: celfocus
+  Critical Software: criticalsoftware
+  Mindera: mindera
+  KWAN: kwan
+  Cleverti: cleverti
+  DEUS: deus
+  Jumia: jumia
+  Anchorage Digital: anchorage
+  Kevel: kevel
+  Doist: doist
+  Miro: miro
+  N26: n26
+  Bolt: bolt
+  Sky Portugal: skyportugal
+  Euronext: euronext
+  Natixis in Portugal: smartrecruiters:Natixis
+  Hiscox: hiscox
+  Cegid: cegid
+  Teamviewer: teamviewer
+  Revolut: revolut

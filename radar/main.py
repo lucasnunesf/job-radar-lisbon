@@ -27,20 +27,22 @@ from .score import score_job
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 DEFAULT_NOTION_DB = "96144502e4594f3ba11efd90b2f66980"  # base "Vagas" do Lucas
-ALL_SOURCES = ["linkedin", "indeed", "glassdoor", "itjobs", "landingjobs", "builtin", "netempregos"]
+ALL_SOURCES = ["linkedin", "indeed", "glassdoor", "google", "itjobs", "landingjobs", "builtin", "netempregos",
+               "jooble", "ats"]
 
 log = logging.getLogger("radar")
 
 
 def collect(cfg: dict, sources: list[str], hours_old: int, stats: dict) -> list[Job]:
-    from .sources import jobspy_boards, portals
+    from .sources import ats, jobspy_boards, portals
 
     jobs: list[Job] = []
-    boards = [s for s in sources if s in ("linkedin", "indeed", "glassdoor")]
+    boards = [s for s in sources if s in ("linkedin", "indeed", "glassdoor", "google")]
     if boards:
         jobs += jobspy_boards.collect(cfg, sites=boards, hours_old=hours_old, stats=stats)
     for name, fn in (("itjobs", portals.itjobs), ("landingjobs", portals.landingjobs),
-                     ("builtin", portals.builtin), ("netempregos", portals.netempregos)):
+                     ("builtin", portals.builtin), ("netempregos", portals.netempregos),
+                     ("jooble", portals.jooble), ("ats", ats.collect)):
         if name in sources:
             try:
                 jobs += fn(cfg, stats)

@@ -9,6 +9,7 @@ log = logging.getLogger("radar")
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/129.0 Safari/537.36")
 
+last_status: dict = {}
 session = requests.Session()
 session.headers.update({"User-Agent": UA, "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.8"})
 
@@ -21,12 +22,14 @@ def get(url, *, params=None, data=None, tries=3, timeout=25, **kw):
                 r = session.post(url, params=params, data=data, timeout=timeout, **kw)
             else:
                 r = session.get(url, params=params, timeout=timeout, **kw)
+            last_status["code"] = r.status_code
             if r.status_code == 200:
                 return r
             log.warning("HTTP %s em %s (tentativa %d)", r.status_code, url, attempt)
             if r.status_code in (401, 403, 404):
                 return None
         except requests.RequestException as e:
+            last_status["code"] = type(e).__name__
             log.warning("Erro em %s: %s (tentativa %d)", url, e, attempt)
         time.sleep(2 * attempt + random.random())
     return None

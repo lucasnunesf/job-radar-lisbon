@@ -9,7 +9,20 @@ from ..models import Job
 
 log = logging.getLogger("radar")
 
-SITE_LABEL = {"linkedin": "LinkedIn", "indeed": "Indeed", "glassdoor": "Glassdoor"}
+SITE_LABEL = {"linkedin": "LinkedIn", "indeed": "Indeed", "glassdoor": "Glassdoor", "google": "Google Jobs"}
+
+# Glassdoor não tem site português; o domínio do Reino Unido aceita a cidade "Lisbon".
+COUNTRY_FOR = {"glassdoor": "uk"}
+
+
+def _google_when(hours_old: int) -> str:
+    if hours_old <= 24:
+        return "since yesterday"
+    if hours_old <= 72:
+        return "in the last 3 days"
+    if hours_old <= 168:
+        return "in the last week"
+    return "in the last month"
 
 
 def _loc(value) -> str:
@@ -39,7 +52,7 @@ def _remote(row) -> str | None:
     return None
 
 
-def collect(cfg: dict, sites=("linkedin", "indeed", "glassdoor"), hours_old=72,
+def collect(cfg: dict, sites=("linkedin", "indeed", "glassdoor", "google"), hours_old=72,
             per_term=25, stats: dict | None = None) -> list[Job]:
     from jobspy import scrape_jobs  # import tardio: só quando a fonte é usada
 
@@ -52,8 +65,10 @@ def collect(cfg: dict, sites=("linkedin", "indeed", "glassdoor"), hours_old=72,
                 df = scrape_jobs(
                     site_name=[site],
                     search_term=term,
-                    location=cfg.get("location", "Lisbon, Portugal"),
-                    country_indeed="portugal",
+                    google_search_term=(f"{term} jobs near Lisbon, Portugal {_google_when(hours_old)}"
+                                        if site == "google" else None),
+                    location=cfg.get("location", "Lisbon, Portugal") if site != "glassdoor" else "Lisbon",
+                    country_indeed=COUNTRY_FOR.get(site, "portugal"),
                     results_wanted=per_term,
                     hours_old=hours_old,
                     fetch_description=True,

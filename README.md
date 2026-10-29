@@ -11,7 +11,10 @@ Roda sozinho no GitHub Actions uma vez por dia, à meia-noite de Brasília, e ab
 |---|---|---|
 | LinkedIn | [python-jobspy](https://github.com/speedyapply/JobSpy) (API pública de convidado) | pode bloquear às vezes; o relatório mostra |
 | Indeed (pt.indeed.com) | python-jobspy | idem |
-| Glassdoor | python-jobspy | o mais instável dos três |
+| Glassdoor | python-jobspy (domínio UK, cidade "Lisbon") | o mais instável |
+| Google Jobs | python-jobspy | agrega Sapo Emprego, Net-Empregos, Expresso Emprego, sites de empresas |
+| Sites de empresas | APIs públicas de Greenhouse, Lever, Ashby, SmartRecruiters e Workable | lista em `ats_companies` no `profile.yaml` |
+| Jooble | API oficial (`JOOBLE_API_KEY`, pedir em jooble.org/api/about) | opcional |
 | ITJobs | API oficial se houver `ITJOBS_API_KEY`, senão página de busca | onde as consultorias Microsoft/Azure publicam |
 | Landing.jobs | API pública | traz flag de relocação/visto |
 | Built In | página de busca + JSON-LD da vaga | |

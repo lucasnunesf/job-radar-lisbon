@@ -17,7 +17,7 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 
 from ..classify import is_lisbon_area, title_is_relevant
-from ..http import get
+from ..http import get, session
 from ..models import Job, norm, strip_html
 
 log = logging.getLogger("radar")
@@ -154,9 +154,11 @@ def itjobs(cfg, stats) -> list[Job]:
 def landingjobs(cfg, stats, pages=12) -> list[Job]:
     jobs, companies, errors = [], {}, []
     for page in range(pages):
-        r = get("https://landing.jobs/api/v1/jobs", params={"limit": 50, "offset": page * 50})
+        r = get("https://landing.jobs/api/v1/jobs", params={"limit": 50, "offset": page * 50},
+                headers={"Accept": "application/json"})
         if r is None:
-            errors.append(f"página {page}: sem resposta")
+            from ..http import last_status
+            errors.append(f"página {page}: HTTP {last_status.get('code')}")
             break
         try:
             items = r.json()
@@ -206,3 +208,27 @@ def netempregos(cfg, stats) -> list[Job]:
     urls = [f"https://www.net-empregos.com/pesquisa-empregos.asp?chaves={t.replace(' ', '+')}&cidade=&categoria=0&zona=0&tipo=0"
             for t in cfg["search_terms"]]
     return _html_portal("Net-Empregos", urls, r"^/?\d{5,}/[^/]+/?$", "https://www.net-empregos.com", 40, stats)
+
+
+# ---------------------------------------------------------------- Jooble (API, precisa de JOOBLE_API_KEY)
+def jooble(cfg, stats) -> list[Job]:
+    key = os.getenv("JOOBLE_API_KEY")
+    if not key:
+        stats["Jooble"] = {"brutas": 0, "erros": ["sem JOOBLE_API_KEY (pedir em jooble.org/api/about)"]}
+        return []
+    jobs, errors = {}, []
+    for term in cfg["search_terms"]:
+        r = session.post(f"https://jooble.org/api/{key}", json={"keywords": term, "location": "Lisboa", "page": 1},
+                         timeout=25)
+        if r.status_code != 200:
+            errors.append(f"{term}: HTTP {r.status_code}")
+            continue
+        for it in r.json().get("jobs", []):
+            if not title_is_relevant(it.get("title", "")) or not is_lisbon_area(it.get("location", "")):
+                continue
+            jobs[it["link"]] = Job("Jooble", strip_html(it["title"]), it.get("company", ""), it["link"],
+                                   it.get("location", ""), strip_html(it.get("snippet", "")),
+                                   (it.get("updated") or "")[:10] or None)
+        time.sleep(1)
+    stats["Jooble"] = {"brutas": len(jobs), "erros": errors[:3]}
+    return list(jobs.values())
