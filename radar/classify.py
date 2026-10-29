@@ -71,9 +71,9 @@ def seniority_of(title: str, description: str) -> str | None:
         return "Júnior"
     years = min_years(description)
     if re.search(MID_TITLE, t):
-        return "Sênior" if years and years >= 5 else "Pleno"
+        return "Sênior" if years and years >= 4 else "Pleno"
     if years is not None:
-        if years >= 5:
+        if years >= 4:  # 4+ anos pedidos = fora do perfil
             return "Sênior"
         if years >= 3:
             return "Pleno"

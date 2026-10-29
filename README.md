@@ -31,7 +31,7 @@ Mesma vaga em vários portais vira uma só (fica a descrição mais completa).
 | Consultoria Microsoft/Azure da lista | +6 |
 | Stack Microsoft (Power BI, Azure, Fabric) | +3 |
 
-Vagas **sênior** (título ou ≥5 anos pedidos), fora das trilhas, fora da Grande Lisboa ou com mais de 45 dias são descartadas.
+Vagas **sênior** (título ou 4+ anos pedidos), fora das trilhas, fora da Grande Lisboa ou com mais de 45 dias são descartadas.
 Pesos, ferramentas, termos de busca, consultorias e notas de corte ficam em [`config/profile.yaml`](config/profile.yaml).
 
 ## Configuração (uma vez)

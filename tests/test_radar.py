@@ -33,6 +33,7 @@ def test_seniority():
     assert seniority_of("Data Analyst", "2 years of experience") == "Júnior"
     assert seniority_of("Analista de Dados - Estágio", "") == "Estágio"
     assert seniority_of("BI Developer", "3+ years of professional experience") == "Pleno"
+    assert seniority_of("Data Analyst", "At least 4 years of experience with SQL") == "Sênior"
 
 
 def test_location():
