@@ -248,11 +248,37 @@ def netempregos(cfg, stats) -> list[Job]:
     return jobs
 
 
-# ---------------------------------------------------------------- Teamlyzer (vagas tech em PT)
+# ---------------------------------------------------------------- Teamlyzer (agregador de vagas tech em PT)
 def teamlyzer(cfg, stats) -> list[Job]:
+    """A página do Teamlyzer não traz a descrição: segue o botão "Concorrer" até a vaga original."""
     tags = ["data", "sql", "power-bi", "business-intelligence", "analytics", "databricks", "etl"]
-    urls = [f"https://pt.teamlyzer.com/companies/jobs?tags={t}" for t in tags]
-    return _html_portal("Teamlyzer", urls, r"^/companies/[^/]+/job/", "https://pt.teamlyzer.com", 50, stats)
+    links = _collect_links([f"https://pt.teamlyzer.com/companies/jobs?tags={t}" for t in tags],
+                           r"^/companies/[^/]+/job/", "https://pt.teamlyzer.com")
+    candidates = [(u, t) for u, t in links.items() if t and title_is_relevant(t)]
+    jobs, errors = [], []
+    for url, title in candidates[:50]:
+        page = get(url, tries=1)
+        if page is None:
+            continue
+        m = re.search(r'href="(/companies/get-job/[^"]+)"', page.text)
+        company = re.search(r"/companies/([^/]+)/job/", url).group(1).replace("-", " ").title()
+        final = None
+        if m:
+            try:
+                r = session.get("https://pt.teamlyzer.com" + m.group(1).replace("&amp;", "&"), timeout=25,
+                                allow_redirects=True)
+                final = r.url if r.status_code == 200 and "teamlyzer.com" not in r.url else None
+            except Exception as e:  # noqa: BLE001
+                errors.append(type(e).__name__)
+        job = _job_from_detail("Teamlyzer", final, title) if final else None
+        if job is None:  # sem a vaga original: guarda só título/empresa, sem descrição
+            job = Job("Teamlyzer", title, company, url)
+        job.company = job.company or company
+        if title_is_relevant(job.title) and is_lisbon_area(job.location + " " + job.description[:3000]):
+            jobs.append(job)
+        time.sleep(1)
+    stats["Teamlyzer"] = {"brutas": len(jobs), "links": len(links), "erros": errors[:3]}
+    return jobs
 
 
 # ---------------------------------------------------------------- Michael Page
