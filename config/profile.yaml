@@ -1,0 +1,97 @@
+# Perfil usado no score de match. Edite aqui sem mexer no código.
+name: Lucas Fernandes Nunes
+
+# Termos pesquisados em cada portal
+search_terms:
+  - data analyst
+  - bi analyst
+  - business intelligence
+  - power bi
+  - analytics engineer
+  - junior data engineer
+
+location: Lisbon, Portugal
+
+# Ferramentas que o Lucas domina (chave = nome exibido, valor = peso no score)
+skills:
+  SQL: 3
+  Python: 3
+  Power BI: 3
+  DAX: 2
+  Power Query: 2
+  Azure: 3
+  Databricks: 2
+  Delta Lake: 1
+  dbt: 2
+  Airflow: 2
+  PySpark: 2
+  Spark: 2
+  PostgreSQL: 1
+  Docker: 1
+  Git: 1
+  Excel: 1
+  VBA: 1
+  SAP: 1
+  ETL: 1
+  Data Factory: 2
+  Synapse: 1
+  Fabric: 2
+  Data Modeling: 1
+
+# Ferramentas que aparecem nas vagas e o Lucas ainda não tem (viram "Lacunas")
+gaps_vocab:
+  AWS: 2
+  GCP: 2
+  BigQuery: 2
+  Snowflake: 2
+  Tableau: 2
+  Looker: 2
+  Qlik: 1
+  R: 1
+  SAS: 1
+  Scala: 1
+  Kafka: 1
+  Terraform: 1
+  Kubernetes: 1
+  Java: 1
+  Redshift: 1
+  MicroStrategy: 1
+  Alteryx: 1
+  Machine Learning: 1
+
+# Consultorias Microsoft/Azure que contratam júnior (bônus no score)
+consultancies:
+  - dellent
+  - olisipo
+  - itds
+  - integer
+  - devoteam
+  - xpand it
+  - xpandit
+  - bi4all
+  - kwan
+  - axians
+  - hitachi solutions
+  - avanade
+  - accenture
+  - deloitte
+  - capgemini
+  - noesis
+  - affinity
+  - innowave
+  - inetum
+  - kpmg
+  - pwc
+  - ey
+  - celfocus
+  - aubay
+  - adentis
+  - kcs it
+  - prime it
+  - primeit
+  - emerging it
+  - hays
+
+# Score mínimo para entrar no Notion e para gerar alerta
+min_score_notion: 35
+alert_score: 65

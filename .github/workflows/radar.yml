@@ -1,0 +1,74 @@
+name: Job Radar Lisboa
+
+on:
+  schedule:
+    - cron: "10 7 * * *"    # 07:10 UTC (Lisboa ≈ 07:10/08:10, Brasil 04:10)
+    - cron: "10 17 * * *"   # 17:10 UTC (Brasil 14:10)
+  workflow_dispatch:
+    inputs:
+      hours_old:
+        description: "Vagas publicadas nas últimas N horas (LinkedIn/Indeed/Glassdoor). Use 336 na primeira execução."
+        default: "72"
+      sources:
+        description: "Fontes separadas por vírgula"
+        default: "linkedin,indeed,glassdoor,itjobs,landingjobs,builtin,netempregos"
+      dry_run:
+        description: "true = não grava no Notion"
+        default: "false"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: job-radar
+  cancel-in-progress: false
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt pytest
+
+      - name: Testes offline
+        run: python -m pytest -q
+
+      - name: Rodar radar
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          ITJOBS_API_KEY: ${{ secrets.ITJOBS_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          HOURS_OLD: ${{ github.event.inputs.hours_old || '72' }}
+        run: |
+          ARGS="--sources ${{ github.event.inputs.sources || 'linkedin,indeed,glassdoor,itjobs,landingjobs,builtin,netempregos' }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          python -m radar.main $ARGS
+
+      - name: Salvar ranking e histórico no repositório
+        if: always()
+        run: |
+          git config user.name "job-radar-bot"
+          git config user.email "job-radar-bot@users.noreply.github.com"
+          git add data/ || true
+          git diff --cached --quiet || git commit -m "radar: atualização $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push || true
+
+      - name: Abrir issue com vagas novas de score alto
+        if: hashFiles('data/alert.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create vaga-nova --color 2EA44F --description "Alerta do radar" 2>/dev/null || true
+          gh issue create --title "🎯 Vagas novas em Lisboa — $(date -u +'%d/%m %H:%M')" \
+            --body-file data/alert.md --label vaga-nova
