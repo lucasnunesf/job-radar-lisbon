@@ -90,6 +90,9 @@ LANG_RX = {
     "Neerlandês": r"\b(dutch|holandes|neerlandes|flemish)\b",
     "Italiano": r"\b(italian|italiano)\b",
     "Espanhol": r"\b(spanish|espanhol|castellano)\b",
+    "Outro idioma": r"\b(polish|polaco|swedish|sueco|danish|dinamarques|norwegian|noruegues|finnish|finlandes|czech|checo"
+                    r"|hungarian|hungaro|russian|russo|turkish|turco|arabic|arabe|greek|grego|japanese|japones"
+                    r"|mandarin|chinese|mandarim|romanian|romeno|slovak|eslovaco|hebrew|hebraico|ukrainian|ucraniano)\b",
 }
 SOFT = r"plus|nice to have|advantage|valoriza|preferr|preferencial|desejavel|bonus|differential|diferencial"
 

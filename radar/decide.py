@@ -38,7 +38,9 @@ def decide(job: Job, cfg: dict) -> Job:
     safe = cfg.get("consultancies", []) + rules.get("safe_companies", [])
     d = norm(job.description)
 
-    if IMMEDIATE.search(d):
+    if re.search(r"\bspeaker\b|\bfluent in (?!english|portuguese)\w+", norm(job.title)):
+        job.apply, job.apply_why = "Não vale", "exige outro idioma"
+    elif IMMEDIATE.search(d):
         job.apply, job.apply_why = "Não vale", "pede início imediato (você só chega em fevereiro)"
     elif _needs_other_language(job.description):
         job.apply, job.apply_why = "Não vale", "exige outro idioma"
@@ -67,8 +69,8 @@ def decide_from_saved(ref: dict, cfg: dict) -> tuple[str, str]:
     rules = cfg.get("apply_now", {})
     if ref.get("seniority") == "Estágio" or re.search(r"\b(intern|internship|estagi|trainee)", norm(ref.get("title"))):
         return "Não vale", "estágio (sem vínculo universitário)"
-    if re.search(r"Francês|Alemão|Neerlandês|Italiano", ref.get("languages") or "") or \
-            re.search(r"french|german|dutch|italian", norm(ref.get("title"))):
+    if re.search(r"Francês|Alemão|Neerlandês|Italiano|Outro idioma", ref.get("languages") or "") or \
+            re.search(r"french|german|dutch|italian|\bspeaker\b", norm(ref.get("title"))):
         return "Não vale", "exige outro idioma"
     if (ref.get("score") or 0) < rules.get("min_score", 55):
         return "Não vale", "pouco encaixe com o perfil"
