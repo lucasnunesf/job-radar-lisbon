@@ -31,6 +31,8 @@ Mesma vaga em vários portais vira uma só (fica a descrição mais completa).
 | Consultoria Microsoft/Azure da lista | +6 |
 | Stack Microsoft (Power BI, Azure, Fabric) | +3 |
 
+Coluna **Candidatar agora?** (fase de teste nov–jan): *Testar agora* = vaga fácil em empresa onde um "não" não custa nada; *Esperar preparo* = vaga difícil ou empresa de topo (lista `protect_companies`); *Não vale* = início imediato, outro idioma ou pouco encaixe. Regras em `radar/decide.py`.
+
 Vagas **sênior** (título ou 4+ anos pedidos), fora das trilhas, fora da Grande Lisboa ou com mais de 45 dias são descartadas.
 Pesos, ferramentas, termos de busca, consultorias e notas de corte ficam em [`config/profile.yaml`](config/profile.yaml).
 

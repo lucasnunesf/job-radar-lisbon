@@ -97,3 +97,63 @@ consultancies:
 # Score mínimo para entrar no Notion e para gerar alerta
 min_score_notion: 35
 alert_score: 65
+
+# "Candidatar agora?" — fase de teste (nov–jan), início em 01/02/2027
+apply_now:
+  min_score: 55
+  # Empresas de topo: não gastar a candidatura antes de estar preparado
+  # (muitas têm período de espera de 6–12 meses para se candidatar de novo)
+  protect_companies:
+    - bnp paribas
+    - natixis
+    - siemens
+    - hiscox
+    - feedzai
+    - farfetch
+    - revolut
+    - google
+    - microsoft
+    - amazon
+    - mercedes-benz
+    - volkswagen
+    - sonae
+    - jeronimo martins
+    - galp
+    - edp
+    - nos
+    - vodafone
+    - outsystems
+    - talkdesk
+    - sword health
+    - cloudflare
+    - santander
+    - millennium
+    - caixa geral
+    - novo banco
+    - ikea
+    - nestle
+    - unilever
+    - aldi
+    - lidl
+    - accenture
+    - deloitte
+    - kpmg
+    - pwc
+    - ey
+    - mckinsey
+    - bcg
+  # Além das consultorias da lista acima: onde um "não" agora não custa nada
+  safe_companies:
+    - neotalent
+    - mind source
+    - sourcing trust
+    - grit solutions
+    - growin
+    - it house
+    - bee engineering
+    - fyld
+    - randstad
+    - adecco
+    - michael page
+    - experis
+    - manpower

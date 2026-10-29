@@ -3,6 +3,7 @@ from pathlib import Path
 
 import yaml
 
+from radar.decide import decide
 from radar.classify import is_lisbon_area, seniority_of, track_of
 from radar.main import dedupe
 from radar.models import Job
@@ -74,3 +75,14 @@ def test_jsonld_parser():
     "jobLocation":{"@type":"Place","address":{"addressLocality":"Lisboa","addressCountry":"PT"}}}</script></html>"""
     jp = _jobposting_from_html(html)
     assert jp["hiringOrganization"]["name"] == "ACME"
+
+
+def test_apply_now():
+    dellent = decide(by_url("itjobs.pt/oferta/1"), CFG)
+    assert dellent.apply == "Testar agora", dellent.apply_why
+    french = decide(by_url("jobs/view/6"), CFG)
+    assert french.apply == "Não vale"
+    big = decide(score_job(Job("x", "Junior Data Analyst", "Siemens", "u", description="SQL, Power BI, Excel."), CFG), CFG)
+    assert big.apply == "Esperar preparo"
+    asap = decide(score_job(Job("x", "Junior Data Analyst", "Olisipo", "u2", description="SQL, Power BI. Início imediato."), CFG), CFG)
+    assert asap.apply == "Não vale"

@@ -45,6 +45,8 @@ class Job:
     languages: list[str] = field(default_factory=list)
     reasons: list[str] = field(default_factory=list)
     excluded: str | None = None
+    apply: str | None = None       # Testar agora / Esperar preparo / Não vale
+    apply_why: str = ""
 
     @property
     def key(self) -> str:

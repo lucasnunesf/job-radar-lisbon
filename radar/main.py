@@ -21,6 +21,7 @@ import yaml
 
 from .classify import is_lisbon_area
 from .models import Job
+from .decide import decide
 from .score import score_job
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -81,10 +82,10 @@ def write_outputs(ranked: list[Job], excluded: list[Job], stats: dict, new_alert
     with open(DATA / "latest.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["score", "trilha", "senioridade", "vaga", "empresa", "local", "fonte",
-                    "publicada", "tenho", "lacunas", "idiomas", "link"])
+                    "publicada", "tenho", "lacunas", "idiomas", "candidatar", "por que", "link"])
         for j in ranked:
             w.writerow([j.score, j.track, j.seniority or "", j.title, j.company, j.location, j.source,
-                        j.posted or "", ", ".join(j.matched), ", ".join(j.gaps), ", ".join(j.languages), j.url])
+                        j.posted or "", ", ".join(j.matched), ", ".join(j.gaps), ", ".join(j.languages), j.apply or "", j.apply_why, j.url])
 
     lines = [f"# Job Radar Lisboa — {datetime.now():%Y-%m-%d %H:%M}", "",
              "## Coleta por fonte", "", "| Fonte | Vagas | Observação |", "|---|---:|---|"]
@@ -97,10 +98,10 @@ def write_outputs(ranked: list[Job], excluded: list[Job], stats: dict, new_alert
         group = [j for j in ranked if j.track == track]
         if not group:
             continue
-        lines += [f"## {track} ({len(group)})", "", "| Score | Vaga | Empresa | Senioridade | Lacunas | Fonte |",
-                  "|---:|---|---|---|---|---|"]
+        lines += [f"## {track} ({len(group)})", "", "| Score | Agora? | Vaga | Empresa | Senioridade | Lacunas | Fonte |",
+                  "|---:|---|---|---|---|---|---|"]
         for j in group[:25]:
-            lines.append(f"| {j.score} | [{j.title.replace('|', '/')}]({j.url}) | {j.company.replace('|', '/')} | "
+            lines.append(f"| {j.score} | {j.apply or ''} | [{j.title.replace('|', '/')}]({j.url}) | {j.company.replace('|', '/')} | "
                          f"{j.seniority or '—'} | {', '.join(j.gaps) or '—'} | {j.source} |")
         lines.append("")
     report = "\n".join(lines)
@@ -113,6 +114,7 @@ def write_outputs(ranked: list[Job], excluded: list[Job], stats: dict, new_alert
             body.append(f"- **{j.score}** · [{j.title}]({j.url}) · {j.company} · {j.track} · "
                         f"{j.seniority or 'senioridade não informada'} · {j.source}")
             body.append(f"  - Tenho: {', '.join(j.matched) or '—'} | Lacunas: {', '.join(j.gaps) or '—'}")
+            body.append(f"  - Candidatar agora? **{j.apply}** — {j.apply_why}")
         alert_path.write_text("\n".join(body), encoding="utf-8")
     elif alert_path.exists():
         alert_path.unlink()
@@ -161,6 +163,8 @@ def main(argv=None) -> int:
             j.excluded = "antiga"
         else:
             score_job(j, cfg)
+            if not j.excluded:
+                decide(j, cfg)
         (excluded if j.excluded else ranked).append(j)
     ranked.sort(key=lambda j: j.score, reverse=True)
     log.info("%d brutas → %d únicas → %d no ranking", len(raw), len(jobs), len(ranked))

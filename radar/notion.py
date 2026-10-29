@@ -84,7 +84,10 @@ class Notion:
             "Requisitos que cumpro": {"rich_text": _rt(", ".join(job.matched))},
             "Lacunas": {"rich_text": _rt(", ".join(job.gaps))},
             "Idioma": {"rich_text": _rt(", ".join(job.languages))},
+            "Por quê": {"rich_text": _rt(job.apply_why)},
         }
+        if job.apply:
+            props["Candidatar agora?"] = {"select": {"name": job.apply}}
         if job.seniority in ("Estágio", "Júnior", "Pleno"):
             props["Senioridade"] = {"select": {"name": job.seniority}}
         if job.remote:
@@ -108,7 +111,8 @@ class Notion:
                     updated += 1
                 else:
                     children = [{"object": "block", "type": "paragraph",
-                                 "paragraph": {"rich_text": _rt("Por que encaixa: " + "; ".join(job.reasons))}}]
+                                 "paragraph": {"rich_text": _rt("Por que encaixa: " + "; ".join(job.reasons)
+                                                                  + (f"\nCandidatar agora? {job.apply} — {job.apply_why}" if job.apply else ""))}}]
                     page = self._call("POST", "/pages", json={
                         "parent": {"database_id": self.db},
                         "properties": self._props(job, new=True), "children": children})
