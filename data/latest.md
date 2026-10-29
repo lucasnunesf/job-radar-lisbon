@@ -1,16 +1,14 @@
-# Job Radar Lisboa — 2026-10-29 20:59
+# Job Radar Lisboa — 2026-10-29 21:03
 
 ## Coleta por fonte
 
 | Fonte | Vagas | Observação |
 |---|---:|---|
 | Michael Page | 3 | ok |
-| Net-Empregos | 0 | ok |
-| Notion | 7 | 92 atualizadas |
-| Sites de empresas | 3 | Sword Health (greenhouse): 1; Bosch (smartrecruiters): 2 |
+| Notion | 1 | 93 atualizadas |
 | Teamlyzer | 40 | ok |
 
-**9 vagas no ranking**, 27 descartadas (sênior, fora da trilha, fora de Lisboa ou antigas).
+**10 vagas no ranking**, 24 descartadas (sênior, fora da trilha, fora de Lisboa ou antigas).
 
 ## Data Analyst (6)
 
@@ -29,9 +27,10 @@
 |---:|---|---|---|---|---|---|
 | 80 | Testar agora | [BI Developer](https://pt.teamlyzer.com/companies/caixa-magica/job/bi-developer-20764) | Caixa Mágica Software | — | — | Teamlyzer |
 
-## Data Engineer (2)
+## Data Engineer (3)
 
 | Score | Agora? | Vaga | Empresa | Senioridade | Lacunas | Fonte |
 |---:|---|---|---|---|---|---|
+| 64 | Esperar preparo | [Data Integration Engineer](https://pt.teamlyzer.com/companies/merkle-dach/job/data-integration-engineer-20407) | Merkle Portugal (a dentsu Company) | — | Machine Learning | Teamlyzer |
 | 58 | Esperar preparo | [Data Engineer](https://pt.teamlyzer.com/companies/banco-bnp-paribas/job/data-engineer-21241) | Banco BNP Paribas | Pleno | Tableau, Machine Learning | Teamlyzer |
 | 52 | Não vale | [Data Engineer II](https://pt.teamlyzer.com/companies/iterable/job/data-engineer-ii-20987) | Iterable | Pleno | AWS, Snowflake, Scala, Kafka, Terraform, Java, Machine Learning | Teamlyzer |
