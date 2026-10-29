@@ -68,7 +68,7 @@ class Notion:
                 ref = {"id": page["id"], "link": link, "title": title, "company": company,
                        "score": (p.get("Compatibilidade") or {}).get("number") or 0,
                        "seniority": sel("Senioridade"), "track": sel("Trilha"),
-                       "gaps": [g.strip() for g in txt("Lacunas").split(",") if g.strip()],
+                       "gaps": [g.strip() for g in txt("Lacunas").split(",") if g.strip() not in ("", "—", "-")],
                        "languages": txt("Idioma"),
                        "status": ((p.get("Status") or {}).get("status") or {}).get("name")}
                 if link:
