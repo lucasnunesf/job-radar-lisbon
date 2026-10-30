@@ -56,6 +56,15 @@ def collect(cfg: dict, sources: list[str], hours_old: int, stats: dict) -> list[
     return jobs
 
 
+def _generic_loc_hint(j: Job) -> str:
+    """Quando o local é só 'Portugal', procura a cidade no link e no título (ex.: .../Vila-Nova-de-Gaia-...)."""
+    from .models import norm
+    loc = norm(j.location)
+    if loc and loc not in ("portugal", "pt", "portugal, pt", "remote", "remoto"):
+        return ""
+    return norm(j.url.replace("-", " ").replace("/", " ") + " " + j.title)
+
+
 def dedupe(jobs: list[Job]) -> list[Job]:
     """Mesma vaga em vários portais vira uma só (fica a de descrição mais completa)."""
     best: dict[str, Job] = {}
@@ -212,7 +221,7 @@ def main(argv=None) -> int:
     jobs = dedupe(raw)
     ranked, excluded = [], []
     for j in jobs:
-        if not is_lisbon_area(j.location):
+        if not is_lisbon_area(j.location) or not is_lisbon_area(_generic_loc_hint(j)):
             j.excluded = f"fora de Lisboa ({j.location})"
         elif too_old(j, args.max_age_days):
             j.excluded = "antiga"
