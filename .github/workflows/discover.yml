@@ -1,0 +1,19 @@
+name: Descobrir empresas
+on:
+  schedule:
+    - cron: "17 5 * * 0"   # domingo 05:17 UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install requests && python scripts/discover_ats.py | tee -a $GITHUB_STEP_SUMMARY
+      - run: |
+          git config user.name job-radar-bot && git config user.email job-radar-bot@users.noreply.github.com
+          git add config/ats_found.json && git commit -m "ATS: empresas com vagas em Portugal" && git pull --rebase && git push || true

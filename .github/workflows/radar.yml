@@ -2,7 +2,9 @@ name: Job Radar Lisboa
 
 on:
   schedule:
-    - cron: "5 3 * * *"     # 03:05 UTC = 00:05 em Brasília (03:05 em Lisboa) — uma vez por dia, na virada do dia
+    # A execução principal é disparada às 00:00 (Brasília) pela tarefa agendada do Claude, que depois manda o resumo.
+    # Este horário é só reserva, caso ela falhe: 09:20 UTC = 06:20 em Brasília.
+    - cron: "20 9 * * *"
   workflow_dispatch:
     inputs:
       hours_old:
@@ -10,7 +12,7 @@ on:
         default: "72"
       sources:
         description: "Fontes separadas por vírgula"
-        default: "linkedin,indeed,itjobs,builtin,netempregos,teamlyzer,michaelpage,jooble,ats"
+        default: "linkedin,indeed,itjobs,builtin,netempregos,teamlyzer,michaelpage,freehire,themuse,workable,himalayas,jooble,ats"
       dry_run:
         description: "true = não grava no Notion"
         default: "false"
@@ -51,7 +53,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           HOURS_OLD: ${{ github.event.inputs.hours_old || '36' }}  # 36h: cobre o dia inteiro mesmo se o GitHub atrasar
         run: |
-          ARGS="--sources ${{ github.event.inputs.sources || 'linkedin,indeed,itjobs,builtin,netempregos,teamlyzer,michaelpage,jooble,ats' }}"
+          ARGS="--sources ${{ github.event.inputs.sources || 'linkedin,indeed,itjobs,builtin,netempregos,teamlyzer,michaelpage,freehire,themuse,workable,himalayas,jooble,ats' }}"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run"; fi
           python -m radar.main $ARGS
 

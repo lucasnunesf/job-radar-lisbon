@@ -38,13 +38,14 @@ def greenhouse(slug: str) -> list[Job]:
     for j in r.json().get("jobs", []):
         loc = (j.get("location") or {}).get("name", "")
         if _ok(j.get("title", ""), loc):
-            out.append(Job(SRC, j["title"], slug, j.get("absolute_url", ""), loc,
+            out.append(Job(SRC, j["title"], j.get("company_name") or slug, j.get("absolute_url", ""), loc,
                            strip_html(j.get("content", "")), _iso(j.get("first_published") or j.get("updated_at"))))
     return out
 
 
-def lever(slug: str) -> list[Job]:
-    r = get(f"https://api.lever.co/v0/postings/{slug}", params={"mode": "json"}, tries=1)
+def lever(slug: str, region: str = "global") -> list[Job]:
+    host = "api.eu.lever.co" if region == "eu" else "api.lever.co"
+    r = get(f"https://{host}/v0/postings/{slug}", params={"mode": "json"}, tries=1)
     if r is None:
         return []
     out = []
@@ -113,19 +114,33 @@ def workable(slug: str) -> list[Job]:
     return out
 
 
-ATS = {"greenhouse": greenhouse, "lever": lever, "ashby": ashby,
+ATS = {"greenhouse": greenhouse, "lever": lever, "lever-eu": lambda s: lever(s, "eu"), "ashby": ashby,
        "smartrecruiters": smartrecruiters, "workable": workable}
 
 
+def _discovered() -> dict:
+    """Empresas que a descoberta semanal encontrou com vagas em Portugal (config/ats_found.json)."""
+    import json
+    from pathlib import Path
+    p = Path(__file__).resolve().parents[2] / "config" / "ats_found.json"
+    if not p.exists():
+        return {}
+    data = json.loads(p.read_text())
+    out = {t: f"greenhouse:{t}" for t in data.get("greenhouse", [])}
+    out.update({s: f"lever{'-eu' if r == 'eu' else ''}:{s}" for s, r in data.get("lever", [])})
+    return out
+
+
 def collect(cfg: dict, stats: dict) -> list[Job]:
-    companies = cfg.get("ats_companies") or {}
+    companies = dict(_discovered())
+    companies.update(cfg.get("ats_companies") or {})
     jobs, hits = [], []
     session.headers["Accept"] = "application/json"
     try:
         for name, slugs in companies.items():
             # slugs: lista de "ats:slug" (ex.: "greenhouse:talkdesk") ou só o slug (testa todos os ATS)
             for entry in (slugs if isinstance(slugs, list) else [slugs]):
-                kinds = [entry.split(":", 1)[0]] if ":" in entry else list(ATS)
+                kinds = [entry.split(":", 1)[0]] if ":" in entry else [k for k in ATS if k != "lever-eu"]
                 slug = entry.split(":", 1)[-1]
                 for kind in kinds:
                     try:

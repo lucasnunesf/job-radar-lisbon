@@ -26,6 +26,8 @@ def _rt(text: str) -> list:
 
 
 class Notion:
+    flags: dict = {}
+
     def __init__(self, token: str, database_id: str):
         self.db = database_id.replace("-", "")
         self.s = requests.Session()
@@ -71,6 +73,8 @@ class Notion:
                        "gaps": [g.strip() for g in txt("Lacunas").split(",") if g.strip() not in ("", "—", "-")],
                        "languages": txt("Idioma"), "source": sel("Fonte"),
                        "matched": txt("Requisitos que cumpro"),
+                       "inscrito": bool((p.get("Inscrito") or {}).get("checkbox")),
+                       "descartar": bool((p.get("Descartar") or {}).get("checkbox")),
                        "status": ((p.get("Status") or {}).get("status") or {}).get("name")}
                 if link:
                     out[link] = ref
@@ -113,6 +117,7 @@ class Notion:
         """Devolve (vagas novas, quantidade atualizada). Com cfg, também recalcula
         'Candidatar agora?' das vagas antigas que não apareceram nesta coleta."""
         known = self.existing()
+        self.flags = known
         created, updated = [], 0
         touched = set()
         for job in jobs:

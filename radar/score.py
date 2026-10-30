@@ -62,6 +62,21 @@ SKILL_RX = {
 # R é caso especial: precisa de maiúscula e não pode ser "R&D"
 R_RX = re.compile(r"(?<![\w&/-])R(?![\w&+#/-])(?=\s*(,|/|\bor\b|\bou\b|\band\b|\be\b|\)|\.|\s+programming|\s+language))")
 
+CREDENTIALS = {
+    "Certificação Power BI (PL-300)": r"pl-?300|power bi (data analyst )?certif|microsoft certified[: ]+power bi",
+    "Azure Fundamentals (DP-900)": r"dp-?900|azure data fundamentals",
+    "Formação em Engenharia": r"(degree|licenciatura|mestrado|bachelor|master)[^.]{0,60}engineering|engenharia",
+}
+
+
+def _age_days(posted: str | None) -> int | None:
+    from datetime import date, datetime
+    try:
+        return (date.today() - datetime.strptime(str(posted)[:10], "%Y-%m-%d").date()).days
+    except (TypeError, ValueError):
+        return None
+
+
 TRACK_POINTS = {"Analytics Engineer": 25, "BI": 25, "Data Analyst": 25, "Data Engineer": 15}
 SENIORITY_POINTS = {"Júnior": 20, None: 12, "Pleno": 6}
 
@@ -126,6 +141,16 @@ def score_job(job: Job, cfg: dict) -> Job:
         pts += 6 if ms_stack else 3
     if ms_stack:
         pts += 3
+
+    # Recência (ideia do job-match-finder): vaga fresca recebe mais candidaturas boas cedo
+    age = _age_days(job.posted)
+    if age is not None:
+        pts += 4 if age <= 3 else 2 if age <= 7 else 0
+    # Certificações/formação valorizadas (ideia do busca-trampo)
+    creds = [name for name, rx in CREDENTIALS.items() if re.search(rx, text)]
+    if creds:
+        pts += 3
+        job.matched += [c for c in creds if c not in job.matched]
 
     job.score = max(0, min(100, round(pts)))
     job.reasons = [

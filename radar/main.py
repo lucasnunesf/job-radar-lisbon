@@ -27,14 +27,15 @@ from .score import score_job
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 DEFAULT_NOTION_DB = "96144502e4594f3ba11efd90b2f66980"  # base "Vagas" do Lucas
-ALL_SOURCES = ["linkedin", "indeed", "itjobs", "builtin", "netempregos", "teamlyzer", "michaelpage", "jooble", "ats"]
+ALL_SOURCES = ["linkedin", "indeed", "itjobs", "builtin", "netempregos", "teamlyzer", "michaelpage", "freehire",
+               "themuse", "workable", "himalayas", "jooble", "ats"]
 # Bloqueiam os servidores do GitHub (403), por isso ficam fora do padrão: glassdoor, google, landingjobs
 
 log = logging.getLogger("radar")
 
 
 def collect(cfg: dict, sources: list[str], hours_old: int, stats: dict) -> list[Job]:
-    from .sources import ats, jobspy_boards, portals
+    from .sources import aggregators, ats, jobspy_boards, portals
 
     jobs: list[Job] = []
     boards = [s for s in sources if s in ("linkedin", "indeed", "glassdoor", "google")]
@@ -43,6 +44,8 @@ def collect(cfg: dict, sources: list[str], hours_old: int, stats: dict) -> list[
     for name, fn in (("itjobs", portals.itjobs), ("landingjobs", portals.landingjobs),
                      ("builtin", portals.builtin), ("netempregos", portals.netempregos),
                      ("teamlyzer", portals.teamlyzer), ("michaelpage", portals.michaelpage),
+                     ("freehire", aggregators.freehire), ("themuse", aggregators.themuse),
+                     ("workable", aggregators.workable_search), ("himalayas", aggregators.himalayas),
                      ("jooble", portals.jooble), ("ats", ats.collect)):
         if name in sources:
             try:
@@ -124,6 +127,55 @@ def write_outputs(ranked: list[Job], excluded: list[Job], stats: dict, new_alert
     return report
 
 
+def write_summary(new_today: list[Job], ranked: list[Job], stats: dict, flags: dict) -> str:
+    """Resumo curto do dia (lido pela tarefa agendada que manda a mensagem às 00:00)."""
+    DATA.mkdir(exist_ok=True)
+    good = [j for j in new_today if not j.excluded and j.apply in ("Testar agora", "Avaliar")]
+    later = [j for j in new_today if not j.excluded and j.apply == "Esperar preparo"]
+    out = [j for j in new_today if j.excluded or j.apply == "Não vale"]
+
+    def open_(j):  # ignora as que você já marcou como inscrito/descartar no Notion
+        f = flags.get(j.url) or flags.get(j.key) or {}
+        return not f.get("inscrito") and not f.get("descartar")
+
+    best = sorted([j for j in good if open_(j)], key=lambda j: j.score, reverse=True)[:6]
+    if len(best) < 6:  # completa com as melhores ainda abertas (não novas)
+        extra = [j for j in ranked if j.apply == "Testar agora" and j not in best and open_(j)]
+        best += extra[: 6 - len(best)]
+    gaps: dict[str, int] = {}
+    for j in ranked:
+        if j.apply in ("Testar agora", "Esperar preparo"):
+            for g in j.gaps:
+                gaps[g] = gaps.get(g, 0) + 1
+    top_gaps = sorted(gaps.items(), key=lambda kv: -kv[1])[:5]
+
+    lines = [f"Fiz a atualização de {datetime.now():%d/%m}: **{len(good)} vagas novas combinando**, "
+             f"{len(out)} fora do perfil e {len(later)} para depois.", ""]
+    if best:
+        lines.append("**Melhores agora:**")
+        for i, j in enumerate(best, 1):
+            tag = "" if j in good else " _(já estava aberta)_"
+            lines.append(f"{i}. [{j.title}]({j.url}) · {j.company} · nota {j.score} · {j.apply}{tag}")
+        lines.append("")
+    if top_gaps:
+        lines.append("**Lacunas que mais aparecem nas vagas boas:** " + ", ".join(f"{g} ({n})" for g, n in top_gaps))
+    fontes = ", ".join(f"{k} {v.get('brutas', 0)}" for k, v in sorted(stats.items()) if k != "Notion")
+    lines.append(f"_Fontes: {fontes}._")
+    text = "\n".join(lines)
+    (DATA / "summary.md").write_text(text, encoding="utf-8")
+    (DATA / "summary.json").write_text(json.dumps({
+        "date": date.today().isoformat(), "combinando": len(good), "fora": len(out), "depois": len(later),
+        "melhores": [{"vaga": j.title, "empresa": j.company, "nota": j.score, "link": j.url} for j in best],
+        "lacunas": dict(top_gaps)}, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    # Mapa de lacunas completo (ideia do /upskill do ai-job-search): o que estudar primeiro
+    rows = ["# O que estudar primeiro", "", "Ferramentas pedidas nas vagas do ranking que ainda não estão no seu perfil.",
+            "", "| Ferramenta | Vagas que pedem |", "|---|---:|"]
+    rows += [f"| {g} | {n} |" for g, n in sorted(gaps.items(), key=lambda kv: -kv[1])]
+    (DATA / "gaps.md").write_text("\n".join(rows), encoding="utf-8")
+    return text
+
+
 def notify_telegram(alerts: list[Job]) -> None:
     token, chat = os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID")
     if not (token and chat and alerts):
@@ -178,12 +230,14 @@ def main(argv=None) -> int:
     first_run = not seen
     today = date.today().isoformat()
     new_alerts = [j for j in ranked if j.score >= cfg["alert_score"] and j.key not in seen]
-    for j in ranked:
+    new_today = [j for j in jobs if j.key not in seen]
+    for j in jobs:  # vistas = avaliadas (inclusive descartadas), para o resumo não recontar
         seen.setdefault(j.key, today)
     if first_run:
         new_alerts = new_alerts[:15]  # primeira execução: não inunda o alerta
 
     to_notion = [j for j in ranked if j.score >= cfg["min_score_notion"]]
+    notion_flags: dict = {}
     if not args.dry_run and not args.fixtures:
         from .notion import from_env
         client = from_env(DEFAULT_NOTION_DB)
@@ -191,8 +245,10 @@ def main(argv=None) -> int:
             client.check()
             created, updated = client.upsert(to_notion, cfg)
             stats["Notion"] = {"brutas": len(created), "erros": [f"{updated} atualizadas"]}
+            notion_flags = client.flags
 
     report = write_outputs(ranked, excluded, stats, new_alerts)
+    write_summary(new_today, ranked, stats, notion_flags)
     if not args.fixtures:
         DATA.mkdir(exist_ok=True)
         seen_path.write_text(json.dumps(seen, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
