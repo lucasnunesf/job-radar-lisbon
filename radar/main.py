@@ -151,6 +151,8 @@ def write_summary(new_today: list[Job], ranked: list[Job], stats: dict, flags: d
     if len(best) < 6:  # completa com as melhores ainda abertas (não novas)
         extra = [j for j in ranked if j.apply == "Testar agora" and j not in best and open_(j)]
         best += extra[: 6 - len(best)]
+    # "Testar agora" primeiro, por nota; "Avaliar" (sem descrição, nota pouco confiável) por último
+    best.sort(key=lambda j: (j.apply == "Testar agora", j.score), reverse=True)
     gaps: dict[str, int] = {}
     for j in ranked:
         if j.apply in ("Testar agora", "Esperar preparo"):
