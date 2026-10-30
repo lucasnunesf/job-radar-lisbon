@@ -62,7 +62,7 @@ def _generic_loc_hint(j: Job) -> str:
     loc = norm(j.location)
     if loc and loc not in ("portugal", "pt", "portugal, pt", "remote", "remoto"):
         return ""
-    return norm(j.url.replace("-", " ").replace("/", " ") + " " + j.title)
+    return "portugal " + norm(j.url.replace("-", " ").replace("/", " ") + " " + j.title)
 
 
 def dedupe(jobs: list[Job]) -> list[Job]:
