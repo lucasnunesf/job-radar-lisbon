@@ -58,7 +58,7 @@ jobs:
           python -m radar.main $ARGS
 
       - name: Salvar ranking e histórico no repositório
-        if: always()
+        if: always() && github.event.inputs.dry_run != 'true'
         run: |
           git config user.name "job-radar-bot"
           git config user.email "job-radar-bot@users.noreply.github.com"
@@ -67,7 +67,7 @@ jobs:
           git push || true
 
       - name: Abrir issue com vagas novas de score alto
-        if: hashFiles('data/alert.md') != ''
+        if: hashFiles('data/alert.md') != '' && github.event.inputs.dry_run != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

@@ -258,7 +258,7 @@ def main(argv=None) -> int:
 
     report = write_outputs(ranked, excluded, stats, new_alerts)
     write_summary(new_today, ranked, stats, notion_flags)
-    if not args.fixtures:
+    if not args.fixtures and not args.dry_run:  # teste não marca vagas como vistas
         DATA.mkdir(exist_ok=True)
         seen_path.write_text(json.dumps(seen, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
         notify_telegram(new_alerts)
