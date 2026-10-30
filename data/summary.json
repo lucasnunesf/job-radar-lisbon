@@ -1,15 +1,9 @@
 {
  "date": "2026-10-30",
- "combinando": 1,
- "fora": 98,
- "depois": 3,
+ "combinando": 3,
+ "fora": 33,
+ "depois": 0,
  "melhores": [
-  {
-   "vaga": "Data integration engineer",
-   "empresa": "Merkle Dach",
-   "nota": 44,
-   "link": "https://pt.teamlyzer.com/companies/merkle-dach/job/data-integration-engineer-20407"
-  },
   {
    "vaga": "Data Analytics Engineer",
    "empresa": "TBS - Tech & Beyond Solutions Lda",
@@ -29,23 +23,29 @@
    "link": "https://www.careers-page.com/ithouse/job/3W6V5658"
   },
   {
-   "vaga": "Data Analyst - Data Governance",
-   "empresa": "Milestone Consulting",
-   "nota": 84,
-   "link": "https://emprego.sapo.pt/offers/data-analyst-data-governance?id=729df04c-0fde-4358-9aa3-40a87d76b4ed&utm_source=freehire.me"
+   "vaga": "Data Analyst / Power BI Specialist | Lisboa",
+   "empresa": "Adecco Recursos Humanos",
+   "nota": 77,
+   "link": "https://emprego.sapo.pt/offers/data-analyst-power-bi-specialist-lisboa?id=c1292590-ac70-4ad9-85ac-07d573a95310&utm_source=freehire.me"
   },
   {
-   "vaga": "Junior Data Analyst",
-   "empresa": "Axians",
-   "nota": 83,
-   "link": "https://axianstechtalent.teamtailor.com/jobs/8635068-junior-data-analyst"
+   "vaga": "Data engineer",
+   "empresa": "Prime It",
+   "nota": 47,
+   "link": "https://pt.teamlyzer.com/companies/prime-it/job/data-engineer-21584"
+  },
+  {
+   "vaga": "Data engineer",
+   "empresa": "We Are Meta",
+   "nota": 44,
+   "link": "https://pt.teamlyzer.com/companies/we-are-meta/job/data-engineer-21573"
   }
  ],
  "lacunas": {
-  "AWS": 10,
+  "AWS": 9,
   "Snowflake": 5,
-  "Tableau": 4,
-  "SAS": 3,
-  "Machine Learning": 3
+  "Tableau": 3,
+  "Terraform": 3,
+  "SAS": 2
  }
 }
