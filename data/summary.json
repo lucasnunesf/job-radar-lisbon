@@ -1,9 +1,15 @@
 {
  "date": "2026-10-30",
- "combinando": 28,
- "fora": 96,
- "depois": 2,
+ "combinando": 1,
+ "fora": 98,
+ "depois": 3,
  "melhores": [
+  {
+   "vaga": "Data integration engineer",
+   "empresa": "Merkle Dach",
+   "nota": 44,
+   "link": "https://pt.teamlyzer.com/companies/merkle-dach/job/data-integration-engineer-20407"
+  },
   {
    "vaga": "Data Analytics Engineer",
    "empresa": "TBS - Tech & Beyond Solutions Lda",
@@ -23,29 +29,23 @@
    "link": "https://www.careers-page.com/ithouse/job/3W6V5658"
   },
   {
-   "vaga": "Analytics Engineer",
-   "empresa": "Capgemini",
-   "nota": 88,
-   "link": "https://careers.capgemini.com/job/Vila-Nova-de-Gaia-Analytics-Engineer/1445747333/"
-  },
-  {
-   "vaga": "Power BI Developer (Fixed Term)",
-   "empresa": "tmicc.wd502.myworkdayjobs.com/Magnum_External_Career_Site",
-   "nota": 85,
-   "link": "https://tmicc.wd502.myworkdayjobs.com/Magnum_External_Career_Site/job/Lisbon-Head-Office/Power-BI-Developer--Fixed-Term-_R-1187000"
-  },
-  {
    "vaga": "Data Analyst - Data Governance",
    "empresa": "Milestone Consulting",
    "nota": 84,
    "link": "https://emprego.sapo.pt/offers/data-analyst-data-governance?id=729df04c-0fde-4358-9aa3-40a87d76b4ed&utm_source=freehire.me"
+  },
+  {
+   "vaga": "Junior Data Analyst",
+   "empresa": "Axians",
+   "nota": 83,
+   "link": "https://axianstechtalent.teamtailor.com/jobs/8635068-junior-data-analyst"
   }
  ],
  "lacunas": {
-  "AWS": 5,
-  "Tableau": 3,
-  "Snowflake": 3,
-  "Machine Learning": 2,
-  "Looker": 2
+  "AWS": 10,
+  "Snowflake": 5,
+  "Tableau": 4,
+  "SAS": 3,
+  "Machine Learning": 3
  }
 }
