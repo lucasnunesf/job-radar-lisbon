@@ -1,7 +1,7 @@
 {
- "date": "2026-10-30",
- "combinando": 3,
- "fora": 33,
+ "date": "2026-10-31",
+ "combinando": 1,
+ "fora": 17,
  "depois": 0,
  "melhores": [
   {
@@ -23,26 +23,26 @@
    "link": "https://www.careers-page.com/ithouse/job/3W6V5658"
   },
   {
-   "vaga": "Data Analyst / Power BI Specialist | Lisboa",
-   "empresa": "Adecco Recursos Humanos",
-   "nota": 77,
-   "link": "https://emprego.sapo.pt/offers/data-analyst-power-bi-specialist-lisboa?id=c1292590-ac70-4ad9-85ac-07d573a95310&utm_source=freehire.me"
+   "vaga": "Junior Data Analyst",
+   "empresa": "Axians Portugal",
+   "nota": 83,
+   "link": "https://www.linkedin.com/jobs/view/4484570549"
   },
   {
-   "vaga": "Data engineer",
-   "empresa": "Prime It",
-   "nota": 47,
-   "link": "https://pt.teamlyzer.com/companies/prime-it/job/data-engineer-21584"
+   "vaga": "Data analyst (f/m/div.)",
+   "empresa": "Bosch",
+   "nota": 82,
+   "link": "https://jobs.bosch.com/en/job/REF296361L-automation-ai-lead-f-m-div?utm_source=teamlyzer"
   },
   {
-   "vaga": "Data engineer",
-   "empresa": "We Are Meta",
-   "nota": 44,
-   "link": "https://pt.teamlyzer.com/companies/we-are-meta/job/data-engineer-21573"
+   "vaga": "Operations Advisor - Derivatives Trade Reporting",
+   "empresa": "PNC",
+   "nota": 69,
+   "link": "https://www.themuse.com/jobs/pnc/operations-advisor-derivatives-trade-reporting"
   }
  ],
  "lacunas": {
-  "AWS": 9,
+  "AWS": 8,
   "Snowflake": 5,
   "Tableau": 3,
   "Terraform": 3,
