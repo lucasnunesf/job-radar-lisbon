@@ -77,6 +77,10 @@ No Windows, dar dois cliques em `run_windows.bat` (pede o `NOTION_TOKEN` na prim
 Fontes testadas que **bloqueiam o GitHub Actions** (403): Glassdoor, Google Jobs, Landing.jobs, Indeed RSS, Jooble (HTML).
 Para testar portais de novo: Actions → **Testar portais** → Run workflow (resultado em `data/probe.md`).
 
+## Histórico
+
+Mudanças registradas em [`CHANGELOG.md`](CHANGELOG.md).
+
 ## Saídas extras
 
 - `data/summary.md` / `summary.json` — resumo do dia (novas combinando, fora, para depois, 6 melhores, lacunas).
