@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-01
+- Teste automático para o filtro de local genérico ("Portugal" + cidade no link).
+
 ## 2026-10-31
 - Changelog criado para registrar a evolução do radar.
 

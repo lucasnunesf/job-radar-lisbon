@@ -111,3 +111,13 @@ def test_pleno_up_to_3_years_is_ok():
 def test_no_description_goes_to_avaliar():
     j = decide(score_job(Job("Teamlyzer", "Data Analyst", "Nimber", "u"), CFG), CFG)
     assert j.apply == "Avaliar"
+
+
+def test_generic_portugal_location_uses_link_city():
+    from radar.main import _generic_loc_hint
+    gaia = Job("x", "Analytics Engineer", "c", "https://careers.x.com/job/Vila-Nova-de-Gaia-Analytics-Engineer/1/", "Portugal")
+    lisboa = Job("x", "Power BI Developer", "c", "https://x.com/job/Lisbon-Head-Office/1", "Portugal")
+    sem_cidade = Job("x", "Data Analyst", "c", "https://x.com/job/1", "Portugal")
+    assert not is_lisbon_area(_generic_loc_hint(gaia))
+    assert is_lisbon_area(_generic_loc_hint(lisboa))
+    assert is_lisbon_area(_generic_loc_hint(sem_cidade))
