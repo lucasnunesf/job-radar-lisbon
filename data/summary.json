@@ -1,8 +1,8 @@
 {
- "date": "2026-10-31",
+ "date": "2026-11-01",
  "combinando": 1,
- "fora": 3,
- "depois": 1,
+ "fora": 1,
+ "depois": 0,
  "melhores": [
   {
    "vaga": "Data Analytics Engineer",
@@ -35,15 +35,15 @@
    "link": "https://justjoin.it/job-offer/emagine-polska-data-analyst-lisbon-data"
   },
   {
-   "vaga": "Analytics Engineer - Data Platform & Observability",
-   "empresa": "Emma – The Sleep Company",
-   "nota": 58,
-   "link": "https://pt.whatjobs.com/pub_api__cpl__16862994__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+   "vaga": "Analytics Engineer",
+   "empresa": "Myriad360",
+   "nota": 73,
+   "link": "https://himalayas.app/companies/myriad360/jobs/analytics-engineer?utm_source=api"
   }
  ],
  "lacunas": {
   "AWS": 9,
-  "Snowflake": 6,
+  "Snowflake": 7,
   "Machine Learning": 4,
   "Tableau": 4,
   "Terraform": 3
