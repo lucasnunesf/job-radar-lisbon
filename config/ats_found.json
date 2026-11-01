@@ -1,6 +1,7 @@
 {
  "greenhouse": [
   "agency",
+  "agibank",
   "airspace",
   "amplemarket",
   "arcesiumllc",
@@ -55,7 +56,6 @@
   "typeform",
   "ujet",
   "upwork",
-  "valtech",
   "veeamsoftware",
   "vmlenterprisesolutions",
   "workato",
@@ -99,6 +99,7 @@
  "_detalhe": {
   "greenhouse": {
    "agency": 8,
+   "agibank": 1,
    "airspace": 1,
    "amplemarket": 2,
    "arcesiumllc": 4,
@@ -124,9 +125,9 @@
    "gocardless": 9,
    "guidepointsecurity": 1,
    "gympass": 3,
-   "icapitalnetwork": 14,
+   "icapitalnetwork": 15,
    "infuse": 10,
-   "lastpass": 4,
+   "lastpass": 3,
    "li-thermal-works": 2,
    "lively43": 1,
    "lokainc": 9,
@@ -152,10 +153,9 @@
    "tripadvisor": 1,
    "typeform": 5,
    "ujet": 3,
-   "upwork": 3,
-   "valtech": 4,
+   "upwork": 2,
    "veeamsoftware": 6,
-   "vmlenterprisesolutions": 4,
+   "vmlenterprisesolutions": 6,
    "workato": 3,
    "wppmedia": 5,
    "wrike": 1
@@ -166,9 +166,9 @@
    "efficioconsulting": 9,
    "karllagerfeld": 1,
    "olx": 12,
-   "pnlfin": 9,
+   "pnlfin": 11,
    "quadcode": 12,
-   "vwgds": 8
+   "vwgds": 9
   }
  }
 }
