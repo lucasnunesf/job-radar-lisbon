@@ -121,3 +121,19 @@ def test_generic_portugal_location_uses_link_city():
     assert not is_lisbon_area(_generic_loc_hint(gaia))
     assert is_lisbon_area(_generic_loc_hint(lisboa))
     assert is_lisbon_area(_generic_loc_hint(sem_cidade))
+
+
+def test_summary_puts_testar_agora_first(tmp_path, monkeypatch):
+    import radar.main as rm
+    monkeypatch.setattr(rm, "DATA", tmp_path)
+
+    def job(title, apply, score):
+        j = Job("x", title, "c", f"https://x.com/{title}")
+        j.apply, j.score = apply, score
+        return j
+
+    jobs = [job("A", "Avaliar", 90), job("B", "Testar agora", 60),
+            job("C", "Testar agora", 80), job("D", "Avaliar", 70)]
+    rm.write_summary(jobs, jobs, {}, {})
+    best = json.loads((tmp_path / "summary.json").read_text(encoding="utf-8"))["melhores"]
+    assert [b["vaga"] for b in best] == ["C", "B", "A", "D"]

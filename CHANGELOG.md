@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-02
+- Teste automático para a ordem do resumo diário ("Testar agora" antes de "Avaliar", por nota).
+
 ## 2026-11-01
 - Teste automático para o filtro de local genérico ("Portugal" + cidade no link).
 
