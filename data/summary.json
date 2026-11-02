@@ -1,9 +1,21 @@
 {
  "date": "2026-11-02",
- "combinando": 8,
- "fora": 18,
+ "combinando": 3,
+ "fora": 43,
  "depois": 1,
  "melhores": [
+  {
+   "vaga": "Data Analytics Engineer",
+   "empresa": "TBS - Tech & Beyond Solutions Lda",
+   "nota": 95,
+   "link": "https://pt.whatjobs.com/pub_api__cpl__16839966__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+  },
+  {
+   "vaga": "Data Analyst - Data Governance",
+   "empresa": "Milestone Consulting",
+   "nota": 82,
+   "link": "https://emprego.sapo.pt/offers/data-analyst-data-governance?id=729df04c-0fde-4358-9aa3-40a87d76b4ed&utm_source=freehire.me"
+  },
   {
    "vaga": "RGM Data Analyst",
    "empresa": "Lingaro",
@@ -11,41 +23,29 @@
    "link": "https://himalayas.app/companies/lingaro/jobs/rgm-data-analyst?utm_source=api"
   },
   {
-   "vaga": "Business Insights Analyst",
-   "empresa": "Huzzle",
-   "nota": 78,
-   "link": "https://himalayas.app/companies/huzzle/jobs/business-insights-analyst?utm_source=api"
+   "vaga": "Business Analyst (Business Intelligence & Embedded Analytics)",
+   "empresa": "Sovos",
+   "nota": 76,
+   "link": "https://pt.indeed.com/viewjob?jk=09b1643a589d0047"
   },
   {
-   "vaga": "SAP BW / BDC Developer (Data Engineer – SAP Data & BI) (m/f/d)",
-   "empresa": "TD SYNNEX",
-   "nota": 78,
-   "link": "https://himalayas.app/companies/td-synnex/jobs/sap-bw-bdc-developer-data-engineer-sap-data-bi-m-f-d?utm_source=api"
-  },
-  {
-   "vaga": "Analytics Engineer, Data Platform",
-   "empresa": "Emma",
-   "nota": 74,
-   "link": "https://himalayas.app/companies/emma/jobs/analytics-engineer-data-platform"
-  },
-  {
-   "vaga": "Data Analyst - Remote USA",
-   "empresa": "TechInsights",
-   "nota": 74,
-   "link": "https://himalayas.app/companies/techinsights/jobs/data-analyst-remote-usa?utm_source=api"
-  },
-  {
-   "vaga": "Risk Data Analyst [Integrated Risk Management]",
-   "empresa": "Banco Plata, S.A., Institución de Banca Múltiple",
+   "vaga": "Data engineer & powerbi developer",
+   "empresa": "Luza Group",
    "nota": 73,
-   "link": "https://himalayas.app/companies/banco-plata-s-a-institucion-de-banca-multiple/jobs/risk-data-analyst-integrated-risk-management?utm_source=api"
+   "link": "https://pt.teamlyzer.com/companies/luza-group/job/data-engineer-powerbi-developer-21655"
+  },
+  {
+   "vaga": "Bi developer",
+   "empresa": "Iss Tech Portugal",
+   "nota": 54,
+   "link": "https://pt.teamlyzer.com/companies/iss-tech-portugal/job/bi-developer-21651"
   }
  ],
  "lacunas": {
   "AWS": 9,
   "Snowflake": 7,
+  "Machine Learning": 5,
   "Tableau": 5,
-  "Machine Learning": 4,
   "R": 3
  }
 }
