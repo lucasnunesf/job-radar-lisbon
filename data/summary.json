@@ -1,7 +1,7 @@
 {
  "date": "2026-11-03",
- "combinando": 0,
- "fora": 7,
+ "combinando": 2,
+ "fora": 33,
  "depois": 0,
  "melhores": [
   {
@@ -9,6 +9,12 @@
    "empresa": "TBS - Tech & Beyond Solutions Lda",
    "nota": 93,
    "link": "https://pt.whatjobs.com/pub_api__cpl__16839966__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+  },
+  {
+   "vaga": "HR Data Analyst",
+   "empresa": "Airbus",
+   "nota": 84,
+   "link": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Lisbon-Airbus-Portugal/HR-Data-Analyst_JR10454719"
   },
   {
    "vaga": "Data Analyst - Data Governance",
@@ -29,16 +35,10 @@
    "link": "https://axianstechtalent.teamtailor.com/jobs/8635068-junior-data-analyst"
   },
   {
-   "vaga": "Business Insights Analyst",
-   "empresa": "Huzzle",
-   "nota": 78,
-   "link": "https://himalayas.app/companies/huzzle/jobs/business-insights-analyst?utm_source=api"
-  },
-  {
-   "vaga": "SAP BW / BDC Developer (Data Engineer – SAP Data & BI) (m/f/d)",
-   "empresa": "TD SYNNEX",
-   "nota": 78,
-   "link": "https://himalayas.app/companies/td-synnex/jobs/sap-bw-bdc-developer-data-engineer-sap-data-bi-m-f-d?utm_source=api"
+   "vaga": "SAS / Data Engineer",
+   "empresa": "bridge351",
+   "nota": 72,
+   "link": "https://www.linkedin.com/jobs/view/4486006609"
   }
  ],
  "lacunas": {
@@ -46,6 +46,6 @@
   "Snowflake": 7,
   "Machine Learning": 5,
   "Tableau": 5,
-  "R": 3
+  "SAS": 3
  }
 }
