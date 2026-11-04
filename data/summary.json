@@ -1,9 +1,15 @@
 {
  "date": "2026-11-04",
- "combinando": 0,
- "fora": 2,
- "depois": 0,
+ "combinando": 2,
+ "fora": 28,
+ "depois": 2,
  "melhores": [
+  {
+   "vaga": "Data Analytics Engineer | Power BI, SQL & Python",
+   "empresa": "TBS - Tech & Beyond Solutions Lda",
+   "nota": 95,
+   "link": "https://pt.whatjobs.com/pub_api__cpl__16869550__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+  },
   {
    "vaga": "Data Analytics Engineer",
    "empresa": "TBS - Tech & Beyond Solutions Lda",
@@ -29,23 +35,17 @@
    "link": "https://himalayas.app/companies/luza-group/jobs/data-engineer-powerbi-developer?utm_source=api"
   },
   {
-   "vaga": "Junior Data Analyst",
-   "empresa": "Axians",
-   "nota": 81,
-   "link": "https://axianstechtalent.teamtailor.com/jobs/8635068-junior-data-analyst"
-  },
-  {
-   "vaga": "Data Analyst - Data Governance",
-   "empresa": "Milestone Consulting",
-   "nota": 80,
-   "link": "https://emprego.sapo.pt/offers/data-analyst-data-governance?id=729df04c-0fde-4358-9aa3-40a87d76b4ed&utm_source=freehire.me"
+   "vaga": "Python Developer (Data Engineer)",
+   "empresa": "Inetum",
+   "nota": 68,
+   "link": "https://www.linkedin.com/jobs/view/4202862680"
   }
  ],
  "lacunas": {
-  "AWS": 8,
-  "Snowflake": 7,
-  "Machine Learning": 5,
+  "AWS": 10,
+  "Snowflake": 9,
+  "Machine Learning": 8,
   "Tableau": 5,
-  "SAS": 3
+  "Terraform": 4
  }
 }
