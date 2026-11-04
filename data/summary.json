@@ -1,7 +1,7 @@
 {
  "date": "2026-11-04",
- "combinando": 2,
- "fora": 6,
+ "combinando": 0,
+ "fora": 2,
  "depois": 0,
  "melhores": [
   {
@@ -29,16 +29,16 @@
    "link": "https://himalayas.app/companies/luza-group/jobs/data-engineer-powerbi-developer?utm_source=api"
   },
   {
-   "vaga": "TECNICO DE REPORTING E CONTROLO | Direção de Compliance (DC)",
-   "empresa": "Banco BPI",
-   "nota": 72,
-   "link": "https://www.linkedin.com/jobs/view/4484698859"
+   "vaga": "Junior Data Analyst",
+   "empresa": "Axians",
+   "nota": 81,
+   "link": "https://axianstechtalent.teamtailor.com/jobs/8635068-junior-data-analyst"
   },
   {
-   "vaga": "ETL Developer",
-   "empresa": "Sourcing Trust",
-   "nota": 58,
-   "link": "https://www.net-empregos.com/16210393/etl-developer/"
+   "vaga": "Data Analyst - Data Governance",
+   "empresa": "Milestone Consulting",
+   "nota": 80,
+   "link": "https://emprego.sapo.pt/offers/data-analyst-data-governance?id=729df04c-0fde-4358-9aa3-40a87d76b4ed&utm_source=freehire.me"
   }
  ],
  "lacunas": {

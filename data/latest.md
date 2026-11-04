@@ -1,4 +1,4 @@
-# Job Radar Lisboa — 2026-11-04 03:27
+# Job Radar Lisboa — 2026-11-04 08:20
 
 ## Coleta por fonte
 
@@ -7,21 +7,21 @@
 | Built In | 7 | ok |
 | Himalayas | 48 | ok |
 | ITJobs | 25 | ok |
-| Indeed | 11 | ok |
+| Indeed | 12 | ok |
 | Jooble | 0 | sem JOOBLE_API_KEY (pedir em jooble.org/api/about) |
 | LinkedIn | 150 | ok |
 | Michael Page | 3 | ok |
 | Net-Empregos | 1 | ok |
-| Notion | 3 | 178 atualizadas |
+| Notion | 0 | 178 atualizadas |
 | Sites de empresas | 24 | amplemarket (greenhouse): 1; bgbx (greenhouse): 1; cision (greenhouse): 1; comparaja (greenhouse): 1; discord (greenhouse): 1; gocardless (greenhouse): 2; guide |
-| Teamlyzer | 47 | ok |
+| Teamlyzer | 48 | ok |
 | The Muse | 11 | ok |
 | Workable | 5 | ok |
-| freehire | 75 | ok |
+| freehire | 73 | ok |
 
-**93 vagas no ranking**, 185 descartadas (sênior, fora da trilha, fora de Lisboa ou antigas).
+**92 vagas no ranking**, 186 descartadas (sênior, fora da trilha, fora de Lisboa ou antigas).
 
-## Data Analyst (38)
+## Data Analyst (37)
 
 | Score | Agora? | Vaga | Empresa | Senioridade | Lacunas | Fonte |
 |---:|---|---|---|---|---|---|
@@ -68,7 +68,7 @@
 | 72 | Testar agora | [SAP Inhouse Consultant SAP BI with focus on SAP Cloud products (f/m/d)](https://himalayas.app/companies/bruker/jobs/sap-inhouse-consultant-sap-bi-with-focus-on-sap-cloud-products-f-m-d?utm_source=api) | Bruker | — | — | Himalayas |
 | 71 | Esperar preparo | [SAP Business Intelligence Consultant – BW, Datasphere & SAC](https://jobs.eu.lever.co/vwgds/d2af0ca8-200a-4d76-b563-ebf7f3d056d8) | Volkswagen Group Digital Solutions | Pleno | — | freehire |
 | 54 | Avaliar | [Bi developer](https://pt.teamlyzer.com/companies/caixa-magica/job/bi-developer-20764) | Caixa Magica | — | — | Teamlyzer |
-| 54 | Avaliar | [Bi developer](https://pt.teamlyzer.com/companies/iss-tech-portugal/job/bi-developer-21651) | Iss Tech Portugal | — | — | Teamlyzer |
+| 54 | Avaliar | [Bi developer](https://cagtechhubvacancies.constellationtechhub.com/vacancies/5766/technical-service-manager.html?utm_source=teamlyzer) | Iss Tech Portugal | — | — | Teamlyzer |
 | 54 | Não vale | [Data engineer bi](https://pt.teamlyzer.com/companies/volkswagen-financial-services/job/data-engineer-bi-21859) | Volkswagen Financial Services | — | — | Teamlyzer |
 
 ## Analytics Engineer (10)
@@ -107,11 +107,11 @@
 | 60 | Testar agora | [Data Engineer (Snowflake & DBT)](https://www.itjobs.pt/oferta/517866/data-engineer-snowflake-dbt) | SDG Group | Pleno | Snowflake | ITJobs |
 | 58 | Testar agora | [ETL Developer](https://www.net-empregos.com/16210393/etl-developer/) | Sourcing Trust | — | — | Net-Empregos |
 | 56 | Testar agora | [Data Engineer for AI Analytics Pipelines (Azure & Snowflake)](https://pt.whatjobs.com/pub_api__cpl__16827677__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | Expleo Group | — | Snowflake | freehire |
-| 48 | Não vale | [Data Integration Specialist  - Informatica Cloud Data Integration](https://www.linkedin.com/jobs/view/4487001488) | AXA Group Operations | — | — | LinkedIn |
 | 47 | Avaliar | [Data engineer](https://pt.teamlyzer.com/companies/prime-it/job/data-engineer-21584) | Prime It | — | — | Teamlyzer |
+| 47 | Avaliar | [Data engineer (informatica powercenter)](https://pt.teamlyzer.com/companies/dellent/job/data-engineer-informatica-powercenter-21186) | Dellent | — | — | Teamlyzer |
 | 47 | Não vale | [Data engineer](https://pt.teamlyzer.com/companies/accenture-portugal/job/data-engineer-21337) | Accenture Portugal | — | — | Teamlyzer |
 | 45 | Não vale | [Data Engineer (First Data Hire)](https://himalayas.app/companies/alguna/jobs/data-engineer-first-data-hire?utm_source=api) | Alguna | — | AWS | Himalayas |
 | 44 | Não vale | [GCP/Python Data Engineer (French Speaker) / BPCE-SI](https://www.linkedin.com/jobs/view/4476044029) | Natixis in Portugal | Pleno | GCP, BigQuery, Snowflake | LinkedIn |
+| 44 | Avaliar | [Data integration engineer](https://pt.teamlyzer.com/companies/merkle-dach/job/data-integration-engineer-20407) | Merkle Dach | — | — | Teamlyzer |
 | 44 | Avaliar | [Data engineer ii](https://pt.teamlyzer.com/companies/iterable/job/data-engineer-ii-20987) | Iterable | — | — | Teamlyzer |
 | 44 | Avaliar | [Data engineer](https://pt.teamlyzer.com/companies/we-are-meta/job/data-engineer-21573) | We Are Meta | — | — | Teamlyzer |
-| 44 | Avaliar | [Data integration engineer](https://pt.teamlyzer.com/companies/merkle-dach/job/data-integration-engineer-20407) | Merkle Dach | — | — | Teamlyzer |
