@@ -1,8 +1,8 @@
 {
  "date": "2026-11-05",
- "combinando": 3,
- "fora": 11,
- "depois": 1,
+ "combinando": 1,
+ "fora": 21,
+ "depois": 0,
  "melhores": [
   {
    "vaga": "Data Analytics Engineer | Power BI, SQL & Python",
@@ -29,22 +29,22 @@
    "link": "https://casa-recrute.talent-soft.com/offre-de-emploi/emploi-vie-data-analyst-h-f_117182.aspx"
   },
   {
-   "vaga": "Business Intelligence Support (m/f) - Hybrid (Brussels)",
-   "empresa": "Match Profiler",
-   "nota": 79,
-   "link": "https://emprego.sapo.pt/offers/business-intelligence-support-mf-hybrid-brussels?id=c31a1710-701d-4278-9b59-a44a8c97f175&utm_source=freehire.me"
+   "vaga": "HR Data Analyst",
+   "empresa": "Airbus",
+   "nota": 84,
+   "link": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Lisbon-Airbus-Portugal/HR-Data-Analyst_JR10454719"
   },
   {
-   "vaga": "Data Engineer",
-   "empresa": "Capgemini",
-   "nota": 71,
-   "link": "https://www.linkedin.com/jobs/view/4487517340"
+   "vaga": "Azure Data Engineer - Projetos Internacionais",
+   "empresa": "Integer Consulting",
+   "nota": 63,
+   "link": "https://www.net-empregos.com/16221472/azure-data-engineer-projetos-internacionais/"
   }
  ],
  "lacunas": {
   "AWS": 11,
+  "Machine Learning": 10,
   "Snowflake": 10,
-  "Machine Learning": 9,
   "Tableau": 6,
   "Terraform": 4
  }
