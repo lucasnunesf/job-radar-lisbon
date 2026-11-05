@@ -1,8 +1,8 @@
 {
- "date": "2026-11-04",
- "combinando": 2,
- "fora": 28,
- "depois": 2,
+ "date": "2026-11-05",
+ "combinando": 3,
+ "fora": 11,
+ "depois": 1,
  "melhores": [
   {
    "vaga": "Data Analytics Engineer | Power BI, SQL & Python",
@@ -17,35 +17,35 @@
    "link": "https://pt.whatjobs.com/pub_api__cpl__16839966__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
   },
   {
-   "vaga": "HR Data Analyst",
-   "empresa": "Airbus",
-   "nota": 84,
-   "link": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Lisbon-Airbus-Portugal/HR-Data-Analyst_JR10454719"
+   "vaga": "VIE Data Analyst H/F",
+   "empresa": "Crédit Agricole",
+   "nota": 87,
+   "link": "https://pt.indeed.com/viewjob?jk=773636bb022827da"
   },
   {
-   "vaga": "RGM Data Analyst",
-   "empresa": "Lingaro",
-   "nota": 82,
-   "link": "https://himalayas.app/companies/lingaro/jobs/rgm-data-analyst?utm_source=api"
+   "vaga": "VIE Data Analyst H/F",
+   "empresa": "Crédit Agricole S.A.",
+   "nota": 87,
+   "link": "https://casa-recrute.talent-soft.com/offre-de-emploi/emploi-vie-data-analyst-h-f_117182.aspx"
   },
   {
-   "vaga": "Data Engineer & PowerBI Developer",
-   "empresa": "LUZA Group",
-   "nota": 81,
-   "link": "https://himalayas.app/companies/luza-group/jobs/data-engineer-powerbi-developer?utm_source=api"
+   "vaga": "Business Intelligence Support (m/f) - Hybrid (Brussels)",
+   "empresa": "Match Profiler",
+   "nota": 79,
+   "link": "https://emprego.sapo.pt/offers/business-intelligence-support-mf-hybrid-brussels?id=c31a1710-701d-4278-9b59-a44a8c97f175&utm_source=freehire.me"
   },
   {
-   "vaga": "Python Developer (Data Engineer)",
-   "empresa": "Inetum",
-   "nota": 68,
-   "link": "https://www.linkedin.com/jobs/view/4202862680"
+   "vaga": "Data Engineer",
+   "empresa": "Capgemini",
+   "nota": 71,
+   "link": "https://www.linkedin.com/jobs/view/4487517340"
   }
  ],
  "lacunas": {
-  "AWS": 10,
-  "Snowflake": 9,
-  "Machine Learning": 8,
-  "Tableau": 5,
+  "AWS": 11,
+  "Snowflake": 10,
+  "Machine Learning": 9,
+  "Tableau": 6,
   "Terraform": 4
  }
 }
