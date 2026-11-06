@@ -146,6 +146,8 @@ def is_lisbon_area(location: str) -> bool:
 
 
 # ---------------------------------------------------------------- Foco em Lisboa (versão estrita)
+OUTSIDE_METRO = ("torres vedras", "alenquer", "lourinha", "cadaval", "azambuja", "arruda dos vinhos",
+                 "sobral de monte agraco", "caldas da rainha", "peniche", "obidos", "rio maior")
 REMOTE_RX = r"\b(remote|remoto|remotely|teletrabalho|home ?office|work from home|anywhere)\b"
 
 
@@ -171,6 +173,10 @@ def location_verdict(location: str, url: str = "", title: str = "", description:
     loc = norm(location)
     ctx = norm(" ".join([url.replace("-", " ").replace("/", " ").replace("_", " "), title, (description or "")[:5000]]))
 
+    # Distrito de Lisboa fora da área metropolitana (LinkedIn escreve "Torres Vedras, Lisboa, Portugal")
+    city = loc.split(",")[0].strip()
+    if any(re.search(r"\b" + t + r"\b", city) for t in OUTSIDE_METRO):
+        return "fora", f"longe de Lisboa ({location})"
     if loc and _has_lisbon(loc):
         return "lisboa", ""
 

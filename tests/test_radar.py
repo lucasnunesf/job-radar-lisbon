@@ -126,6 +126,8 @@ def test_strict_lisbon_location():
     for loc in ("Lisboa, Lisbon, Portugal", "Oeiras, P11, Portugal", "Lisboa, Porto", "Hybrid, Lisboa, Portugal"):
         assert v(loc)[0] == "lisboa", loc
     assert v("Remote (Portugal)")[0] == "remoto"
+    assert v("Torres Vedras, Lisboa, Portugal")[0] == "fora"
+    assert v("Lisboa, Torres Vedras")[0] == "lisboa"
     assert v("Remote (Portugal)", remote_portugal=False)[0] == "fora"
     for loc in ("Porto, Portugal", "Braga", "Madrid, Spain", "Brazil (Remote)", "Remote - India",
                 "Remote (Germany, Portugal)", "Remote (Albania, Andorra, Portugal, Spain)"):
