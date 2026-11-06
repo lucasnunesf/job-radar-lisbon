@@ -26,6 +26,16 @@ location_filter:
   # LinkedIn: geoId "Lisboa e Região" (área metropolitana), resolvido pela busca de locais do LinkedIn
   linkedin_geo_id: "90010352"
 
+# Deal-breakers: vagas com estas palavras no título ou destas empresas são descartadas direto
+blacklist:
+  title_words:
+    - werkstudent
+    - working student
+    - french speaker
+    - german speaker
+    - dutch speaker
+  companies: []
+
 # Ferramentas que o Lucas domina (chave = nome exibido, valor = peso no score)
 skills:
   SQL: 3

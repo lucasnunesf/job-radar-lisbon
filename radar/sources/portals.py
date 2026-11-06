@@ -328,3 +328,46 @@ def jooble(cfg, stats) -> list[Job]:
         time.sleep(1)
     stats["Jooble"] = {"brutas": len(jobs), "erros": errors[:3]}
     return list(jobs.values())
+
+
+# ---------------------------------------------------------------- Expresso Emprego
+def expresso(cfg, stats, max_details=60) -> list[Job]:
+    """Expresso Emprego: busca /emprego/pesquisa/<termo>/lisboa; o local vem no próprio link
+    (/emprego/<titulo>/<local>/<id>) e a empresa no <title> da vaga ("Vaga | Local | Empresa")."""
+    from urllib.parse import quote
+    rx = re.compile(r"^/emprego/([^/]+)/([^/]+)/(\d{5,})$")
+    links: dict[str, tuple[str, str]] = {}
+    errors = []
+    for term in cfg["search_terms"]:
+        r = get(f"https://expressoemprego.pt/emprego/pesquisa/{quote(term)}/lisboa")
+        if r is None:
+            errors.append(f"{term}: sem resposta")
+            continue
+        soup = BeautifulSoup(r.text, "html.parser")
+        for a in soup.find_all("a", href=True):
+            m = rx.match(a["href"].split("?")[0])
+            if not m:
+                continue
+            title = a.get_text(" ", strip=True) or m.group(1).replace("-", " ")
+            local = m.group(2).replace("--", ", ").replace("-", " ")
+            url = "https://expressoemprego.pt" + m.group(0)
+            if len(title) > len(links.get(url, ("", ""))[0]):
+                links[url] = (title, local)
+        time.sleep(1.2)
+    jobs = []
+    wanted = [(u, t, l) for u, (t, l) in links.items() if title_is_relevant(t) and is_lisbon_area(l)]
+    for url, title, local in wanted[:max_details]:
+        r = get(url)
+        if r is None:
+            continue
+        soup = BeautifulSoup(r.text, "html.parser")
+        head = (soup.title.get_text(" ", strip=True) if soup.title else "").split("|")
+        company = head[2].strip() if len(head) >= 3 else ""
+        jp = _jobposting_from_html(r.text) or {}
+        jobs.append(Job(source="Expresso Emprego", title=strip_html(jp.get("title") or title), company=company,
+                        url=url, location=local.title(), description=strip_html(jp.get("description")) or _main_text(soup),
+                        posted=(jp.get("datePosted") or "")[:10] or None))
+        time.sleep(1.2)
+    log.info("Expresso Emprego: %d links, %d relevantes", len(links), len(jobs))
+    stats["Expresso Emprego"] = {"brutas": len(jobs), "links": len(links), "erros": errors[:3]}
+    return jobs

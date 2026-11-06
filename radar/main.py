@@ -27,9 +27,10 @@ from .score import score_job
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 DEFAULT_NOTION_DB = "96144502e4594f3ba11efd90b2f66980"  # base "Vagas" do Lucas
-ALL_SOURCES = ["linkedin", "indeed", "itjobs", "builtin", "netempregos", "teamlyzer", "michaelpage", "freehire",
+ALL_SOURCES = ["linkedin", "indeed", "itjobs", "builtin", "netempregos", "teamlyzer", "michaelpage", "expresso", "freehire",
                "themuse", "workable", "himalayas", "jooble", "ats"]
 # Bloqueiam os servidores do GitHub (403), por isso ficam fora do padrão: glassdoor, google, landingjobs
+# (rodam no computador de casa com run_windows_extra.bat)
 
 log = logging.getLogger("radar")
 
@@ -55,6 +56,7 @@ def collect(cfg: dict, sources: list[str], hours_old: int, stats: dict) -> list[
     for name, fn in (("itjobs", portals.itjobs), ("landingjobs", portals.landingjobs),
                      ("builtin", portals.builtin), ("netempregos", portals.netempregos),
                      ("teamlyzer", portals.teamlyzer), ("michaelpage", portals.michaelpage),
+                     ("expresso", portals.expresso),
                      ("freehire", aggregators.freehire), ("themuse", aggregators.themuse),
                      ("workable", aggregators.workable_search), ("himalayas", aggregators.himalayas),
                      ("jooble", portals.jooble), ("ats", ats.collect)):
@@ -65,6 +67,20 @@ def collect(cfg: dict, sources: list[str], hours_old: int, stats: dict) -> list[
                 log.exception("%s falhou", name)
                 stats[name] = {"brutas": 0, "erros": [str(e)[:200]]}
     return jobs
+
+
+def _blacklisted(j: Job, cfg: dict) -> str | None:
+    """Deal-breakers do perfil (ideia do LinkedIn_AIHawk: titleBlacklist / companyBlacklist)."""
+    from .models import norm
+    bl = cfg.get("blacklist") or {}
+    title, company = norm(j.title), norm(j.company)
+    for w in bl.get("title_words") or []:
+        if norm(w) and norm(w) in title:
+            return f"título na lista negra ({w})"
+    for c in bl.get("companies") or []:
+        if norm(c) and norm(c) in company:
+            return f"empresa na lista negra ({c})"
+    return None
 
 
 def dedupe(jobs: list[Job]) -> list[Job]:
@@ -209,6 +225,8 @@ def main(argv=None) -> int:
     ap.add_argument("--max-age-days", type=int, default=30)  # depois de ~30 dias a vaga quase sempre já está em fase final
     ap.add_argument("--dry-run", action="store_true", help="não grava no Notion")
     ap.add_argument("--fixtures", help="JSON com vagas de exemplo (teste offline)")
+    ap.add_argument("--extra-only", action="store_true",
+                    help="modo computador local: só grava no Notion, sem mexer em data/ (o GitHub cuida do resumo)")
     args = ap.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -230,7 +248,10 @@ def main(argv=None) -> int:
                                       remote_portugal=loc_cfg.get("remote_portugal", True))
         if where == "incerto" and loc_cfg.get("unknown_city", "penalize") == "drop":
             where = "fora"
-        if where == "fora":
+        black = _blacklisted(j, cfg)
+        if black:
+            j.excluded = black
+        elif where == "fora":
             j.excluded = f"fora de Lisboa: {why}"
         elif too_old(j, args.max_age_days):
             j.excluded = "antiga"
@@ -273,6 +294,10 @@ def main(argv=None) -> int:
             stats["Notion"] = {"brutas": len(created), "erros": [f"{updated} atualizadas"]}
             notion_flags = client.flags
 
+    if args.extra_only:  # rodando no computador: o resumo e o histórico ficam com o GitHub
+        print(f"{len(to_notion)} vagas enviadas ao Notion. Fontes: " +
+              ", ".join(f"{k}={v.get('brutas', 0)}" for k, v in stats.items()))
+        return 0
     report = write_outputs(ranked, excluded, stats, new_alerts)
     write_summary(new_today, ranked, stats, notion_flags)
     if not args.fixtures and not args.dry_run:  # teste não marca vagas como vistas
