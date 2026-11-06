@@ -11,8 +11,20 @@ search_terms:
   - power bi
   - analytics engineer
   - junior data engineer
+  - analista de dados
+  - bi developer
+  - reporting analyst
+  - data engineer
 
 location: Lisbon, Portugal
+
+# Foco em Lisboa. Vagas em Porto/Braga/etc., no exterior ou "remoto Europa/mundo" são descartadas.
+location_filter:
+  remote_portugal: true        # aceitar remoto restrito a Portugal (dá para morar em Lisboa)
+  unknown_city: penalize       # local só "Portugal" sem cidade: penalize (fica com nota menor) ou drop (descarta)
+  unknown_city_penalty: 8
+  # LinkedIn: geoId "Lisboa e Região" (área metropolitana), resolvido pela busca de locais do LinkedIn
+  linkedin_geo_id: "90010352"
 
 # Ferramentas que o Lucas domina (chave = nome exibido, valor = peso no score)
 skills:
