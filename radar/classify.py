@@ -143,3 +143,62 @@ def is_lisbon_area(location: str) -> bool:
     if any(re.search(r"\b" + c + r"\b", t) for c in OTHER_PT_CITIES):
         return False
     return "portugal" in t
+
+
+# ---------------------------------------------------------------- Foco em Lisboa (versão estrita)
+REMOTE_RX = r"\b(remote|remoto|remotely|teletrabalho|home ?office|work from home|anywhere)\b"
+
+
+def _has_lisbon(t: str) -> bool:
+    return any(re.search(r"\b" + re.escape(h) + r"\b", t) for h in LISBON_HINTS)
+
+
+def _has_other_pt_city(t: str) -> bool:
+    t = t.replace("porto salvo", " ")
+    return any(re.search(r"\b" + c + r"\b", t) for c in OTHER_PT_CITIES)
+
+
+def location_verdict(location: str, url: str = "", title: str = "", description: str = "",
+                     remote_portugal: bool = True) -> tuple[str, str]:
+    """Decide se a vaga é em Lisboa.
+
+    Devolve (veredito, motivo). Vereditos:
+      "lisboa"   — local cita Lisboa ou concelho da Grande Lisboa;
+      "remoto"   — remoto restrito a Portugal (aceito se remote_portugal=True);
+      "incerto"  — só "Portugal"/vazio e nada no link/título/texto diz a cidade (fica, com penalidade);
+      "fora"     — outra cidade, outro país, ou remoto aberto a vários países.
+    """
+    loc = norm(location)
+    ctx = norm(" ".join([url.replace("-", " ").replace("/", " ").replace("_", " "), title, (description or "")[:5000]]))
+
+    if loc and _has_lisbon(loc):
+        return "lisboa", ""
+
+    is_remote = bool(re.search(REMOTE_RX, loc)) or loc in ("", "portugal", "pt")
+    if loc and re.search(REMOTE_RX, loc):
+        # "Remote (Portugal)" ok; "Remote (Germany, Portugal, ...)" / "Remote - India" / "Brazil (Remote)" fora
+        inside = re.sub(REMOTE_RX, " ", loc)
+        places = [p.strip() for p in re.split(r"[(),;/|-]", inside) if p.strip() and p.strip() not in ("pt",)]
+        places = [p for p in places if p not in ("only", "hybrid", "hibrido", "full", "100%")]
+        if places and set(places) <= {"portugal", "lisboa", "lisbon"}:
+            return ("remoto", "") if remote_portugal else ("fora", "remoto (desligado no perfil)")
+        if not places:  # "Remote" sem país: decide pelo texto
+            if _has_lisbon(ctx):
+                return "lisboa", ""
+            if "portugal" in ctx and remote_portugal and not _has_other_pt_city(ctx):
+                return "remoto", ""
+            return "fora", "remoto sem país definido"
+        return "fora", "remoto aberto a vários países" if len(places) > 1 else f"remoto fora de Portugal ({places[0]})"
+
+    if loc and _has_other_pt_city(loc):
+        return "fora", f"outra cidade ({location})"
+    if loc and not re.search(r"\b(portugal|pt)\b", loc):
+        return "fora", f"fora de Portugal ({location})"
+
+    # local genérico ("Portugal", "PT", vazio): procura a cidade no link, título e descrição
+    if _has_lisbon(ctx):
+        return "lisboa", ""
+    if _has_other_pt_city(ctx):
+        return "fora", "outra cidade (citada no texto)"
+    _ = is_remote
+    return "incerto", "cidade não informada"

@@ -114,14 +114,22 @@ def test_no_description_goes_to_avaliar():
 
 
 def test_generic_portugal_location_uses_link_city():
-    from radar.main import _generic_loc_hint
-    gaia = Job("x", "Analytics Engineer", "c", "https://careers.x.com/job/Vila-Nova-de-Gaia-Analytics-Engineer/1/", "Portugal")
-    lisboa = Job("x", "Power BI Developer", "c", "https://x.com/job/Lisbon-Head-Office/1", "Portugal")
-    sem_cidade = Job("x", "Data Analyst", "c", "https://x.com/job/1", "Portugal")
-    assert not is_lisbon_area(_generic_loc_hint(gaia))
-    assert is_lisbon_area(_generic_loc_hint(lisboa))
-    assert is_lisbon_area(_generic_loc_hint(sem_cidade))
+    from radar.classify import location_verdict as v
+    assert v("Portugal", "https://careers.x.com/job/Vila-Nova-de-Gaia-Analytics-Engineer/1/")[0] == "fora"
+    assert v("Portugal", "https://x.com/job/Lisbon-Head-Office/1")[0] == "lisboa"
+    assert v("Portugal", "https://x.com/job/1")[0] == "incerto"
+    assert v("", "", "", "Escritório em Porto Salvo, Oeiras")[0] == "lisboa"
 
+
+def test_strict_lisbon_location():
+    from radar.classify import location_verdict as v
+    for loc in ("Lisboa, Lisbon, Portugal", "Oeiras, P11, Portugal", "Lisboa, Porto", "Hybrid, Lisboa, Portugal"):
+        assert v(loc)[0] == "lisboa", loc
+    assert v("Remote (Portugal)")[0] == "remoto"
+    assert v("Remote (Portugal)", remote_portugal=False)[0] == "fora"
+    for loc in ("Porto, Portugal", "Braga", "Madrid, Spain", "Brazil (Remote)", "Remote - India",
+                "Remote (Germany, Portugal)", "Remote (Albania, Andorra, Portugal, Spain)"):
+        assert v(loc)[0] == "fora", loc
 
 def test_summary_puts_testar_agora_first(tmp_path, monkeypatch):
     import radar.main as rm

@@ -19,7 +19,7 @@ from pathlib import Path
 import requests
 import yaml
 
-from .classify import is_lisbon_area
+from .classify import location_verdict
 from .models import Job
 from .decide import decide
 from .score import score_job
@@ -54,15 +54,6 @@ def collect(cfg: dict, sources: list[str], hours_old: int, stats: dict) -> list[
                 log.exception("%s falhou", name)
                 stats[name] = {"brutas": 0, "erros": [str(e)[:200]]}
     return jobs
-
-
-def _generic_loc_hint(j: Job) -> str:
-    """Quando o local é só 'Portugal', procura a cidade no link e no título (ex.: .../Vila-Nova-de-Gaia-...)."""
-    from .models import norm
-    loc = norm(j.location)
-    if loc and loc not in ("portugal", "pt", "portugal, pt", "remote", "remoto"):
-        return ""
-    return "portugal " + norm(j.url.replace("-", " ").replace("/", " ") + " " + j.title)
 
 
 def dedupe(jobs: list[Job]) -> list[Job]:
@@ -222,15 +213,28 @@ def main(argv=None) -> int:
 
     jobs = dedupe(raw)
     ranked, excluded = [], []
+    loc_cfg = cfg.get("location_filter") or {}
     for j in jobs:
-        if not is_lisbon_area(j.location) or not is_lisbon_area(_generic_loc_hint(j)):
-            j.excluded = f"fora de Lisboa ({j.location})"
+        where, why = location_verdict(j.location, j.url, j.title, j.description,
+                                      remote_portugal=loc_cfg.get("remote_portugal", True))
+        if where == "incerto" and loc_cfg.get("unknown_city", "penalize") == "drop":
+            where = "fora"
+        if where == "fora":
+            j.excluded = f"fora de Lisboa: {why}"
         elif too_old(j, args.max_age_days):
             j.excluded = "antiga"
         else:
             score_job(j, cfg)
             if not j.excluded:
+                if where == "incerto":  # só "Portugal": pode ser Porto/Braga; fica abaixo das que confirmam Lisboa
+                    j.score = max(0, j.score - int(loc_cfg.get("unknown_city_penalty", 8)))
+                    j.reasons.append("cidade não informada (confira)")
+                    j.extra_flags["city_unknown"] = True
+                elif where == "remoto":
+                    j.reasons.append("remoto restrito a Portugal")
                 decide(j, cfg)
+                if where == "incerto" and j.apply_why:
+                    j.apply_why += "; cidade não informada (confira se é Lisboa)"
         (excluded if j.excluded else ranked).append(j)
     ranked.sort(key=lambda j: j.score, reverse=True)
     log.info("%d brutas → %d únicas → %d no ranking", len(raw), len(jobs), len(ranked))
