@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-06
+- Foco estrito em Lisboa: outras cidades, outros países e remoto aberto a vários países saem; "Portugal" sem cidade perde 8 pontos.
+- LinkedIn pela região "Lisboa e Região" (geoId) com backoff; python-jobspy vira reserva, com raio de 25 milhas.
+- Nova fonte Expresso Emprego; mais termos de busca (analista de dados, BI developer, reporting analyst, data engineer).
+- Lista negra de títulos/empresas no perfil.
+- `run_windows_extra.bat` para Glassdoor, Landing.jobs e Google Jobs a partir de casa.
+
 ## 2026-11-02
 - Teste automático para a ordem do resumo diário ("Testar agora" antes de "Avaliar", por nota).
 

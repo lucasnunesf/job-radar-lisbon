@@ -9,8 +9,9 @@ Roda todo dia à meia-noite de Brasília (disparado por uma tarefa agendada do C
 
 | Fonte | Como | Observação |
 |---|---|---|
-| LinkedIn | [python-jobspy](https://github.com/speedyapply/JobSpy) (API pública de convidado) | pode bloquear às vezes; o relatório mostra |
-| Indeed (pt.indeed.com) | python-jobspy | idem |
+| LinkedIn | API pública de convidado com o geoId **Lisboa e Região** (90010352); só abre vagas com título relevante e não sênior | se bloquear, cai para o [python-jobspy](https://github.com/speedyapply/JobSpy) |
+| Indeed (pt.indeed.com) | python-jobspy (raio de 25 milhas) | |
+| Expresso Emprego | página de busca `/emprego/pesquisa/<termo>/lisboa` + página da vaga | local vem no link |
 | Net-Empregos | RSS (~250 últimas vagas/dia) | filtra título e zona Lisboa |
 | Teamlyzer | página de busca por tag + página da vaga | vagas tech em PT |
 | Michael Page | página de busca + JSON-LD da vaga | |
@@ -44,6 +45,18 @@ Mesma vaga em vários portais vira uma só (fica a descrição mais completa).
 Coluna **Candidatar agora?** (fase de teste nov–jan): *Testar agora* = vaga fácil em empresa onde um "não" não custa nada; *Esperar preparo* = vaga difícil ou empresa de topo (lista `protect_companies`); *Não vale* = início imediato, outro idioma ou pouco encaixe. Regras em `radar/decide.py`.
 
 Vagas **sênior** (título ou 4+ anos pedidos), fora das trilhas, fora da Grande Lisboa ou com mais de 30 dias são descartadas.
+
+### Foco em Lisboa (`location_filter` no `profile.yaml`)
+
+| Local da vaga | O que acontece |
+|---|---|
+| Lisboa ou concelho da Grande Lisboa (Oeiras, Amadora, Sintra, Cascais, Almada…) | entra |
+| "Remote (Portugal)" — remoto só para Portugal | entra (desliga com `remote_portugal: false`) |
+| Só "Portugal" ou vazio, sem cidade no link/título/descrição | entra com −8 e aviso "cidade não informada" (ou `unknown_city: drop`) |
+| Porto, Braga, Coimbra… (sem Lisboa junto) | descartada |
+| Outro país, "Remote (Germany, Portugal, …)", "Remote - India" | descartada |
+
+`blacklist` no perfil descarta títulos (ex.: *working student*, *French speaker*) e empresas direto.
 Pesos, ferramentas, termos de busca, consultorias e notas de corte ficam em [`config/profile.yaml`](config/profile.yaml).
 
 ## Configuração (uma vez)
@@ -74,7 +87,14 @@ python -m pytest -q                            # testes offline
 
 No Windows, dar dois cliques em `run_windows.bat` (pede o `NOTION_TOKEN` na primeira vez).
 
-Fontes testadas que **bloqueiam o GitHub Actions** (403): Glassdoor, Google Jobs, Landing.jobs, Indeed RSS, Jooble (HTML).
+Fontes testadas que **bloqueiam o GitHub Actions** (403/timeout): Glassdoor, Google Jobs, Landing.jobs, Indeed (site), Jooble (HTML), Careerjet, Jobrapido, Robert Walters.
+Sapo Emprego carrega as vagas por JavaScript com captcha (parte delas chega pelo freehire); Net-Empregos só pelo RSS.
+
+### Fontes que só funcionam de casa
+
+`run_windows_extra.bat` roda Glassdoor, Landing.jobs e Google Jobs pela internet de casa e grava direto no Notion
+(sem mexer em `data/`). Para rodar sozinho todo dia às 23:30 com o PC ligado: `run_windows_extra.bat agendar`.
+Chaves gratuitas que liberam mais vagas no GitHub: `JOOBLE_API_KEY` (jooble.org/api/about) e `ITJOBS_API_KEY` (itjobs.pt/api).
 Para testar portais de novo: Actions → **Testar portais** → Run workflow (resultado em `data/probe.md`).
 
 ## Histórico
@@ -88,7 +108,9 @@ Mudanças registradas em [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Ideias aproveitadas de outros projetos
 
-- [ai-job-search](https://github.com/ai-job-search-dev/ai-job-search): fonte freehire.me, chave estável de deduplicação e o mapa de lacunas do `/upskill`.
+- [ai-job-search](https://github.com/ai-job-search-dev/ai-job-search): fonte freehire.me, chave estável de deduplicação, mapa de lacunas do `/upskill` e LinkedIn pelos endpoints `jobs-guest` com backoff.
+- [linkedin-jobs-mcp-server](https://github.com/Rom7699/linkedin-jobs-mcp-server): resolver a cidade para um `geoId` do LinkedIn em vez de texto livre.
+- [LinkedIn_auto_jobs_applier_with_AI](https://github.com/jomacs/linkedIn_auto_jobs_applier_with_AI): raio de distância e listas negras de título/empresa (a candidatura automática com login não foi adotada: arrisca a conta).
 - [job-match-finder-skill](https://github.com/mn-youssef/job-match-finder-skill): recência entra na nota; lacunas honestas por vaga.
 - [busca-trampo](https://github.com/leonardobissoli/busca-trampo): certificações/formação como critério; "não informado" em vez de chute.
 - [candidate](https://github.com/Cla-Code-Community/candidate): lista pública de boards Greenhouse/Lever para descobrir empresas com vagas em Portugal.
