@@ -38,7 +38,18 @@ def collect(cfg: dict, sources: list[str], hours_old: int, stats: dict) -> list[
     from .sources import aggregators, ats, jobspy_boards, portals
 
     jobs: list[Job] = []
-    boards = [s for s in sources if s in ("linkedin", "indeed", "glassdoor", "google")]
+    from .sources import linkedin_guest
+    boards = [s for s in sources if s in ("indeed", "glassdoor", "google")]
+    if "linkedin" in sources:
+        try:
+            got = linkedin_guest.collect(cfg, stats, hours_old=hours_old)
+        except Exception as e:  # noqa: BLE001
+            log.exception("LinkedIn (guest) falhou")
+            got, stats["LinkedIn"] = [], {"brutas": 0, "erros": [str(e)[:200]]}
+        if stats.get("LinkedIn", {}).get("cards", 0) == 0:  # bloqueado: cai para o python-jobspy
+            log.warning("LinkedIn guest sem resultados; usando python-jobspy")
+            boards.insert(0, "linkedin")
+        jobs += got
     if boards:
         jobs += jobspy_boards.collect(cfg, sites=boards, hours_old=hours_old, stats=stats)
     for name, fn in (("itjobs", portals.itjobs), ("landingjobs", portals.landingjobs),

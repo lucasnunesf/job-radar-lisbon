@@ -145,3 +145,20 @@ def test_summary_puts_testar_agora_first(tmp_path, monkeypatch):
     rm.write_summary(jobs, jobs, {}, {})
     best = json.loads((tmp_path / "summary.json").read_text(encoding="utf-8"))["melhores"]
     assert [b["vaga"] for b in best] == ["C", "B", "A", "D"]
+
+
+def test_linkedin_guest_parsers():
+    from radar.sources.linkedin_guest import parse_cards, parse_detail
+    page = ('<!DOCTYPE html><li><div class="base-card" data-entity-urn="urn:li:jobPosting:4469003948">'
+            '<h3 class="base-search-card__title"> Junior Data Analyst (m/f/d) </h3>'
+            '<h4 class="base-search-card__subtitle"> <a href="x">AUTODOC</a> </h4>'
+            '<span class="job-search-card__location"> Lisboa, Lisboa, Portugal </span>'
+            '<time class="job-search-card__listdate" datetime="2026-11-05">Há 1 dia</time></div></li>')
+    c = parse_cards(page)[0]
+    assert c == {"id": "4469003948", "title": "Junior Data Analyst (m/f/d)", "company": "AUTODOC",
+                 "location": "Lisboa, Lisboa, Portugal", "posted": "2026-11-05"}
+    d = parse_detail('<span class="topcard__flavor topcard__flavor--bullet"> Oeiras, Lisboa, Portugal </span>'
+                     '<div class="show-more-less-html__markup relative"><p>Power BI &amp; SQL</p></div>'
+                     '<h3 class="description__job-criteria-subheader"> Nível de experiência </h3>'
+                     '<span class="description__job-criteria-text"> Júnior </span>')
+    assert "Power BI & SQL" in d["description"] and d["criteria"]["Nível de experiência"] == "Júnior"

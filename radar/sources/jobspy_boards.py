@@ -71,6 +71,7 @@ def collect(cfg: dict, sites=("linkedin", "indeed", "glassdoor", "google"), hour
                     country_indeed=COUNTRY_FOR.get(site, "portugal"),
                     results_wanted=per_term,
                     hours_old=hours_old,
+                    distance=25,  # milhas (~40 km): Grande Lisboa, sem Porto
                     fetch_description=True,
                     description_format="markdown",
                     verbose=0,
