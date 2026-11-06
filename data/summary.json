@@ -1,7 +1,7 @@
 {
- "date": "2026-11-05",
+ "date": "2026-11-06",
  "combinando": 1,
- "fora": 21,
+ "fora": 9,
  "depois": 0,
  "melhores": [
   {
@@ -35,16 +35,16 @@
    "link": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Lisbon-Airbus-Portugal/HR-Data-Analyst_JR10454719"
   },
   {
-   "vaga": "Azure Data Engineer - Projetos Internacionais",
-   "empresa": "Integer Consulting",
-   "nota": 63,
-   "link": "https://www.net-empregos.com/16221472/azure-data-engineer-projetos-internacionais/"
+   "vaga": "Data Engineer: NiFi Pipelines, Hybrid Lisbon, Growth",
+   "empresa": "Closer Consulting",
+   "nota": 56,
+   "link": "https://pt.whatjobs.com/pub_api__cpl__16875528__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
   }
  ],
  "lacunas": {
   "AWS": 11,
-  "Machine Learning": 10,
-  "Snowflake": 10,
+  "Machine Learning": 9,
+  "Snowflake": 9,
   "Tableau": 6,
   "Terraform": 4
  }
