@@ -1,51 +1,51 @@
 {
- "date": "2026-11-06",
- "combinando": 50,
- "fora": 74,
- "depois": 16,
+ "date": "2026-11-07",
+ "combinando": 8,
+ "fora": 17,
+ "depois": 1,
  "melhores": [
   {
-   "vaga": "Junior Financial Consultant (Regulatory Reporting)",
-   "empresa": "Capgemini",
-   "nota": 83,
-   "link": "https://www.linkedin.com/jobs/view/4482719566"
-  },
-  {
-   "vaga": "Data Engineer - AWS",
-   "empresa": "GRiT Solutions",
-   "nota": 82,
-   "link": "https://www.linkedin.com/jobs/view/4486999688"
-  },
-  {
-   "vaga": "Data Analyst - SAS Guide",
-   "empresa": "Mind Source",
-   "nota": 82,
-   "link": "https://www.itjobs.pt/oferta/518847/data-analyst-sas-guide"
-  },
-  {
    "vaga": "Data Analyst",
-   "empresa": "emagine",
-   "nota": 81,
-   "link": "https://www.linkedin.com/jobs/view/4460648272"
+   "empresa": "PrimeIT",
+   "nota": 84,
+   "link": "https://www.linkedin.com/jobs/view/4486249981"
   },
   {
-   "vaga": "Business Intelligence Engineer (setor da saúde)",
-   "empresa": "Bravemind",
-   "nota": 81,
-   "link": "https://www.linkedin.com/jobs/view/4486236971"
+   "vaga": "BI Data Scientist",
+   "empresa": "PrimeIT",
+   "nota": 83,
+   "link": "https://www.linkedin.com/jobs/view/4486255672"
   },
   {
-   "vaga": "Data Engineer & Power BI Developer",
-   "empresa": "Planck Technologies",
-   "nota": 81,
-   "link": "https://www.linkedin.com/jobs/view/4486236972"
+   "vaga": "Data Engineer",
+   "empresa": "Axians | Digital Solutions - Tech Talent",
+   "nota": 80,
+   "link": "https://pt.indeed.com/viewjob?jk=cb6a4d28fee2dadf"
+  },
+  {
+   "vaga": "Data engineer for BI reporting",
+   "empresa": "Dellent",
+   "nota": 79,
+   "link": "https://pt.whatjobs.com/pub_api__cpl__16870002__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+  },
+  {
+   "vaga": "Data Engineer",
+   "empresa": "Grupo Data",
+   "nota": 77,
+   "link": "https://pt.indeed.com/viewjob?jk=74fbe126cae21fcb"
+  },
+  {
+   "vaga": "Snowflake Data Engineer",
+   "empresa": "Decskill",
+   "nota": 73,
+   "link": "https://www.linkedin.com/jobs/view/4486276724"
   }
  ],
  "lacunas": {
   "AWS": 20,
-  "Snowflake": 16,
-  "Machine Learning": 14,
+  "Snowflake": 15,
   "GCP": 14,
-  "Tableau": 7
+  "Machine Learning": 9,
+  "Tableau": 8
  }
 }
