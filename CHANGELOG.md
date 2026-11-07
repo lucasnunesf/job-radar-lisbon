@@ -22,6 +22,9 @@
 - Score: bônus de recência e de certificação/formação; mapa de lacunas em `data/gaps.md`.
 - Local genérico "Portugal": confere a cidade no link/título.
 
+## 2026-11-07
+- Verificação do radar: execuções diárias de 01/11 a 07/11 sem falhas; resumo diário das 00h funcionando.
+
 ## 2026-10-29
 - Fontes Net-Empregos (RSS), Teamlyzer, Michael Page e páginas de carreira (ATS).
 - Coluna "Candidatar agora?" (Testar agora / Avaliar / Esperar preparo / Não vale).
