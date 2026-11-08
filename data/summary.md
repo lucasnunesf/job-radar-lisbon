@@ -1,12 +1,12 @@
-Fiz a atualização de 07/11: **8 vagas novas combinando**, 17 fora do perfil e 1 para depois.
+Fiz a atualização de 08/11: **4 vagas novas combinando**, 12 fora do perfil e 0 para depois.
 
 **Melhores agora:**
-1. [Data Analyst](https://www.linkedin.com/jobs/view/4486249981) · PrimeIT · nota 84 · Testar agora
-2. [BI Data Scientist](https://www.linkedin.com/jobs/view/4486255672) · PrimeIT · nota 83 · Testar agora
-3. [Data Engineer](https://pt.indeed.com/viewjob?jk=cb6a4d28fee2dadf) · Axians | Digital Solutions - Tech Talent · nota 80 · Testar agora
-4. [Data engineer for BI reporting](https://pt.whatjobs.com/pub_api__cpl__16870002__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) · Dellent · nota 79 · Testar agora
-5. [Data Engineer](https://pt.indeed.com/viewjob?jk=74fbe126cae21fcb) · Grupo Data · nota 77 · Testar agora
-6. [Snowflake Data Engineer](https://www.linkedin.com/jobs/view/4486276724) · Decskill · nota 73 · Testar agora
+1. [Data Analyst](https://www.linkedin.com/jobs/view/4486249981) · PrimeIT · nota 84 · Testar agora _(já estava aberta)_
+2. [BI Data Scientist](https://www.linkedin.com/jobs/view/4486255672) · PrimeIT · nota 83 · Testar agora _(já estava aberta)_
+3. [Data Engineer (Lisbon, Onsite) - Azure & Synapse](https://pt.whatjobs.com/pub_api__cpl__16891956__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) · Bee Engineering ICT · nota 72 · Testar agora
+4. [Snowflake Data Engineer (M/F) Alfragide](https://www.linkedin.com/jobs/view/4488743898) · Match Profiler · nota 70 · Testar agora
+5. [Data Engineer (M/F) Venda do Pinheiro](https://www.linkedin.com/jobs/view/4488764120) · Human Profiler - IT Outsourcing & Recruitment · nota 69 · Testar agora
+6. [Data Engineer — Hybrid, Lisbon: Azure & Snowflake Pipelines](https://pt.whatjobs.com/pub_api__cpl__16893666__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) · Grupo Egor · nota 61 · Testar agora
 
-**Lacunas que mais aparecem nas vagas boas:** AWS (20), Snowflake (15), GCP (14), Machine Learning (9), Tableau (8)
-_Fontes: Built In 6, Expresso Emprego 4, Himalayas 62, ITJobs 37, Indeed 27, Jooble 0, LinkedIn 34, Michael Page 2, Net-Empregos 0, Sites de empresas 22, Teamlyzer 45, The Muse 10, Workable 7, freehire 150._
+**Lacunas que mais aparecem nas vagas boas:** AWS (21), Snowflake (19), GCP (15), Machine Learning (10), Java (8)
+_Fontes: Built In 6, Expresso Emprego 4, Himalayas 62, ITJobs 39, Indeed 36, Jooble 0, LinkedIn 54, Michael Page 2, Net-Empregos 0, Sites de empresas 22, Teamlyzer 50, The Muse 11, Workable 7, freehire 153._
