@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-08
+- Verificação do radar: últimas 5 execuções do radar.yml com sucesso (a mais recente em 08/11 03:11 UTC); resumo com 4 vagas novas combinando, 12 fora do perfil, melhores notas 84 (Data Analyst, PrimeIT) e 83 (BI Data Scientist, PrimeIT).
+
 ## 2026-11-06
 - Foco estrito em Lisboa: outras cidades, outros países e remoto aberto a vários países saem; "Portugal" sem cidade perde 8 pontos.
 - LinkedIn pela região "Lisboa e Região" (geoId) com backoff; python-jobspy vira reserva, com raio de 25 milhas.
