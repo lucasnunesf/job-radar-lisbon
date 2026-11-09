@@ -1,9 +1,21 @@
 {
- "date": "2026-11-08",
- "combinando": 0,
+ "date": "2026-11-09",
+ "combinando": 1,
  "fora": 3,
- "depois": 2,
+ "depois": 1,
  "melhores": [
+  {
+   "vaga": "Data Analyst",
+   "empresa": "PrimeIT",
+   "nota": 84,
+   "link": "https://www.linkedin.com/jobs/view/4486249981"
+  },
+  {
+   "vaga": "BI Data Scientist",
+   "empresa": "PrimeIT",
+   "nota": 83,
+   "link": "https://www.linkedin.com/jobs/view/4486255672"
+  },
   {
    "vaga": "Data Analytics Engineer",
    "empresa": "TBS - Tech & Beyond Solutions Lda",
@@ -11,41 +23,29 @@
    "link": "https://pt.whatjobs.com/pub_api__cpl__16839966__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
   },
   {
-   "vaga": "Data Analyst - SAS Guide",
-   "empresa": "Mind Source",
-   "nota": 82,
-   "link": "https://www.itjobs.pt/oferta/518847/data-analyst-sas-guide"
-  },
-  {
-   "vaga": "HR Data Analyst",
-   "empresa": "Airbus",
-   "nota": 82,
-   "link": "https://ag.wd3.myworkdayjobs.com/Airbus/job/Lisbon-Airbus-Portugal/HR-Data-Analyst_JR10454719"
-  },
-  {
-   "vaga": "Data Analyst - Data Governance",
-   "empresa": "Milestone Consulting",
-   "nota": 80,
-   "link": "https://emprego.sapo.pt/offers/data-analyst-data-governance?id=729df04c-0fde-4358-9aa3-40a87d76b4ed&utm_source=freehire.me"
-  },
-  {
    "vaga": "Data Engineer",
-   "empresa": "Axians Portugal Group",
-   "nota": 80,
-   "link": "https://axianstechtalent.teamtailor.com/jobs/8679461-data-engineer"
+   "empresa": "PrimeIT",
+   "nota": 82,
+   "link": "https://www.linkedin.com/jobs/view/4486256657"
   },
   {
-   "vaga": "Data Engineer & PowerBI Developer",
-   "empresa": "LUZA Group",
-   "nota": 79,
-   "link": "https://himalayas.app/companies/luza-group/jobs/data-engineer-powerbi-developer?utm_source=api"
+   "vaga": "Data Engineer - AWS",
+   "empresa": "GRiT Solutions",
+   "nota": 82,
+   "link": "https://www.linkedin.com/jobs/view/4486999688"
+  },
+  {
+   "vaga": "Data Visualization Engineer ",
+   "empresa": "Neotalent Conclusion",
+   "nota": 77,
+   "link": "https://www.itjobs.pt/oferta/518555/data-visualization-engineer"
   }
  ],
  "lacunas": {
-  "AWS": 20,
-  "GCP": 14,
-  "Snowflake": 13,
+  "AWS": 23,
+  "Snowflake": 18,
+  "GCP": 16,
   "Machine Learning": 8,
-  "Java": 6
+  "Tableau": 7
  }
 }
