@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-09
+- Verificação do radar: últimas 3 execuções do radar.yml com sucesso (a mais recente em 09/11 19:53 UTC); resumo com 13 vagas novas combinando, 15 fora do perfil e 7 para depois.
+
 ## 2026-11-08
 - Verificação do radar: últimas 5 execuções do radar.yml com sucesso (a mais recente em 08/11 03:11 UTC); resumo com 4 vagas novas combinando, 12 fora do perfil, melhores notas 84 (Data Analyst, PrimeIT) e 83 (BI Data Scientist, PrimeIT).
 
