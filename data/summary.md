@@ -1,12 +1,12 @@
-Fiz a atualização de 09/11: **1 vagas novas combinando**, 3 fora do perfil e 1 para depois.
+Fiz a atualização de 09/11: **13 vagas novas combinando**, 15 fora do perfil e 7 para depois.
 
 **Melhores agora:**
-1. [Data Analyst](https://www.linkedin.com/jobs/view/4486249981) · PrimeIT · nota 84 · Testar agora _(já estava aberta)_
-2. [BI Data Scientist](https://www.linkedin.com/jobs/view/4486255672) · PrimeIT · nota 83 · Testar agora _(já estava aberta)_
-3. [Data Analytics Engineer](https://pt.whatjobs.com/pub_api__cpl__16839966__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) · TBS - Tech & Beyond Solutions Lda · nota 83 · Testar agora _(já estava aberta)_
-4. [Data Engineer](https://www.linkedin.com/jobs/view/4486256657) · PrimeIT · nota 82 · Testar agora _(já estava aberta)_
-5. [Data Engineer - AWS](https://www.linkedin.com/jobs/view/4486999688) · GRiT Solutions · nota 82 · Testar agora _(já estava aberta)_
-6. [Data Visualization Engineer ](https://www.itjobs.pt/oferta/518555/data-visualization-engineer) · Neotalent Conclusion · nota 77 · Testar agora
+1. [Junior Data Analyst](https://www.net-empregos.com/16235000/junior-data-analyst/) · Olisipo · nota 91 · Testar agora
+2. [Data Engineer](https://www.linkedin.com/jobs/view/4487177129) · Randstad Digital Portugal · nota 79 · Testar agora
+3. [Data Engineer](https://www.net-empregos.com/16235015/data-engineer/) · Olisipo · nota 77 · Testar agora
+4. [Data Engineer](https://www.linkedin.com/jobs/view/4488874486) · Caixa Mágica Software · nota 75 · Testar agora
+5. [SAP Business Intelligence Consultant – BW, Datasphere & SAC](https://4dayweek.io/job/sap-business-intelligence-consultant-bw-datasphere-and-sac-at-vwg-digital-solutions-portugal-dc0dd789) · VWG Digital Solutions Portugal · nota 75 · Testar agora
+6. [BI Developer](https://www.linkedin.com/jobs/view/4487171382) · Adecco Permanent Recruitment · nota 74 · Testar agora
 
-**Lacunas que mais aparecem nas vagas boas:** AWS (23), Snowflake (18), GCP (16), Machine Learning (8), Tableau (7)
-_Fontes: Built In 6, Expresso Emprego 4, Himalayas 65, ITJobs 37, Indeed 27, Jooble 0, LinkedIn 41, Michael Page 2, Net-Empregos 0, Sites de empresas 26, Teamlyzer 48, The Muse 0, Workable 7, freehire 148._
+**Lacunas que mais aparecem nas vagas boas:** AWS (26), Snowflake (16), GCP (16), Machine Learning (11), Java (8)
+_Fontes: Built In 6, Expresso Emprego 4, Himalayas 66, ITJobs 38, Indeed 10, Jooble 0, LinkedIn 33, Michael Page 2, Net-Empregos 0, Sites de empresas 26, Teamlyzer 49, The Muse 0, Workable 7, freehire 151._
