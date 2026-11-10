@@ -35,6 +35,9 @@ blacklist:
     - german speaker
     - dutch speaker
   companies: []
+  # Agregadores cujos links morrem em poucos dias (todos os links whatjobs testados em 09/11 estavam mortos)
+  link_hosts:
+    - whatjobs.com
 
 # Ferramentas que o Lucas domina (chave = nome exibido, valor = peso no score)
 skills:
@@ -44,7 +47,6 @@ skills:
   DAX: 2
   Power Query: 2
   Azure: 3
-  Databricks: 2
   Delta Lake: 1
   dbt: 2
   Airflow: 2
@@ -82,6 +84,18 @@ gaps_vocab:
   MicroStrategy: 1
   Alteryx: 1
   Machine Learning: 1
+  Databricks: 1    # CV usa Microsoft Fabric; Databricks ainda não em produção
+  DataStage: 2
+  Informatica: 2
+  SAP BW: 2
+  SAP BO: 2
+  Datasphere: 2
+  NiFi: 2
+  Dataiku: 2
+  Oracle: 1
+  Cloudera: 1
+  Teradata: 1
+  Flink: 1
 
 # Consultorias Microsoft/Azure que contratam júnior (bônus no score)
 consultancies:
@@ -131,6 +145,14 @@ apply_now:
     - Kubernetes
     - Machine Learning
   max_learnable_gaps: 3
+  # Filtro 2 (aprendido na triagem manual de 09/11/2026)
+  # Ferramenta "base" da vaga = está no título, aparece 3+ vezes ou vem com "obrigatório/must/required/hands-on".
+  # Base em ferramenta de nicho = Não vale; base em cloud/ferramenta aprendível = Esperar preparo.
+  niche_tools: [DataStage, Informatica, SAS, SAP BW, SAP BO, Datasphere, NiFi, Dataiku, Oracle, Cloudera, Teradata, MicroStrategy, Alteryx]
+  core_tools_wait: [AWS, GCP, BigQuery, Snowflake, Redshift, Databricks, Tableau, Looker, Qlik, Flink, Kafka, Terraform]
+  english_level: B2          # vagas que exigem C1/C2/nativo vão para Esperar preparo
+  max_open_per_company: 3    # com 3+ candidaturas na mesma empresa/grupo, espere resposta antes de mandar outra
+  duplicate_similarity: 0.5  # texto ≥50% igual ao de outra consultoria = mesma vaga de cliente
   # Empresas de topo: não gastar a candidatura antes de estar preparado
   # (muitas têm período de espera de 6–12 meses para se candidatar de novo)
   protect_companies:

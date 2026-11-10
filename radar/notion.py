@@ -75,7 +75,11 @@ class Notion:
                        "matched": txt("Requisitos que cumpro"),
                        "inscrito": bool((p.get("Inscrito") or {}).get("checkbox")),
                        "descartar": bool((p.get("Descartar") or {}).get("checkbox")),
-                       "status": ((p.get("Status") or {}).get("status") or {}).get("name")}
+                       "status": ((p.get("Status") or {}).get("status") or {}).get("name"),
+                       "analisado": bool((p.get("Analisado IA") or {}).get("checkbox")),
+                       "applied": ((p.get("Data da inscrição") or {}).get("date") or {}).get("start")}
+                # Inscrita, descartada ou já analisada pelo Claude: o radar não muda mais a decisão
+                ref["locked"] = ref["inscrito"] or ref["descartar"] or ref["analisado"]
                 if link:
                     out[link] = ref
                 out[Job("", title, company, "").key] = ref
@@ -126,7 +130,11 @@ class Notion:
                 touched.add(ref["id"])
             try:
                 if ref:
-                    self._call("PATCH", f"/pages/{ref['id']}", json={"properties": self._props(job, new=False)})
+                    props = self._props(job, new=False)
+                    if ref.get("locked"):
+                        props.pop("Candidatar agora?", None)
+                        props.pop("Por quê", None)
+                    self._call("PATCH", f"/pages/{ref['id']}", json={"properties": props})
                     updated += 1
                 else:
                     children = [{"object": "block", "type": "paragraph",
@@ -147,12 +155,18 @@ class Notion:
     def backfill(self, known: dict, touched: set, cfg: dict) -> int:
         """Vagas da base que não vieram nesta coleta: decide pelo que já está gravado."""
         from .decide import decide_from_saved
-        done, n = set(touched), 0
+        done, n, checked = set(touched), 0, 0
         for ref in known.values():
-            if ref["id"] in done:
+            if ref["id"] in done or ref.get("locked"):
                 continue
             done.add(ref["id"])
             apply, why = decide_from_saved(ref, cfg)
+            if apply in ("Testar agora", "Avaliar") and checked < 40:
+                from .review import link_status
+                checked += 1
+                dead, reason = link_status(ref.get("link", ""))
+                if dead:
+                    apply, why = "Não vale", f"{reason} (verificado em {date.today():%d/%m})"
             props = {"Candidatar agora?": {"select": {"name": apply}}, "Por quê": {"rich_text": _rt(why)}}
             try:
                 self._call("PATCH", f"/pages/{ref['id']}", json={"properties": props})

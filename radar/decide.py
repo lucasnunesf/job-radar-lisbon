@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import re
 
-from .classify import LANG_RX, SOFT
+from .classify import LANG_RX, SOFT, english_c1
 from .models import Job, norm
 
 IMMEDIATE = re.compile(
@@ -39,6 +39,40 @@ def _too_hard(gaps: list[str], rules: dict) -> bool:
     return any(norm(g) in hard for g in gaps) or len(gaps) > rules.get("max_learnable_gaps", 3)
 
 
+MUST = r"must|required|requirement|mandatory|obrigatori|essential|imprescindivel|solid|strong|hands[- ]on|proven" \
+       r"|experience (with|in|using)|experiencia (com|em)|dominio|knowledge of|conhecimentos? (de|em)|\d\+? ?(years?|anos?)"
+
+
+def core_gaps(job: Job, cfg: dict) -> list[str]:
+    """Lacunas que são a BASE da vaga, não um detalhe: no título, citadas 3+ vezes ou com
+    'obrigatório/must/required/hands-on' por perto. 'Power BI ou Tableau' não conta (você tem uma das opções)."""
+    from .score import SKILL_RX
+    title, desc = norm(job.title), norm(job.description)
+    have_rx = [SKILL_RX.get(h, re.escape(norm(h))) for h in cfg.get("skills", {})]
+    out = []
+    for g in job.gaps:
+        rx = SKILL_RX.get(g, r"\b" + re.escape(norm(g)) + r"\b")
+        if re.search(rx, title):
+            out.append(g)
+            continue
+        hits = list(re.finditer(rx, desc))
+        if not hits:
+            continue
+        strong = 0
+        for m in hits:
+            ctx = desc[max(0, m.start() - 90): m.end() + 90]
+            near = desc[max(0, m.start() - 40): m.end() + 40]
+            if re.search(r"\b(or|ou)\b|/", near) and any(re.search(h, near) for h in have_rx):
+                continue  # "Power BI or Tableau", "Azure/AWS"
+            if re.search(SOFT, ctx):
+                continue
+            if re.search(MUST, ctx):
+                strong += 1
+        if len(hits) >= 3 or strong >= (2 if g in ("Oracle",) else 1):
+            out.append(g)
+    return out
+
+
 def decide(job: Job, cfg: dict) -> Job:
     rules = cfg.get("apply_now", {})
     protect = rules.get("protect_companies", [])
@@ -55,8 +89,14 @@ def decide(job: Job, cfg: dict) -> Job:
         job.apply, job.apply_why = "Não vale", "exige outro idioma"
     elif job.score < rules.get("min_score", 55):
         job.apply, job.apply_why = "Não vale", "pouco encaixe com o perfil"
+    elif (niche := [g for g in core_gaps(job, cfg) if g in rules.get("niche_tools", [])]):
+        job.apply, job.apply_why = "Não vale", f"vaga construída sobre {', '.join(niche)} (ferramenta de nicho que você não usa)"
     elif _has(job.company, protect):
         job.apply, job.apply_why = "Esperar preparo", "empresa de topo: guardar para quando estiver pronto"
+    elif (core := [g for g in core_gaps(job, cfg) if g in rules.get("core_tools_wait", [])]):
+        job.apply, job.apply_why = "Esperar preparo", f"a base da vaga é {', '.join(core)}, que você ainda não tem"
+    elif english_c1(job.description):
+        job.apply, job.apply_why = "Esperar preparo", "pede inglês C1/C2 (você tem B2)"
     elif _too_hard(job.gaps, rules):
         job.apply, job.apply_why = "Esperar preparo", f"difícil agora (faltam {', '.join(job.gaps)})"
     else:
@@ -86,6 +126,13 @@ def decide_from_saved(ref: dict, cfg: dict) -> tuple[str, str]:
         return "Avaliar", "o portal não mostra a descrição: abra o link para avaliar"
     if (ref.get("score") or 0) < rules.get("min_score", 55):
         return "Não vale", "pouco encaixe com o perfil"
+    tmp = Job("", ref.get("title", ""), ref.get("company", ""), "")
+    tmp.gaps = ref.get("gaps") or []
+    core = core_gaps(tmp, cfg)  # sem descrição: só o título conta
+    if any(g in rules.get("niche_tools", []) for g in core):
+        return "Não vale", f"vaga construída sobre {', '.join(core)} (ferramenta de nicho que você não usa)"
+    if any(g in rules.get("core_tools_wait", []) for g in core):
+        return "Esperar preparo", f"a base da vaga é {', '.join(core)}, que você ainda não tem"
     if _has(ref.get("company", ""), rules.get("protect_companies", [])):
         return "Esperar preparo", "empresa de topo: guardar para quando estiver pronto"
     gaps = ref.get("gaps") or []
