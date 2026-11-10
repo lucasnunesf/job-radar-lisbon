@@ -1,42 +1,45 @@
-# Job Radar Lisboa — 2026-11-09 20:12
+# Job Radar Lisboa — 2026-11-10 03:31
 
 ## Coleta por fonte
 
 | Fonte | Vagas | Observação |
 |---|---:|---|
-| Built In | 6 | ok |
+| Built In | 7 | ok |
 | Expresso Emprego | 4 | ok |
-| Himalayas | 66 | ok |
-| ITJobs | 38 | ok |
-| Indeed | 10 | ok |
+| Himalayas | 67 | ok |
+| ITJobs | 37 | ok |
+| Indeed | 16 | ok |
 | Jooble | 0 | sem JOOBLE_API_KEY (pedir em jooble.org/api/about) |
-| LinkedIn | 33 | ok |
+| LinkedIn | 46 | ok |
 | Michael Page | 2 | ok |
 | Net-Empregos | 0 | ok |
-| Notion | 22 | 311 atualizadas |
+| Notion | 9 | 320 atualizadas |
 | Sites de empresas | 26 | amplemarket (greenhouse): 1; bgbx (greenhouse): 1; comparaja (greenhouse): 1; gocardless (greenhouse): 2; guidepointsecurity (greenhouse): 1; gympass (greenhous |
 | Teamlyzer | 49 | ok |
 | The Muse | 0 | página 0: sem resposta |
 | Workable | 7 | ok |
-| freehire | 151 | ok |
+| freehire | 149 | ok |
 
-**148 vagas no ranking**, 183 descartadas (sênior, fora da trilha, fora de Lisboa ou antigas).
+**158 vagas no ranking**, 188 descartadas (sênior, fora da trilha, fora de Lisboa ou antigas).
 
-## Data Analyst (31)
+## Data Analyst (34)
 
 | Score | Agora? | Vaga | Empresa | Senioridade | Lacunas | Fonte |
 |---:|---|---|---|---|---|---|
 | 93 | Testar agora | [Data Analyst](https://www.net-empregos.com/16234869/data-analyst/) | Olisipo | — | — | freehire |
 | 91 | Testar agora | [Junior Data Analyst](https://www.net-empregos.com/16235000/junior-data-analyst/) | Olisipo | Júnior | — | freehire |
+| 85 | Esperar preparo | [Data Analyst](https://www.linkedin.com/jobs/view/4487435080) | Mastercard | — | Machine Learning | LinkedIn |
 | 85 | Testar agora | [VIE Data Analyst H/F](https://casa-recrute.talent-soft.com/offre-de-emploi/emploi-vie-data-analyst-h-f_117182.aspx) | Crédit Agricole S.A. | — | — | freehire |
-| 82 | Testar agora | [Data Analyst - SAS Guide](https://www.itjobs.pt/oferta/518847/data-analyst-sas-guide) | Mind Source | Júnior | SAS | ITJobs |
+| 84 | Testar agora | [Reporting & Data Analyst (m/f/d)](https://www.linkedin.com/jobs/view/4489139234) | Hays | Pleno | — | LinkedIn |
 | 82 | Testar agora | [HR Data Analyst](https://ag.wd3.myworkdayjobs.com/Airbus/job/Lisbon-Airbus-Portugal/HR-Data-Analyst_JR10454719) | Airbus | Júnior | Qlik | freehire |
 | 81 | Esperar preparo | [Risk Data Analyst](https://www.linkedin.com/jobs/view/4488850154) | Oney | Júnior | Machine Learning | LinkedIn |
 | 81 | Esperar preparo | [Analista de Dados e Sistemas](https://www.careers-page.com/ithouse/job/L7RV9463) | Egor | — | Java | freehire |
+| 80 | Testar agora | [Data Analyst - SAS Guide](https://www.itjobs.pt/oferta/518847/data-analyst-sas-guide) | Mind Source | Júnior | SAS | ITJobs |
 | 80 | Testar agora | [Data Analyst](https://www.itjobs.pt/oferta/517034/data-analyst) | Neotalent Conclusion | — | — | ITJobs |
 | 80 | Testar agora | [Data Analyst](https://www.careers-page.com/ithouse/job/3W6V5658) | Egor | Júnior | — | freehire |
 | 80 | Testar agora | [Data Analyst - Data Governance](https://emprego.sapo.pt/offers/data-analyst-data-governance?id=729df04c-0fde-4358-9aa3-40a87d76b4ed&utm_source=freehire.me) | Milestone Consulting | — | — | freehire |
-| 77 | Testar agora | [Marketing & Customer Data Analyst // Grupo Agris - Torres Vedras](https://www.linkedin.com/jobs/view/4488847721) | Grupo Agris | Pleno | — | LinkedIn |
+| 78 | Testar agora | [Data Analyst](https://www.linkedin.com/jobs/view/4489191466) | QiBit | Pleno | — | LinkedIn |
+| 77 | Testar agora | [Marketing & Customer Data Analyst // Grupo Agris - Torres Vedras](https://www.linkedin.com/jobs/view/4489182442) | Grupo Agris | Pleno | — | LinkedIn |
 | 77 | Testar agora | [Data Analyst](https://www.linkedin.com/jobs/view/4487125986) | PrimeIT | Pleno | — | LinkedIn |
 | 77 | Testar agora | [Data Analyst](https://justjoin.it/job-offer/emagine-polska-data-analyst-lisbon-data) | emagine Polska | — | — | freehire |
 | 76 | Esperar preparo | [Data Analyst (Junior / Mid) - Remote - Portugal](https://justjoin.it/job-offer/emagine-polska-data-analyst-junior-mid---remote---portugal--lisbon-data) | emagine Polska | Júnior | R, Machine Learning | freehire |
@@ -45,14 +48,11 @@
 | 75 | Testar agora | [Data Analyst / Power BI Specialist / Lisboa](https://emprego.sapo.pt/offers/data-analyst-power-bi-specialist-lisboa?id=c1292590-ac70-4ad9-85ac-07d573a95310&utm_source=freehire.me) | Adecco Recursos Humanos | — | — | freehire |
 | 73 | Testar agora | [Analista de Dados](https://www.careers-page.com/nimber/job/4R7X7W8V) | Nimber | — | Snowflake, Tableau | freehire |
 | 73 | Testar agora | [Analista de Dados Comercial (m/f) - Lisboa](https://emprego.sapo.pt/offers/analista-de-dados-comercial-mf-lisboa?id=877d4fe1-1730-42ff-b59a-410e4c08bc5d&utm_source=freehire.me) | Prosegur Alarmes Dissuasão Portugal, Unipessoal, Lda. | — | — | freehire |
+| 71 | Esperar preparo | [Data Analyst](https://www.linkedin.com/jobs/view/4487966568) | Springer Nature | — | GCP, BigQuery, Looker, Machine Learning | LinkedIn |
 | 68 | Não vale | [Data Engineer / Information Systems & Data Analytics](https://www.itjobs.pt/oferta/518161/data-engineer-information-systems-data-analytics) | Hipoges | Pleno | — | ITJobs |
 | 66 | Testar agora | [Procurement Analyst](https://www.linkedin.com/jobs/view/4480161715) | Bose Corporation | Pleno | — | LinkedIn |
-| 64 | Testar agora | [Analista de Dados](https://www.careers-page.com/ithouse/job/93443946) | Egor | — | Tableau, Qlik | freehire |
-| 59 | Não vale | [Data Analyst](https://jobs.smartrecruiters.com/Inetum2/744000156525889-data-analyst) | inetum2 | Pleno | — | freehire |
-| 58 | Testar agora | [Online Data Analyst - Portuguese (PT)](https://himalayas.app/companies/telus-digital/jobs/online-data-analyst-portuguese-pt?utm_source=api) | TELUS Digital | — | — | Himalayas |
-| 51 | Não vale | [AI Engineer Data Analytics & Artificial Intelligence · Portugal ·](https://pt.whatjobs.com/pub_api__cpl__16833299__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | Keyrus Portugal | — | — | freehire |
 
-## BI (20)
+## BI (21)
 
 | Score | Agora? | Vaga | Empresa | Senioridade | Lacunas | Fonte |
 |---:|---|---|---|---|---|---|
@@ -69,19 +69,21 @@
 | 72 | Esperar preparo | [Regulatory Reporting Controller](https://www.linkedin.com/jobs/view/4445241600) | BNP Paribas CIB | — | — | LinkedIn |
 | 71 | Esperar preparo | [SAP Business Intelligence Consultant – BW, Datasphere & SAC](https://landing.jobs/at/volkswagen-group-digital-solutions-portugal/sap-business-intelligence-consultant-bw-datasphere-sac) | Volkswagen Group Digital Solutions Portugal | Pleno | — | freehire |
 | 70 | Testar agora | [BI Developer](https://www.net-empregos.com/16190990/bi-developer/) | Adecco Recruitment | Pleno | — | freehire |
-| 68 | Testar agora | [Power BI Consultant](https://www.linkedin.com/jobs/view/4489114439) | Timestamp | — | AWS | LinkedIn |
+| 68 | Testar agora | [Power BI Consultant](https://pt.indeed.com/viewjob?jk=631c1d22d0b451d9) | Timestamp | — | AWS | Indeed |
 | 68 | Não vale | [Data, Reporting & Automation Analyst (Payroll)](https://himalayas.app/companies/elevus/jobs/data-reporting-automation-analyst-payroll?utm_source=api) | Elevus | Júnior | — | Himalayas |
 | 57 | Não vale | [Financial Reporting Analyst - French](https://www.linkedin.com/jobs/view/4487132793) | Adecco Permanent Recruitment | — | — | LinkedIn |
 | 54 | Não vale | [Tableau Developer: Data Visualization Analyst](https://himalayas.app/companies/nacre-capital/jobs/tableau-developer-data-visualization-analyst?utm_source=api) | Nacre Capital | Pleno | BigQuery, Snowflake, Tableau | Himalayas |
 | 49 | Avaliar | [Bi consultant / data engineer](https://pt.teamlyzer.com/companies/dellent/job/bi-consultant-data-engineer-22070) | Dellent | — | — | Teamlyzer |
+| 46 | Não vale | [Quality Engineer & BI Specialist](https://www.linkedin.com/jobs/view/4477712812) | Airbus | — | — | LinkedIn |
 | 46 | Avaliar | [Bi developer](https://pt.teamlyzer.com/companies/iss-tech-portugal/job/bi-developer-21651) | Iss Tech Portugal | — | — | Teamlyzer |
 | 46 | Não vale | [Data engineer bi](https://pt.teamlyzer.com/companies/volkswagen-financial-services/job/data-engineer-bi-21859) | Volkswagen Financial Services | — | — | Teamlyzer |
 
-## Analytics Engineer (8)
+## Analytics Engineer (9)
 
 | Score | Agora? | Vaga | Empresa | Senioridade | Lacunas | Fonte |
 |---:|---|---|---|---|---|---|
 | 83 | Testar agora | [Data Analytics Engineer](https://pt.whatjobs.com/pub_api__cpl__16839966__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | TBS - Tech & Beyond Solutions Lda | Júnior | — | freehire |
+| 80 | Testar agora | [Analytics engineer](https://job-boards.greenhouse.io/gocardless/jobs/7699254) | GoCardless | — | — | freehire |
 | 76 | Esperar preparo | [Analytics Engineer (f/m/x)](https://mbio.recruitee.com/o/analytics-engineer-fmx) | Mercedes-Benz.io | — | — | freehire |
 | 71 | Testar agora | [Hybrid Analytics Engineer in Lisbon: Data, Snowflake & AWS](https://pt.whatjobs.com/pub_api__cpl__16850077__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | Match Profiler | — | AWS, Snowflake | freehire |
 | 68 | Testar agora | [Analytics Engineer: Data-as-Product & Self-Service Leader](https://pt.whatjobs.com/pub_api__cpl__16840216__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | pofft Technology Inc. | — | — | freehire |
@@ -90,7 +92,7 @@
 | 54 | Não vale | [Digital Analytics Engineer](https://himalayas.app/companies/wire-it/jobs/digital-analytics-engineer-114647700?utm_source=api) | WIRE IT | — | — | Himalayas |
 | 46 | Não vale | [Analytics Engineer - Data Platform & Observability](https://pt.whatjobs.com/pub_api__cpl__16862994__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | Emma – The Sleep Company | — | — | freehire |
 
-## Data Engineer (89)
+## Data Engineer (94)
 
 | Score | Agora? | Vaga | Empresa | Senioridade | Lacunas | Fonte |
 |---:|---|---|---|---|---|---|
@@ -98,24 +100,24 @@
 | 85 | Esperar preparo | [Data engineer with Machine learning](https://www.itjobs.pt/oferta/518753/data-engineer-with-machine-learning) | KCS IT | Júnior | Machine Learning | ITJobs |
 | 84 | Testar agora | [Data Engineer/Support](https://www.itjobs.pt/oferta/518422/data-engineer-support) | KCS IT | Júnior | — | ITJobs |
 | 82 | Testar agora | [Data Engineer - AWS](https://www.itjobs.pt/oferta/518710/data-engineer-aws) | GRiT Solutions | Júnior | AWS | ITJobs |
-| 80 | Testar agora | [Data Engineer](https://axianstechtalent.teamtailor.com/jobs/8679461-data-engineer) | Axians Portugal Group | — | — | freehire |
-| 80 | Esperar preparo | [Data Engineer](https://jobpage.cvwarehouse.com/?companyGuid=ce3ae4ae-9f54-4f25-9a70-4d486d0d7a27&job=380383&lang=en-US&utm_source=freehire.me) | Team IT | Júnior | Machine Learning | freehire |
 | 79 | Testar agora | [Data Engineer](https://www.linkedin.com/jobs/view/4487177129) | Randstad Digital Portugal | Júnior | — | LinkedIn |
 | 78 | Testar agora | [Azure Data Engineer](https://www.itjobs.pt/oferta/517260/azure-data-engineer) | Neotalent Conclusion | Júnior | — | ITJobs |
+| 78 | Testar agora | [Data Engineer](https://axianstechtalent.teamtailor.com/jobs/8691881-data-engineer) | Axians Portugal Group | Júnior | SAS | freehire |
 | 77 | Testar agora | [Data Engineer](https://www.net-empregos.com/16235015/data-engineer/) | Olisipo | — | AWS, Snowflake | freehire |
-| 77 | Testar agora | [Data Engineer](https://www.careers-page.com/grupo-data/job/638RWW5R) | Grupo Data | — | — | freehire |
 | 77 | Esperar preparo | [Data Engineer](https://hiscox.wd3.myworkdayjobs.com/Hiscox_External_Site/job/Lisbon/Data-Engineer_R0020542) | Hiscox | Júnior | GCP, Snowflake | freehire |
-| 75 | Testar agora | [Data Engineer](https://www.linkedin.com/jobs/view/4488874486) | Caixa Mágica Software | Júnior | SAS | LinkedIn |
+| 75 | Testar agora | [Data Engineer](https://caixamagica.hire.trakstar.com/jobs/fk0zcrd) | Caixa Mágica Software | Júnior | SAS | freehire |
 | 75 | Esperar preparo | [Data Engineer - Periscope](https://www.linkedin.com/jobs/view/4453147464) | McKinsey & Company | Júnior | AWS, GCP, Kubernetes, Machine Learning | LinkedIn |
-| 75 | Testar agora | [Data Engineer](https://pt.whatjobs.com/pub_api__cpl__16868907__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | aRBe-IT | Júnior | — | freehire |
-| 74 | Esperar preparo | [Data Platform Engineer](https://www.linkedin.com/jobs/view/4487949376) | KCS iT | — | Kafka, Terraform, Kubernetes | LinkedIn |
-| 74 | Testar agora | [Data Engineer](https://jobs.smartrecruiters.com/Inetum2/744000160224609-data-engineer) | inetum2 | — | — | freehire |
+| 75 | Testar agora | [Data Engineer](https://www.careers-page.com/grupo-data/job/638RWW5R) | Grupo Data | — | — | freehire |
+| 74 | Esperar preparo | [Data Platform Engineer](https://www.linkedin.com/jobs/view/4487976180) | KCS iT | — | Kafka, Terraform, Kubernetes | LinkedIn |
+| 74 | Testar agora | [Data engineer in ETL pipelines](https://pt.whatjobs.com/pub_api__cpl__16898436__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | Babel | Júnior | — | freehire |
 | 73 | Testar agora | [Data Engineer](https://www.linkedin.com/jobs/view/4487949332) | Bee Engineering | — | — | LinkedIn |
+| 73 | Testar agora | [Data Engineer](https://pt.whatjobs.com/pub_api__cpl__16868907__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | aRBe-IT | Júnior | — | freehire |
 | 72 | Testar agora | [Azure Data Platform Engineer / Data & Analytics SRE](https://www.linkedin.com/jobs/view/4483028297) | Lùkla Portugal | — | Terraform | LinkedIn |
 | 72 | Testar agora | [Data Engineer](https://pt.whatjobs.com/pub_api__cpl__16895863__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | Axians / Digital Solutions - Tech Talent | — | — | freehire |
+| 72 | Testar agora | [Data Engineer](https://jobs.smartrecruiters.com/Inetum2/744000160224609-data-engineer) | inetum2 | — | — | freehire |
 | 72 | Testar agora | [Data Engineer (Lisbon, Onsite) - Azure & Synapse](https://pt.whatjobs.com/pub_api__cpl__16891956__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | Bee Engineering ICT | — | — | freehire |
 | 71 | Testar agora | [Data Engineer](https://pt.whatjobs.com/pub_api__cpl__16848614__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | BI4ALL | Júnior | AWS, GCP, Snowflake | freehire |
+| 71 | Esperar preparo | [Data Engineer - Europe](https://www.linkedin.com/jobs/view/4479384499) | Hiscox | Pleno | — | LinkedIn |
+| 70 | Testar agora | [Snowflake Data Engineer (M/F) Alfragide](https://www.linkedin.com/jobs/view/4488743898) | Match Profiler | Júnior | Snowflake | LinkedIn |
 | 70 | Testar agora | [Data Engineer](https://www.net-empregos.com/16188887/data-engineer/) | Adecco Recruitment | — | — | freehire |
-| 70 | Testar agora | [Data Engineer](https://latitudde.zohorecruit.com/jobs/Careers/863647000000708093) | CONKORD | — | — | freehire |
-| 69 | Testar agora | [ETL Developer (IBM DataStage)](https://www.linkedin.com/jobs/view/4488825986) | AFFINITY | — | — | LinkedIn |
-| 69 | Testar agora | [Data Engineer (Aws)](https://www.linkedin.com/jobs/view/4488773819) | Fyld | — | AWS, Redshift | LinkedIn |
+| 70 | Esperar preparo | [Data Engineer](https://pt.whatjobs.com/pub_api__cpl__16898420__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) | Hiscox Insurance Company Inc. | Júnior | GCP | freehire |

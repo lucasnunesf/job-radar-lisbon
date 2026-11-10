@@ -1,8 +1,8 @@
 {
- "date": "2026-11-09",
- "combinando": 13,
- "fora": 15,
- "depois": 7,
+ "date": "2026-11-10",
+ "combinando": 4,
+ "fora": 8,
+ "depois": 5,
  "melhores": [
   {
    "vaga": "Junior Data Analyst",
@@ -11,41 +11,41 @@
    "link": "https://www.net-empregos.com/16235000/junior-data-analyst/"
   },
   {
-   "vaga": "Data Engineer",
-   "empresa": "Randstad Digital Portugal",
-   "nota": 79,
-   "link": "https://www.linkedin.com/jobs/view/4487177129"
+   "vaga": "Reporting & Data Analyst (m/f/d)",
+   "empresa": "Hays",
+   "nota": 84,
+   "link": "https://www.linkedin.com/jobs/view/4489139234"
   },
   {
-   "vaga": "Data Engineer",
-   "empresa": "Olisipo",
-   "nota": 77,
-   "link": "https://www.net-empregos.com/16235015/data-engineer/"
+   "vaga": "Analytics engineer",
+   "empresa": "GoCardless",
+   "nota": 80,
+   "link": "https://job-boards.greenhouse.io/gocardless/jobs/7699254"
   },
   {
-   "vaga": "Data Engineer",
-   "empresa": "Caixa Mágica Software",
-   "nota": 75,
-   "link": "https://www.linkedin.com/jobs/view/4488874486"
+   "vaga": "Data Analyst",
+   "empresa": "QiBit",
+   "nota": 78,
+   "link": "https://www.linkedin.com/jobs/view/4489191466"
   },
   {
-   "vaga": "SAP Business Intelligence Consultant – BW, Datasphere & SAC",
-   "empresa": "VWG Digital Solutions Portugal",
-   "nota": 75,
-   "link": "https://4dayweek.io/job/sap-business-intelligence-consultant-bw-datasphere-and-sac-at-vwg-digital-solutions-portugal-dc0dd789"
-  },
-  {
-   "vaga": "BI Developer",
-   "empresa": "Adecco Permanent Recruitment",
+   "vaga": "Data engineer in ETL pipelines",
+   "empresa": "Babel",
    "nota": 74,
-   "link": "https://www.linkedin.com/jobs/view/4487171382"
+   "link": "https://pt.whatjobs.com/pub_api__cpl__16898436__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+  },
+  {
+   "vaga": "Data Engineer - ETL Pipelines | Python, Airflow & SQL",
+   "empresa": "Babel",
+   "nota": 63,
+   "link": "https://pt.whatjobs.com/pub_api__cpl__16898629__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
   }
  ],
  "lacunas": {
   "AWS": 26,
-  "Snowflake": 16,
-  "GCP": 16,
-  "Machine Learning": 11,
+  "GCP": 18,
+  "Snowflake": 17,
+  "Machine Learning": 14,
   "Java": 8
  }
 }

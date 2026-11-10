@@ -5,19 +5,19 @@ Ferramentas pedidas nas vagas do ranking que ainda não estão no seu perfil.
 | Ferramenta | Vagas que pedem |
 |---|---:|
 | AWS | 26 |
-| Snowflake | 16 |
-| GCP | 16 |
-| Machine Learning | 11 |
+| GCP | 18 |
+| Snowflake | 17 |
+| Machine Learning | 14 |
 | Java | 8 |
+| Terraform | 7 |
+| BigQuery | 7 |
 | Scala | 7 |
-| Terraform | 6 |
-| SAS | 5 |
+| SAS | 6 |
 | Tableau | 5 |
 | Kafka | 5 |
-| BigQuery | 4 |
 | Qlik | 3 |
 | R | 3 |
 | Kubernetes | 3 |
+| Looker | 3 |
 | Redshift | 3 |
-| Looker | 2 |
 | Alteryx | 1 |
