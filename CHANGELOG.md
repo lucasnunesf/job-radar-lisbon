@@ -3,6 +3,7 @@
 ## 2026-11-09
 - Verificação do radar: últimas 3 execuções do radar.yml com sucesso (a mais recente em 09/11 19:53 UTC); resumo com 13 vagas novas combinando, 15 fora do perfil e 7 para depois.
 - Candidaturas ITJobs: 5 enviadas hoje (Mind Source via ITJobs; Neotalent x3 e Integer por e-mail, sendo Neotalent Data Analyst duplicada); 4 puladas (KCS IT x2, GRiT, ITDS). Notion: colunas "Analisado IA" e "Nota IA".
+- Lote 2 (20 vagas do Notion analisadas pelo Claude): 5 enviadas (Egor, Grupo Data, Hexa People, Match Profiler, Planck); 5 aguardam login/ação do Lucas; 10 descartadas. Total enviado em 09/11: 10.
 
 ## 2026-11-08
 - Verificação do radar: últimas 5 execuções do radar.yml com sucesso (a mais recente em 08/11 03:11 UTC); resumo com 4 vagas novas combinando, 12 fora do perfil, melhores notas 84 (Data Analyst, PrimeIT) e 83 (BI Data Scientist, PrimeIT).
