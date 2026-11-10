@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-10
+- Filtro 2 (aprendido na triagem manual de ~100 vagas em 09/11): senioridade escondida (II/III, "mais de N anos", líder/coordenador), cargos que não são dados, cidade estrangeira no título, vaga construída sobre ferramenta que o Lucas não tem (nicho = Não vale; AWS/Snowflake/Databricks etc. = Esperar preparo; "Power BI ou Tableau" não barra), inglês C1/C2, link morto/vaga fechada, mesmo anúncio em várias consultorias e empresa com 3+ candidaturas recentes.
+- Links do whatjobs saem direto (todos os testados estavam mortos); Databricks vira lacuna (CV usa Fabric).
+- O radar não reescreve mais "Candidatar agora?" de vagas inscritas, descartadas ou já analisadas pelo Claude.
+- Tarefa diária agora faz a revisão do Claude depois do radar e só se inscreve com o OK do Lucas.
+
 ## 2026-11-09
 - Verificação do radar: últimas 3 execuções do radar.yml com sucesso (a mais recente em 09/11 19:53 UTC); resumo com 13 vagas novas combinando, 15 fora do perfil e 7 para depois.
 

@@ -77,6 +77,11 @@ def _blacklisted(j: Job, cfg: dict) -> str | None:
     for w in bl.get("title_words") or []:
         if norm(w) and norm(w) in title:
             return f"título na lista negra ({w})"
+    from urllib.parse import urlparse
+    host = urlparse(j.url or "").netloc.lower()
+    for h in bl.get("link_hosts") or []:
+        if h and host.endswith(h.lower()):
+            return f"link de agregador que expira ({h})"
     for c in bl.get("companies") or []:
         if norm(c) and norm(c) in company:
             return f"empresa na lista negra ({c})"
@@ -271,6 +276,22 @@ def main(argv=None) -> int:
     ranked.sort(key=lambda j: j.score, reverse=True)
     log.info("%d brutas → %d únicas → %d no ranking", len(raw), len(jobs), len(ranked))
 
+    # Filtro 2: link morto, mesma vaga em várias consultorias, empresa com muitas candidaturas
+    client, notion_flags = None, {}
+    if not args.dry_run and not args.fixtures:
+        from .notion import from_env
+        client = from_env(DEFAULT_NOTION_DB)
+        if client:
+            client.check()
+            notion_flags = client.existing()
+    from .review import review
+    rev = review(ranked, notion_flags, cfg, DATA, check_net=not args.fixtures and not os.getenv("RADAR_NO_LINKCHECK"),
+                 persist=not args.fixtures and not args.dry_run)
+    stats["Filtro 2"] = {"brutas": sum(rev.values()), "erros": [", ".join(f"{k} {v}" for k, v in rev.items())]}
+    excluded += [j for j in ranked if j.excluded]
+    ranked = [j for j in ranked if not j.excluded]
+    log.info("Filtro 2: %s", rev)
+
     # Vagas novas = nunca vistas em execuções anteriores (data/seen.json fica versionado no repo)
     seen_path = DATA / "seen.json"
     seen = json.loads(seen_path.read_text(encoding="utf-8")) if seen_path.exists() else {}
@@ -284,15 +305,10 @@ def main(argv=None) -> int:
         new_alerts = new_alerts[:15]  # primeira execução: não inunda o alerta
 
     to_notion = [j for j in ranked if j.score >= cfg["min_score_notion"]]
-    notion_flags: dict = {}
-    if not args.dry_run and not args.fixtures:
-        from .notion import from_env
-        client = from_env(DEFAULT_NOTION_DB)
-        if client:
-            client.check()
-            created, updated = client.upsert(to_notion, cfg)
-            stats["Notion"] = {"brutas": len(created), "erros": [f"{updated} atualizadas"]}
-            notion_flags = client.flags
+    if client:
+        created, updated = client.upsert(to_notion, cfg)
+        stats["Notion"] = {"brutas": len(created), "erros": [f"{updated} atualizadas"]}
+        notion_flags = client.flags
 
     if args.extra_only:  # rodando no computador: o resumo e o histórico ficam com o GitHub
         print(f"{len(to_notion)} vagas enviadas ao Notion. Fontes: " +

@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import re
 
-from .classify import languages_of, min_years, relocation_of, seniority_of, track_of
+from .classify import languages_of, relocation_of, req_years, seniority_of, track_of
 from .models import Job, norm
 
 # Sinônimos/regex por ferramenta (nome igual ao do profile.yaml)
@@ -58,6 +58,18 @@ SKILL_RX = {
     "MicroStrategy": r"microstrategy",
     "Alteryx": r"alteryx",
     "Machine Learning": r"machine learning|\bml\b",
+    # Ferramentas de nicho que apareceram como base de vagas descartadas na triagem manual
+    "DataStage": r"datastage",
+    "Informatica": r"informatica|powercenter|\biics\b",
+    "SAP BW": r"\bsap bw\b|\bbw/4|\bbw4hana|\bbw on hana|\bsap bw\b|\bbw\b(?= ?/? ?(4|hana|developer|consultant))",
+    "SAP BO": r"business ?objects|\bsap bo\b|\bbods\b",
+    "Datasphere": r"datasphere|\bsac\b|sap analytics cloud",
+    "NiFi": r"\bnifi\b",
+    "Dataiku": r"dataiku",
+    "Oracle": r"\boracle\b|pl/?sql",
+    "Cloudera": r"cloudera|\bhadoop\b|\bhive\b",
+    "Teradata": r"teradata",
+    "Flink": r"\bflink\b",
 }
 # R é caso especial: precisa de maiúscula e não pode ser "R&D"
 R_RX = re.compile(r"(?<![\w&/-])R(?![\w&+#/-])(?=\s*(,|/|\bor\b|\bou\b|\band\b|\be\b|\)|\.|\s+programming|\s+language))")
@@ -98,7 +110,7 @@ def score_job(job: Job, cfg: dict) -> Job:
         return job
 
     job.seniority = seniority_of(job.title, job.description)
-    job.years_required = min_years(job.description)
+    job.years_required = req_years(job.description)
     if job.seniority == "Sênior":
         job.excluded = "sênior"
         return job

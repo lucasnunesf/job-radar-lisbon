@@ -16,13 +16,18 @@ TRACK_RULES = [  # ordem importa: a primeira que casar vence
                       r"|big data|data integration|azure data"),
 ]
 
+# Cargos com "analyst/data" no nome que não são vaga de dados (vistos na triagem manual de 09/11)
+NOT_DATA_HARD = r"online data analyst|data (annotator|labell?er|rater)|search (quality )?rater|ai (trainer|tutor)" \
+                r"|financial consultant|consultor financeiro|operations advisor|trade reporting|settlement|liquidacao" \
+                r"|team leader|chefe de equipa|coordinator|coordenador|supervisor"
+
 NOT_DATA = r"scientist|cientista|machine learning engineer|ml engineer|software engineer|full ?stack|frontend|backend" \
            r"|sales|vendas|recruiter|recrutador|account manager|teacher|professor|nurse|enfermeir"
 
-SENIOR_TITLE = r"\b(senior|sr\.?|sênior|lead|principal|head|manager|gestor|director|diretor|staff|architect|arquiteto|chief|expert)\b"
+SENIOR_TITLE = r"\b(senior|sr\.?|sênior|lead|leader|principal|iii|iv|head|manager|gestor|director|diretor|staff|architect|arquiteto|chief|expert)\b"
 INTERN_TITLE = r"\b(intern|internship|estagio|estagiario|trainee|summer)\b|programa de estagio"
 JUNIOR_TITLE = r"\b(junior|jr\.?|entry[- ]level|graduate|recem[- ]licenciado|associate)\b"
-MID_TITLE = r"\b(mid|medior|pleno|intermediate|intermedio)\b"
+MID_TITLE = r"\b(mid|medior|pleno|intermediate|intermedio|ii)\b"
 
 YEARS = re.compile(r"(\d{1,2})\s*\+?\s*(?:-|–|to|a|ou|or)?\s*(\d{1,2})?\s*\+?\s*(?:years?|anos?|yrs)", re.I)
 
@@ -36,6 +41,8 @@ OTHER_PT_CITIES = ("porto", "braga", "coimbra", "aveiro", "faro", "leiria", "gui
 
 def track_of(title: str) -> str | None:
     t = norm(title)
+    if re.search(NOT_DATA_HARD, t):
+        return None
     if re.search(NOT_DATA, t) and not re.search(r"analytics engineer|data engineer|analyst|\bbi\b", t):
         return None
     for name, rx in TRACK_RULES:
@@ -61,6 +68,27 @@ def min_years(text: str) -> int | None:
     return min(found) if found else None
 
 
+MORE_THAN = re.compile(r"(?:mais de|more than|over|at least|pelo menos|minimo de|minimum(?: of)?)\s*(\d{1,2})\s*(?:years?|anos?)")
+
+
+def req_years(text: str) -> int | None:
+    """Anos de experiência exigidos: o MAIOR número citado em contexto de experiência.
+    ("2+ anos de SQL e 6+ anos em dados" = 6; o min_years antigo devolvia 2 e deixava passar sênior)."""
+    found = []
+    for rx in (YEARS, MORE_THAN):
+        for m in rx.finditer(text or ""):
+            ctx = norm(text[max(0, m.start() - 60): m.end() + 60])
+            if not re.search(r"experien|experience|work|trabalh|background|track record|hands-on", ctx):
+                continue
+            if re.search(r"\b(company|empresa|founded|fundad|clients?|clientes|mercado|market|history|historia)\b", ctx) \
+                    and not re.search(r"\byou\b|candidat|\bvoce\b|\btens\b|\btem\b", ctx):
+                continue
+            n = int(m.group(1))
+            if 0 < n <= 10:
+                found.append(n)
+    return max(found) if found else None
+
+
 def seniority_of(title: str, description: str) -> str | None:
     t = norm(title)
     if re.search(SENIOR_TITLE, t):
@@ -69,7 +97,7 @@ def seniority_of(title: str, description: str) -> str | None:
         return "Estágio"
     if re.search(JUNIOR_TITLE, t):
         return "Júnior"
-    years = min_years(description)
+    years = req_years(description)
     if re.search(MID_TITLE, t):
         return "Sênior" if years and years >= 4 else "Pleno"
     if years is not None:
@@ -117,6 +145,16 @@ def languages_of(description: str) -> tuple[list[str], int]:
     return langs, penalty
 
 
+def english_c1(description: str) -> bool:
+    """Inglês C1/C2/nativo exigido (Lucas tem B2). "Fluent English" sozinho é comum demais para barrar."""
+    d = norm(description)
+    for m in re.finditer(r"\b(c1|c2)\b|native(-level)? english|english native|ingles nativo|bilingual english", d):
+        ctx = d[max(0, m.start() - 60): m.end() + 60]
+        if re.search(r"english|ingles", ctx) and not re.search(SOFT, ctx):
+            return True
+    return False
+
+
 def relocation_of(description: str, flags: dict) -> int:
     """+1 aceita relocação/visto, -1 exige autorização de trabalho na UE, 0 não diz."""
     d = norm(description)
@@ -148,6 +186,9 @@ def is_lisbon_area(location: str) -> bool:
 # ---------------------------------------------------------------- Foco em Lisboa (versão estrita)
 OUTSIDE_METRO = ("torres vedras", "alenquer", "lourinha", "cadaval", "azambuja", "arruda dos vinhos",
                  "sobral de monte agraco", "caldas da rainha", "peniche", "obidos", "rio maior")
+FOREIGN_IN_TITLE = (r"\b(brussels|bruxelas|bruxelles|madrid|barcelona|paris|london|londres|amsterdam|berlin|munich|dublin"
+                    r"|milan|milao|warsaw|krakow|prague|sao paulo|rio de janeiro|bangalore|mexico)\b"
+                    r"|remote[ -]*(usa|us|uk|europe|emea|global|worldwide|latam|india|brazil|brasil|americas)\b")
 REMOTE_RX = r"\b(remote|remoto|remotely|teletrabalho|home ?office|work from home|anywhere)\b"
 
 
@@ -171,6 +212,10 @@ def location_verdict(location: str, url: str = "", title: str = "", description:
       "fora"     — outra cidade, outro país, ou remoto aberto a vários países.
     """
     loc = norm(location)
+    tnorm = norm(title)
+    m = re.search(FOREIGN_IN_TITLE, tnorm)
+    if m:
+        return "fora", f"fora de Lisboa (título cita {m.group(0)})"
     ctx = norm(" ".join([url.replace("-", " ").replace("/", " ").replace("_", " "), title, (description or "")[:5000]]))
 
     # Distrito de Lisboa fora da área metropolitana (LinkedIn escreve "Torres Vedras, Lisboa, Portugal")
