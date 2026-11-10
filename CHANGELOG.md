@@ -5,7 +5,7 @@
 - Candidaturas ITJobs: 5 enviadas hoje (Mind Source via ITJobs; Neotalent x3 e Integer por e-mail, sendo Neotalent Data Analyst duplicada); 4 puladas (KCS IT x2, GRiT, ITDS). Notion: colunas "Analisado IA" e "Nota IA".
 - Lote 2 (20 vagas do Notion analisadas pelo Claude): 5 enviadas (Egor, Grupo Data, Hexa People, Match Profiler, Planck); 5 aguardam login/ação do Lucas; 10 descartadas. Total enviado em 09/11: 10.
 - Triagem das 108 vagas "Testar agora"/"Avaliar" restantes (todas marcadas "Analisado IA" no Notion) + lote 3: 4 enviadas (Nimber, Egor, IT House, Bravemind) + Efficio. Total enviado em 09/11: 15.
-- Vagas com login (após login do Lucas): 3 enviadas (Bee Engineering, Adecco Power BI, Airbus HR Data Analyst); Prosegur e Milestone preenchidas no SAPO, à espera do hCaptcha; Magnum fechada. Total enviado em 09/11: 18.
+- Vagas com login (após login do Lucas): 5 enviadas (Bee Engineering, Adecco Power BI, Airbus HR Data Analyst, Prosegur e Milestone via SAPO); Magnum fechada. Total enviado em 09/11: 20.
 
 ## 2026-11-08
 - Verificação do radar: últimas 5 execuções do radar.yml com sucesso (a mais recente em 08/11 03:11 UTC); resumo com 4 vagas novas combinando, 12 fora do perfil, melhores notas 84 (Data Analyst, PrimeIT) e 83 (BI Data Scientist, PrimeIT).
