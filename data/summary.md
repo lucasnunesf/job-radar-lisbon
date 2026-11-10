@@ -1,12 +1,12 @@
-Fiz a atualização de 10/11: **4 vagas novas combinando**, 8 fora do perfil e 5 para depois.
+Fiz a atualização de 10/11: **9 vagas novas combinando**, 16 fora do perfil e 4 para depois.
 
 **Melhores agora:**
-1. [Junior Data Analyst](https://www.net-empregos.com/16235000/junior-data-analyst/) · Olisipo · nota 91 · Testar agora _(já estava aberta)_
-2. [Reporting & Data Analyst (m/f/d)](https://www.linkedin.com/jobs/view/4489139234) · Hays · nota 84 · Testar agora
-3. [Analytics engineer](https://job-boards.greenhouse.io/gocardless/jobs/7699254) · GoCardless · nota 80 · Testar agora _(já estava aberta)_
-4. [Data Analyst](https://www.linkedin.com/jobs/view/4489191466) · QiBit · nota 78 · Testar agora
-5. [Data engineer in ETL pipelines](https://pt.whatjobs.com/pub_api__cpl__16898436__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) · Babel · nota 74 · Testar agora
-6. [Data Engineer - ETL Pipelines | Python, Airflow & SQL](https://pt.whatjobs.com/pub_api__cpl__16898629__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me) · Babel · nota 63 · Testar agora
+1. [Consultor Power BI](https://www.linkedin.com/jobs/view/4480472451) · emagine · nota 86 · Testar agora
+2. [Bioprocess Data Engineer](https://pt.indeed.com/viewjob?jk=f0929c8cbb86a721) · MicroHarvest · nota 77 · Testar agora
+3. [Distributed Cloud | Analytics Engineer](https://www.linkedin.com/jobs/view/4426626553) · Devoteam · nota 77 · Testar agora
+4. [Business Intelligence Specialist](https://www.michaelpage.pt/job-detail/business-intelligence-specialist/ref/jn-102026-7125638) ·  · nota 75 · Testar agora
+5. [Payroll & Reporting Specialist (m/f/d) - Oeiras](https://www.linkedin.com/jobs/view/4489421665) · Hays · nota 69 · Testar agora
+6. [Data Engineer - Mid - Remote Hibrido Lisboa](https://www.linkedin.com/jobs/view/4471385804) · emagine · nota 68 · Testar agora
 
-**Lacunas que mais aparecem nas vagas boas:** AWS (26), GCP (18), Snowflake (17), Machine Learning (14), Java (8)
-_Fontes: Built In 7, Expresso Emprego 4, Himalayas 67, ITJobs 37, Indeed 16, Jooble 0, LinkedIn 46, Michael Page 2, Net-Empregos 0, Sites de empresas 26, Teamlyzer 49, The Muse 0, Workable 7, freehire 149._
+**Lacunas que mais aparecem nas vagas boas:** AWS (25), Snowflake (18), GCP (17), Machine Learning (15), Tableau (11)
+_Fontes: Built In 6, Expresso Emprego 5, Himalayas 65, ITJobs 37, Indeed 27, Jooble 0, LinkedIn 52, Michael Page 3, Net-Empregos 2, Sites de empresas 25, Teamlyzer 49, The Muse 0, Workable 8, freehire 148._

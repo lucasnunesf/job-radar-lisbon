@@ -1,51 +1,51 @@
 {
  "date": "2026-11-10",
- "combinando": 4,
- "fora": 8,
- "depois": 5,
+ "combinando": 9,
+ "fora": 16,
+ "depois": 4,
  "melhores": [
   {
-   "vaga": "Junior Data Analyst",
-   "empresa": "Olisipo",
-   "nota": 91,
-   "link": "https://www.net-empregos.com/16235000/junior-data-analyst/"
+   "vaga": "Consultor Power BI",
+   "empresa": "emagine",
+   "nota": 86,
+   "link": "https://www.linkedin.com/jobs/view/4480472451"
   },
   {
-   "vaga": "Reporting & Data Analyst (m/f/d)",
+   "vaga": "Bioprocess Data Engineer",
+   "empresa": "MicroHarvest",
+   "nota": 77,
+   "link": "https://pt.indeed.com/viewjob?jk=f0929c8cbb86a721"
+  },
+  {
+   "vaga": "Distributed Cloud | Analytics Engineer",
+   "empresa": "Devoteam",
+   "nota": 77,
+   "link": "https://www.linkedin.com/jobs/view/4426626553"
+  },
+  {
+   "vaga": "Business Intelligence Specialist",
+   "empresa": "",
+   "nota": 75,
+   "link": "https://www.michaelpage.pt/job-detail/business-intelligence-specialist/ref/jn-102026-7125638"
+  },
+  {
+   "vaga": "Payroll & Reporting Specialist (m/f/d) - Oeiras",
    "empresa": "Hays",
-   "nota": 84,
-   "link": "https://www.linkedin.com/jobs/view/4489139234"
+   "nota": 69,
+   "link": "https://www.linkedin.com/jobs/view/4489421665"
   },
   {
-   "vaga": "Analytics engineer",
-   "empresa": "GoCardless",
-   "nota": 80,
-   "link": "https://job-boards.greenhouse.io/gocardless/jobs/7699254"
-  },
-  {
-   "vaga": "Data Analyst",
-   "empresa": "QiBit",
-   "nota": 78,
-   "link": "https://www.linkedin.com/jobs/view/4489191466"
-  },
-  {
-   "vaga": "Data engineer in ETL pipelines",
-   "empresa": "Babel",
-   "nota": 74,
-   "link": "https://pt.whatjobs.com/pub_api__cpl__16898436__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
-  },
-  {
-   "vaga": "Data Engineer - ETL Pipelines | Python, Airflow & SQL",
-   "empresa": "Babel",
-   "nota": 63,
-   "link": "https://pt.whatjobs.com/pub_api__cpl__16898629__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+   "vaga": "Data Engineer - Mid - Remote Hibrido Lisboa",
+   "empresa": "emagine",
+   "nota": 68,
+   "link": "https://www.linkedin.com/jobs/view/4471385804"
   }
  ],
  "lacunas": {
-  "AWS": 26,
-  "GCP": 18,
-  "Snowflake": 17,
-  "Machine Learning": 14,
-  "Java": 8
+  "AWS": 25,
+  "Snowflake": 18,
+  "GCP": 17,
+  "Machine Learning": 15,
+  "Tableau": 11
  }
 }
