@@ -1,51 +1,51 @@
 {
  "date": "2026-11-11",
- "combinando": 2,
- "fora": 11,
- "depois": 1,
+ "combinando": 6,
+ "fora": 9,
+ "depois": 3,
  "melhores": [
   {
-   "vaga": "Junior Data Analyst",
-   "empresa": "Olisipo",
-   "nota": 91,
-   "link": "https://www.net-empregos.com/16235000/junior-data-analyst/"
+   "vaga": "Business Analyst - Data & Business Intelligence (BI)",
+   "empresa": "Onile IT",
+   "nota": 95,
+   "link": "https://pt.indeed.com/viewjob?jk=59c485c29db51c7c"
   },
   {
-   "vaga": "Junior Business Intelligence & Qlik Sense Consultant",
-   "empresa": "Inetum",
-   "nota": 87,
-   "link": "https://pt.indeed.com/viewjob?jk=d872c6f175b293bf"
+   "vaga": "Business Analyst - Data & Business Intelligence (BI)",
+   "empresa": "ONILE IT - CONSULTORIA, TECNOLOGIA E ENGENHARIA, LDA.",
+   "nota": 95,
+   "link": "https://emprego.sapo.pt/offers/business-analyst-data-business-intelligence-bi?id=b8a0262e-bc62-42ee-972b-7c6ed63bf658&utm_source=freehire.me"
   },
   {
-   "vaga": "Data Analyst",
+   "vaga": "HR Data Analyst",
    "empresa": "AFFINITY",
-   "nota": 86,
-   "link": "https://www.linkedin.com/jobs/view/4489497653"
+   "nota": 87,
+   "link": "https://www.linkedin.com/jobs/view/4489965050"
   },
   {
-   "vaga": "Consultor Power BI",
-   "empresa": "emagine",
-   "nota": 86,
-   "link": "https://www.linkedin.com/jobs/view/4480472451"
+   "vaga": "Analista de dados",
+   "empresa": "PrimeIT",
+   "nota": 84,
+   "link": "https://www.linkedin.com/jobs/view/4488214047"
   },
   {
-   "vaga": "Analytics engineer",
-   "empresa": "GoCardless",
-   "nota": 80,
-   "link": "https://job-boards.greenhouse.io/gocardless/jobs/7699254"
+   "vaga": "BI Analyst",
+   "empresa": "IT People Innovation",
+   "nota": 76,
+   "link": "https://www.linkedin.com/jobs/view/4488699230"
   },
   {
-   "vaga": "Mid Business Intelligence & Qlik Sense Consultant",
-   "empresa": "Inetum",
-   "nota": 73,
-   "link": "https://pt.indeed.com/viewjob?jk=0d63db1e6320869e"
+   "vaga": "FinOps & Product Analytics Engineer",
+   "empresa": "Intapp",
+   "nota": 75,
+   "link": "https://www.linkedin.com/jobs/view/4488694617"
   }
  ],
  "lacunas": {
-  "AWS": 25,
+  "AWS": 24,
   "Snowflake": 19,
-  "GCP": 18,
-  "Machine Learning": 16,
-  "Tableau": 11
+  "GCP": 16,
+  "Tableau": 10,
+  "Machine Learning": 10
  }
 }
