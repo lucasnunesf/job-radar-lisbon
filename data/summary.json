@@ -1,9 +1,27 @@
 {
- "date": "2026-11-10",
- "combinando": 9,
- "fora": 16,
- "depois": 4,
+ "date": "2026-11-11",
+ "combinando": 2,
+ "fora": 11,
+ "depois": 1,
  "melhores": [
+  {
+   "vaga": "Junior Data Analyst",
+   "empresa": "Olisipo",
+   "nota": 91,
+   "link": "https://www.net-empregos.com/16235000/junior-data-analyst/"
+  },
+  {
+   "vaga": "Junior Business Intelligence & Qlik Sense Consultant",
+   "empresa": "Inetum",
+   "nota": 87,
+   "link": "https://pt.indeed.com/viewjob?jk=d872c6f175b293bf"
+  },
+  {
+   "vaga": "Data Analyst",
+   "empresa": "AFFINITY",
+   "nota": 86,
+   "link": "https://www.linkedin.com/jobs/view/4489497653"
+  },
   {
    "vaga": "Consultor Power BI",
    "empresa": "emagine",
@@ -11,41 +29,23 @@
    "link": "https://www.linkedin.com/jobs/view/4480472451"
   },
   {
-   "vaga": "Bioprocess Data Engineer",
-   "empresa": "MicroHarvest",
-   "nota": 77,
-   "link": "https://pt.indeed.com/viewjob?jk=f0929c8cbb86a721"
+   "vaga": "Analytics engineer",
+   "empresa": "GoCardless",
+   "nota": 80,
+   "link": "https://job-boards.greenhouse.io/gocardless/jobs/7699254"
   },
   {
-   "vaga": "Distributed Cloud | Analytics Engineer",
-   "empresa": "Devoteam",
-   "nota": 77,
-   "link": "https://www.linkedin.com/jobs/view/4426626553"
-  },
-  {
-   "vaga": "Business Intelligence Specialist",
-   "empresa": "",
-   "nota": 75,
-   "link": "https://www.michaelpage.pt/job-detail/business-intelligence-specialist/ref/jn-102026-7125638"
-  },
-  {
-   "vaga": "Payroll & Reporting Specialist (m/f/d) - Oeiras",
-   "empresa": "Hays",
-   "nota": 69,
-   "link": "https://www.linkedin.com/jobs/view/4489421665"
-  },
-  {
-   "vaga": "Data Engineer - Mid - Remote Hibrido Lisboa",
-   "empresa": "emagine",
-   "nota": 68,
-   "link": "https://www.linkedin.com/jobs/view/4471385804"
+   "vaga": "Mid Business Intelligence & Qlik Sense Consultant",
+   "empresa": "Inetum",
+   "nota": 73,
+   "link": "https://pt.indeed.com/viewjob?jk=0d63db1e6320869e"
   }
  ],
  "lacunas": {
   "AWS": 25,
-  "Snowflake": 18,
-  "GCP": 17,
-  "Machine Learning": 15,
+  "Snowflake": 19,
+  "GCP": 18,
+  "Machine Learning": 16,
   "Tableau": 11
  }
 }
