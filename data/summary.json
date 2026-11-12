@@ -1,8 +1,8 @@
 {
- "date": "2026-11-11",
- "combinando": 6,
+ "date": "2026-11-12",
+ "combinando": 1,
  "fora": 9,
- "depois": 3,
+ "depois": 1,
  "melhores": [
   {
    "vaga": "Business Analyst - Data & Business Intelligence (BI)",
@@ -17,35 +17,35 @@
    "link": "https://emprego.sapo.pt/offers/business-analyst-data-business-intelligence-bi?id=b8a0262e-bc62-42ee-972b-7c6ed63bf658&utm_source=freehire.me"
   },
   {
+   "vaga": "Junior Data Analyst",
+   "empresa": "Olisipo",
+   "nota": 91,
+   "link": "https://www.net-empregos.com/16235000/junior-data-analyst/"
+  },
+  {
    "vaga": "HR Data Analyst",
    "empresa": "AFFINITY",
    "nota": 87,
    "link": "https://www.linkedin.com/jobs/view/4489965050"
   },
   {
-   "vaga": "Analista de dados",
-   "empresa": "PrimeIT",
-   "nota": 84,
-   "link": "https://www.linkedin.com/jobs/view/4488214047"
+   "vaga": "Junior Business Intelligence & Qlik Sense Consultant",
+   "empresa": "Inetum",
+   "nota": 87,
+   "link": "https://pt.indeed.com/viewjob?jk=d872c6f175b293bf"
   },
   {
-   "vaga": "BI Analyst",
-   "empresa": "IT People Innovation",
-   "nota": 76,
-   "link": "https://www.linkedin.com/jobs/view/4488699230"
-  },
-  {
-   "vaga": "FinOps & Product Analytics Engineer",
-   "empresa": "Intapp",
-   "nota": 75,
-   "link": "https://www.linkedin.com/jobs/view/4488694617"
+   "vaga": "HR Processes and Reporting Analyst",
+   "empresa": "HN Services Portugal",
+   "nota": 79,
+   "link": "https://www.linkedin.com/jobs/view/4488243556"
   }
  ],
  "lacunas": {
-  "AWS": 24,
-  "Snowflake": 19,
-  "GCP": 16,
-  "Tableau": 10,
-  "Machine Learning": 10
+  "AWS": 25,
+  "Snowflake": 22,
+  "GCP": 19,
+  "Machine Learning": 15,
+  "Tableau": 12
  }
 }
