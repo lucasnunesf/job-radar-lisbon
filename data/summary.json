@@ -1,8 +1,8 @@
 {
- "date": "2026-11-12",
- "combinando": 15,
- "fora": 19,
- "depois": 2,
+ "date": "2026-11-13",
+ "combinando": 3,
+ "fora": 7,
+ "depois": 0,
  "melhores": [
   {
    "vaga": "Data & BI Analyst",
@@ -11,41 +11,41 @@
    "link": "https://www.linkedin.com/jobs/view/4488547001"
   },
   {
-   "vaga": "BI Analyst | Power BI, SQL & Data Modelling",
-   "empresa": "Smart Consulting",
-   "nota": 80,
-   "link": "https://www.linkedin.com/jobs/view/4488512150"
+   "vaga": "Business Analyst - Data & Business Intelligence (BI)",
+   "empresa": "Onile IT",
+   "nota": 95,
+   "link": "https://pt.indeed.com/viewjob?jk=59c485c29db51c7c"
   },
   {
-   "vaga": "Business Data Analyst",
-   "empresa": "Sourcing Trust, LDA",
-   "nota": 78,
-   "link": "https://pt.indeed.com/viewjob?jk=dd4fdd2e18e1b8ae"
+   "vaga": "Business Analyst - Data & Business Intelligence (BI)",
+   "empresa": "ONILE IT - CONSULTORIA, TECNOLOGIA E ENGENHARIA, LDA.",
+   "nota": 95,
+   "link": "https://emprego.sapo.pt/offers/business-analyst-data-business-intelligence-bi?id=b8a0262e-bc62-42ee-972b-7c6ed63bf658&utm_source=freehire.me"
   },
   {
-   "vaga": "Data Analyst",
-   "empresa": "FC Technology",
-   "nota": 77,
-   "link": "https://www.linkedin.com/jobs/view/4488534225"
+   "vaga": "Analista de dados",
+   "empresa": "Amf Grupo",
+   "nota": 76,
+   "link": "https://www.linkedin.com/jobs/view/4490501948"
   },
   {
-   "vaga": "Data Analyst",
-   "empresa": "Bose Corporation",
-   "nota": 74,
-   "link": "https://www.linkedin.com/jobs/view/4490387066"
+   "vaga": "Data Engineer",
+   "empresa": "IRIUM Portugal",
+   "nota": 69,
+   "link": "https://iriumportugal.applytojob.com/apply/nJUH9yYHMI/Data-Engineer"
   },
   {
-   "vaga": "Data Analyst",
-   "empresa": "Bose",
-   "nota": 74,
-   "link": "https://pt.indeed.com/viewjob?jk=5ecc59856733251b"
+   "vaga": "Pessoa Analista de Dados & Suporte Analítico",
+   "empresa": "MJV Innovation",
+   "nota": 56,
+   "link": "https://pt.indeed.com/viewjob?jk=29f1731b8c956079"
   }
  ],
  "lacunas": {
-  "AWS": 24,
-  "Snowflake": 22,
-  "GCP": 14,
-  "Tableau": 13,
+  "Snowflake": 25,
+  "AWS": 25,
+  "Tableau": 15,
+  "GCP": 15,
   "Machine Learning": 10
  }
 }
