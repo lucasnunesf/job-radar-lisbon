@@ -1,51 +1,51 @@
 {
- "date": "2026-11-13",
- "combinando": 6,
- "fora": 18,
- "depois": 3,
+ "date": "2026-11-14",
+ "combinando": 1,
+ "fora": 11,
+ "depois": 2,
  "melhores": [
   {
-   "vaga": "Databricks Engineer",
-   "empresa": "Tata Consultancy Services",
-   "nota": 74,
-   "link": "https://www.linkedin.com/jobs/view/4489564415"
+   "vaga": "Data & BI Analyst",
+   "empresa": "PrimeIT",
+   "nota": 98,
+   "link": "https://www.linkedin.com/jobs/view/4488547001"
   },
   {
-   "vaga": "Data Engineer - PORTUGAL - 12/10/26",
-   "empresa": "Wafx",
-   "nota": 74,
-   "link": "https://pt.whatjobs.com/pub_api__cpl__16901988__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+   "vaga": "Business Analyst - Data & Business Intelligence (BI)",
+   "empresa": "Onile IT",
+   "nota": 95,
+   "link": "https://pt.indeed.com/viewjob?jk=59c485c29db51c7c"
   },
   {
-   "vaga": "Regulatory Monitoring & Reporting Analyst",
-   "empresa": "ACCA Careers",
-   "nota": 72,
-   "link": "https://www.linkedin.com/jobs/view/4490707648"
+   "vaga": "Business Analyst - Data & Business Intelligence (BI)",
+   "empresa": "ONILE IT - CONSULTORIA, TECNOLOGIA E ENGENHARIA, LDA.",
+   "nota": 95,
+   "link": "https://emprego.sapo.pt/offers/business-analyst-data-business-intelligence-bi?id=b8a0262e-bc62-42ee-972b-7c6ed63bf658&utm_source=freehire.me"
   },
   {
-   "vaga": "Controller de Gestão e Reporting Financeiro",
-   "empresa": "Delnext",
-   "nota": 72,
-   "link": "https://www.linkedin.com/jobs/view/4489560333"
+   "vaga": "Junior Data Analyst",
+   "empresa": "Olisipo",
+   "nota": 89,
+   "link": "https://www.net-empregos.com/16235000/junior-data-analyst/"
   },
   {
-   "vaga": "Analytics Data Engineer — Hybrid, Growth & Learning",
-   "empresa": "BI4ALL",
-   "nota": 71,
-   "link": "https://pt.whatjobs.com/pub_api__cpl__16901547__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+   "vaga": "Middle Data Analyst",
+   "empresa": "Aubay Portugal",
+   "nota": 84,
+   "link": "https://www.linkedin.com/jobs/view/4490752860"
   },
   {
-   "vaga": "Data engineer in analytics",
-   "empresa": "BI4ALL",
-   "nota": 69,
-   "link": "https://pt.whatjobs.com/pub_api__cpl__16902367__7145?utm_campaign=publisher&utm_medium=api&utm_source=freehire.me"
+   "vaga": "Analista de dados",
+   "empresa": "PrimeIT",
+   "nota": 84,
+   "link": "https://www.linkedin.com/jobs/view/4488214047"
   }
  ],
  "lacunas": {
-  "Snowflake": 22,
-  "AWS": 21,
-  "GCP": 12,
-  "Tableau": 11,
+  "AWS": 24,
+  "Snowflake": 23,
+  "Tableau": 13,
+  "GCP": 13,
   "Machine Learning": 11
  }
 }
